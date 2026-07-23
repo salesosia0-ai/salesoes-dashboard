@@ -1,11 +1,58 @@
 import streamlit as st
+import plotly.express as px
+import pandas as pd
 
-st.set_page_config(page_title="Salesoes IA", layout="wide")
+# -----------------------
+# CONFIGURACIÓN Y ESTILO
+# -----------------------
 
-st.title("Dashboard Salesoes IA")
-st.markdown("10 sectores priorizados para prospección, diagnóstico y automatización.")
+st.set_page_config(
+    page_title="Salesoes IA",
+    page_icon="📊",
+    layout="wide"
+)
 
-# Datos de los 10 sectores
+# Paleta de colores
+COLOR_BG = "#0f172a"        # fondo oscuro (azul noche)
+COLOR_CARD = "#1e293b"      # tarjeta (azul grisáceo)
+COLOR_TEXT = "#f1f5f9"      # texto claro
+COLOR_ACCENT = "#38bdf8"    # acento (azul claro)
+COLOR_SECONDARY = "#94a3b8" # texto secundario
+
+# CSS personalizado para tema oscuro elegante
+st.markdown(f"""
+    <style>
+    .stApp {{
+        background-color: {COLOR_BG};
+        color: {COLOR_TEXT};
+    }}
+    .stMarkdown, .stMarkdown p, .stSidebar .stMarkdown {{
+        color: {COLOR_TEXT};
+    }}
+    .stMetric {{
+        background-color: {COLOR_CARD};
+        border-radius: 10px;
+        padding: 15px;
+    }}
+    .stMetricLabel {{
+        color: {COLOR_SECONDARY};
+    }}
+    .stMetricValue {{
+        color: {COLOR_ACCENT};
+    }}
+    .css-1r6q7xm {{
+        background-color: {COLOR_CARD};
+    }}
+    h1, h2, h3 {{
+        color: {COLOR_TEXT};
+    }}
+    </style>
+""", unsafe_allow_html=True)
+
+# -----------------------
+# DATOS DE LOS SECTORES
+# -----------------------
+
 sectores = [
     {
         "sector_id": "01",
@@ -13,8 +60,11 @@ sectores = [
         "subsector": "Servicios Profesionales",
         "fit": "Muy alto",
         "tamano_mercado": "~27.000 asesorías",
+        "tamano_mercado_num": 27000,
         "facturacion_agregada": "~8.500M€/año",
+        "facturacion_agregada_num": 8500,
         "adopcion_ia": "~35%",
+        "adopcion_ia_num": 35,
         "problemas": [
             "Introducción manual de datos de clientes",
             "Conciliación bancaria y categorización de gastos manual",
@@ -53,8 +103,11 @@ sectores = [
         "subsector": "Servicios Profesionales - Legal",
         "fit": "Muy alto",
         "tamano_mercado": "~140.000 abogados",
+        "tamano_mercado_num": 140000,
         "facturacion_agregada": "~12.000M€/año",
+        "facturacion_agregada_num": 12000,
         "adopcion_ia": "~28%",
+        "adopcion_ia_num": 28,
         "problemas": [
             "Búsqueda de jurisprudencia y doctrina manual",
             "Redacción de escritos y contratos muy repetitiva",
@@ -91,8 +144,11 @@ sectores = [
         "subsector": "Salud - Odontología",
         "fit": "Muy alto",
         "tamano_mercado": "~24.000 clínicas",
+        "tamano_mercado_num": 24000,
         "facturacion_agregada": "~1.305M€",
+        "facturacion_agregada_num": 1305,
         "adopcion_ia": "~25%",
+        "adopcion_ia_num": 25,
         "problemas": [
             "Agenda con huecos improductivos",
             "Seguimiento de pacientes post-tratamiento manual",
@@ -129,8 +185,11 @@ sectores = [
         "subsector": "Salud - Veterinaria",
         "fit": "Alto",
         "tamano_mercado": "~7.032 clínicas",
+        "tamano_mercado_num": 7032,
         "facturacion_agregada": "~3.069M€/año",
+        "facturacion_agregada_num": 3069,
         "adopcion_ia": "~15%",
+        "adopcion_ia_num": 15,
         "problemas": [
             "Agenda con huecos improductivos",
             "Falta de seguimiento de campañas de vacunación y desparasitación",
@@ -167,8 +226,11 @@ sectores = [
         "subsector": "Servicios - Inmobiliario",
         "fit": "Muy alto",
         "tamano_mercado": "~60.683 agencias",
+        "tamano_mercado_num": 60683,
         "facturacion_agregada": "~9.400M€/año",
+        "facturacion_agregada_num": 9400,
         "adopcion_ia": "~20%",
+        "adopcion_ia_num": 20,
         "problemas": [
             "Captación manual de propiedades",
             "Descripciones de inmuebles repetitivas y poco persuasivas",
@@ -205,8 +267,11 @@ sectores = [
         "subsector": "Hostelería - Alojamiento",
         "fit": "Muy alto",
         "tamano_mercado": "~14.613 hoteles",
+        "tamano_mercado_num": 14613,
         "facturacion_agregada": "~125.340M€",
+        "facturacion_agregada_num": 125340,
         "adopcion_ia": "~25%",
+        "adopcion_ia_num": 25,
         "problemas": [
             "Pricing estático o reactivo",
             "Falta de personalización en la experiencia del huésped",
@@ -243,8 +308,11 @@ sectores = [
         "subsector": "Hostelería - Alojamiento Vacacional",
         "fit": "Alto",
         "tamano_mercado": "~400k-500k viviendas",
+        "tamano_mercado_num": 450000,
         "facturacion_agregada": "~25.000-35.000M€",
+        "facturacion_agregada_num": 30000,
         "adopcion_ia": "~15%",
+        "adopcion_ia_num": 15,
         "problemas": [
             "Pricing estático o intuitivo",
             "Gestión de mensajes repetitivos con huéspedes",
@@ -281,8 +349,11 @@ sectores = [
         "subsector": "Hostelería - Restauración",
         "fit": "Alto",
         "tamano_mercado": "~160.000 restaurantes",
+        "tamano_mercado_num": 160000,
         "facturacion_agregada": "~85.000-95.000M€",
+        "facturacion_agregada_num": 90000,
         "adopcion_ia": "~18%",
+        "adopcion_ia_num": 18,
         "problemas": [
             "Predicción de demanda inexacta",
             "Desperdicio de comida por sobre-compra",
@@ -319,8 +390,11 @@ sectores = [
         "subsector": "Deporte y Bienestar",
         "fit": "Alto",
         "tamano_mercado": "~5.800 centros",
+        "tamano_mercado_num": 5800,
         "facturacion_agregada": "~3.200M€/año",
+        "facturacion_agregada_num": 3200,
         "adopcion_ia": "Media-alta",
+        "adopcion_ia_num": 22,
         "problemas": [
             "Baja retención de abonados",
             "Falta de personalización en rutinas y seguimiento",
@@ -357,8 +431,11 @@ sectores = [
         "subsector": "Salud y Bienestar - Estética",
         "fit": "Alto",
         "tamano_mercado": "Cientos de centros",
+        "tamano_mercado_num": 3000,
         "facturacion_agregada": "Cientos de M€",
+        "facturacion_agregada_num": 5000,
         "adopcion_ia": "Media-alta",
+        "adopcion_ia_num": 20,
         "problemas": [
             "Agenda con huecos improductivos",
             "Falta de seguimiento post-tratamiento",
@@ -391,68 +468,175 @@ sectores = [
     },
 ]
 
-# KPIs
-c1, c2, c3, c4 = st.columns(4)
-with c1:
-    st.metric("Sectores", len(sectores))
-with c2:
-    st.metric("Fit muy alto", sum(1 for s in sectores if s["fit"] == "Muy alto"))
-with c3:
-    st.metric("Fit alto", sum(1 for s in sectores if s["fit"] == "Alto"))
-with c4:
-    st.metric("Campos por sector", len(sectores[0].keys()))
+# DataFrame para gráficas
+df = pd.DataFrame(sectores)
 
-st.subheader("Filtros")
+# -----------------------
+# PESTAÑAS
+# -----------------------
 
-fit_sel = st.multiselect(
-    "Fit",
-    options=["Muy alto", "Alto"],
-    default=["Muy alto", "Alto"]
-)
+tab1, tab2 = st.tabs(["🏠 Inicio / Resumen", "🔍 Explorador de sectores"])
 
-sectores_filt = [s for s in sectores if s["fit"] in fit_sel]
+# -----------------------
+# PESTAÑA 1: INICIO
+# -----------------------
 
-if not sectores_filt:
-    st.warning("No hay sectores con ese filtro. Selecciona otro fit.")
-    st.stop()
+with tab1:
+    st.title("Dashboard Salesoes IA")
+    st.markdown("10 sectores priorizados para prospección, diagnóstico y automatización.")
 
-sector_sel = st.selectbox(
-    "Selecciona un sector",
-    options=[s["nombre"] for s in sectores_filt]
-)
+    # KPIs globales
+    c1, c2, c3, c4 = st.columns(4)
+    with c1:
+        st.metric("Sectores", len(sectores))
+    with c2:
+        st.metric("Fit muy alto", sum(1 for s in sectores if s["fit"] == "Muy alto"))
+    with c3:
+        st.metric("Fit alto", sum(1 for s in sectores if s["fit"] == "Alto"))
+    with c4:
+        total_fact = sum(s.get("facturacion_agregada_num", 0) for s in sectores)
+        st.metric("Facturación agregada (aprox)", f"~{total_fact:,} M€")
 
-sec_row = next(s for s in sectores_filt if s["nombre"] == sector_sel)
+    st.markdown("---")
 
-st.subheader(f"Sector: {sec_row['nombre']}")
-c1, c2, c3 = st.columns(3)
-with c1:
-    st.info(f"Tamaño: {sec_row['tamano_mercado']}")
-with c2:
-    st.info(f"Facturación: {sec_row['facturacion_agregada']}")
-with c3:
-    st.info(f"Adopción IA: {sec_row['adopcion_ia']}")
+    # Gráficas
+    st.subheader("Tamaño de mercado por sector")
+    fig_tamano = px.bar(
+        df,
+        x="nombre",
+        y="tamano_mercado_num",
+        title="Tamaño de mercado (número de empresas / centros)",
+        labels={"nombre": "Sector", "tamano_mercado_num": "Tamaño"},
+        color="tamano_mercado_num",
+        color_continuous_scale="Blues",
+    )
+    fig_tamano.update_layout(
+        plot_bgcolor="rgba(0,0,0,0)",
+        paper_bgcolor="rgba(0,0,0,0)",
+        font_color=COLOR_TEXT,
+    )
+    st.plotly_chart(fig_tamano, use_container_width=True)
 
-st.markdown("### Ficha rápida")
-st.write(f"**Subsector:** {sec_row['subsector']}")
+    st.subheader("Facturación agregada por sector")
+    fig_fact = px.bar(
+        df,
+        x="nombre",
+        y="facturacion_agregada_num",
+        title="Facturación agregada (M€)",
+        labels={"nombre": "Sector", "facturacion_agregada_num": "Facturación (M€)"},
+        color="facturacion_agregada_num",
+        color_continuous_scale="Greens",
+    )
+    fig_fact.update_layout(
+        plot_bgcolor="rgba(0,0,0,0)",
+        paper_bgcolor="rgba(0,0,0,0)",
+        font_color=COLOR_TEXT,
+    )
+    st.plotly_chart(fig_fact, use_container_width=True)
 
-st.markdown("### Problemas principales")
-for p in sec_row["problemas"]:
-    st.write(f"- {p}")
+    st.subheader("Adopción de IA por sector")
+    fig_ia = px.bar(
+        df,
+        x="nombre",
+        y="adopcion_ia_num",
+        title="Adopción estimada de IA (%)",
+        labels={"nombre": "Sector", "adopcion_ia_num": "Adopción IA (%)"},
+        color="adopcion_ia_num",
+        color_continuous_scale="Purples",
+    )
+    fig_ia.update_layout(
+        plot_bgcolor="rgba(0,0,0,0)",
+        paper_bgcolor="rgba(0,0,0,0)",
+        font_color=COLOR_TEXT,
+    )
+    st.plotly_chart(fig_ia, use_container_width=True)
 
-st.markdown("### Herramientas IA de referencia")
-for h in sec_row["herramientas_ia"]:
-    st.write(f"- {h}")
+    st.subheader("Matriz Fit vs Adopción de IA")
+    df_scatter = df.copy()
+    df_scatter["fit_num"] = df_scatter["fit"].map({"Muy alto": 2, "Alto": 1})
+    fig_scatter = px.scatter(
+        df_scatter,
+        x="adopcion_ia_num",
+        y="fit_num",
+        text="nombre",
+        title="Fit vs Adopción de IA (cada punto es un sector)",
+        labels={
+            "adopcion_ia_num": "Adopción IA (%)",
+            "fit_num": "Fit (1=Alto, 2=Muy alto)",
+        },
+        size="facturacion_agregada_num",
+        color="fit",
+        color_discrete_map={"Muy alto": COLOR_ACCENT, "Alto": COLOR_SECONDARY},
+    )
+    fig_scatter.update_traces(textposition="top center")
+    fig_scatter.update_layout(
+        plot_bgcolor="rgba(0,0,0,0)",
+        paper_bgcolor="rgba(0,0,0,0)",
+        font_color=COLOR_TEXT,
+    )
+    st.plotly_chart(fig_scatter, use_container_width=True)
 
-st.markdown("### Preguntas de descubrimiento")
-for q in sec_row["preguntas_descubrimiento"]:
-    st.write(f"- {q}")
+# -----------------------
+# PESTAÑA 2: EXPLORADOR
+# -----------------------
 
-st.markdown("### Objeciones típicas y respuestas")
-for o in sec_row["objeciones"]:
-    st.write(f"**Objeción:** {o['objecion']}")
-    st.write(f"*Respuesta:* {o['respuesta']}")
-    st.write("")
+with tab2:
+    st.title("Explorador de sectores")
+    st.markdown("Navega sector a sector con toda la información estructurada.")
 
-st.markdown("### Señales de prioridad")
-for s in sec_row["señal_prioridad"]:
-    st.write(f"- {s}")
+    fit_sel = st.multiselect(
+        "Filtrar por Fit",
+        options=["Muy alto", "Alto"],
+        default=["Muy alto", "Alto"],
+    )
+
+    sectores_filt = [s for s in sectores if s["fit"] in fit_sel]
+
+    if not sectores_filt:
+        st.warning("No hay sectores con ese filtro. Selecciona otro fit.")
+        st.stop()
+
+    sector_sel = st.selectbox(
+        "Selecciona un sector",
+        options=[s["nombre"] for s in sectores_filt],
+    )
+
+    sec_row = next(s for s in sectores_filt if s["nombre"] == sector_sel)
+
+    st.subheader(f"Sector: {sec_row['nombre']}")
+    c1, c2, c3, c4 = st.columns(4)
+    with c1:
+        st.info(f"Tamaño: {sec_row['tamano_mercado']}")
+    with c2:
+        st.info(f"Facturación: {sec_row['facturacion_agregada']}")
+    with c3:
+        st.info(f"Adopción IA: {sec_row['adopcion_ia']}")
+    with c4:
+        st.info(f"Fit: {sec_row['fit']}")
+
+    st.markdown("---")
+
+    st.markdown("### Ficha rápida")
+    st.write(f"**Subsector:** {sec_row['subsector']}")
+
+    st.markdown("### Problemas principales")
+    for p in sec_row["problemas"]:
+        st.write(f"- {p}")
+
+    st.markdown("### Herramientas IA de referencia")
+    for h in sec_row["herramientas_ia"]:
+        st.write(f"- {h}")
+
+    st.markdown("### Preguntas de descubrimiento")
+    for q in sec_row["preguntas_descubrimiento"]:
+        st.write(f"- {q}")
+
+    st.markdown("### Objeciones típicas y respuestas")
+    for o in sec_row["objeciones"]:
+        st.write(f"**Objeción:** {o['objecion']}")
+        st.write(f"*Respuesta:* {o['respuesta']}")
+        st.write("")
+
+    st.markdown("### Señales de prioridad")
+    for s in sec_row["señal_prioridad"]:
+        st.write(f"- {s}")
