@@ -286,7 +286,6 @@ if opcion == "Inicio / Resumen":
             st.subheader("Matriz Fit vs Adopción de IA")
             df_scatter = df_fil.copy()
             df_scatter["fit_num"] = df_scatter["fit"].map({"Muy alto": 2, "Alto": 1})
-            # Ajustar tamaño máximo y opacidad para evitar solapamiento excesivo
             fig_scatter = px.scatter(
                 df_scatter,
                 x="adopcion_ia_num",
@@ -333,4 +332,84 @@ if opcion == "Inicio / Resumen":
 
 elif opcion == "Explorador de sectores":
     st.title("Explorador de sectores")
-    st.markdown("Navega sector a
+    st.markdown("Navega sector a sector con toda la información estructurada.")
+
+    fit_sel = st.multiselect(
+        "Filtrar por Fit",
+        options=["Muy alto", "Alto"],
+        default=["Muy alto", "Alto"],
+    )
+
+    sectores_filt = [s for s in sectores if s["fit"] in fit_sel]
+
+    if not sectores_filt:
+        st.warning("No hay sectores con ese filtro. Selecciona otro fit.")
+        st.stop()
+
+    sector_sel = st.selectbox(
+        "Selecciona un sector",
+        options=[s["nombre"] for s in sectores_filt],
+    )
+
+    sec_row = next(s for s in sectores_filt if s["nombre"] == sector_sel)
+
+    st.subheader(f"Sector: {sec_row['nombre']}")
+    c1, c2, c3, c4 = st.columns(4)
+    with c1:
+        st.info(f"Tamaño: {sec_row['tamano_mercado']}")
+    with c2:
+        st.info(f"Facturación: {sec_row['facturacion_agregada']}")
+    with c3:
+        st.info(f"Adopción IA: {sec_row['adopcion_ia']}")
+    with c4:
+        st.info(f"Fit: {sec_row['fit']}")
+
+    st.markdown("---")
+
+    st.markdown("### Ficha rápida")
+    st.write(f"**Subsector:** {sec_row['subsector']}")
+
+    st.markdown("### Problemas principales")
+    for p in sec_row["problemas"]:
+        st.write(f"- {p}")
+
+    st.markdown("### Herramientas IA de referencia")
+    for h in sec_row["herramientas_ia"]:
+        st.write(f"- {h}")
+
+    st.markdown("### Preguntas de descubrimiento")
+    for q in sec_row["preguntas_descubrimiento"]:
+        st.write(f"- {q}")
+
+    st.markdown("### Objeciones típicas y respuestas")
+    for o in sec_row["objeciones"]:
+        st.write(f"**Objeción:** {o['objecion']}")
+        st.write(f"*Respuesta:* {o['respuesta']}")
+        st.write("")
+
+    st.markdown("### Señales de prioridad")
+    for s in sec_row["señal_prioridad"]:
+        st.write(f"- {s}")
+
+    # Notas por sector
+    st.markdown("---")
+    st.markdown("### Notas")
+    notas_val = st.text_area(
+        "Añade notas personales sobre este sector",
+        value=st.session_state.notas[sec_row["nombre"]],
+        key=f"notas_{sec_row['nombre']}",
+    )
+    st.session_state.notas[sec_row["nombre"]] = notas_val
+
+    # Favoritos
+    st.markdown("---")
+    if sec_row["nombre"] in st.session_state.favoritos:
+        if st.button("⭐ Quitar de favoritos"):
+            st.session_state.favoritos.remove(sec_row["nombre"])
+    else:
+        if st.button("⭐ Añadir a favoritos"):
+            st.session_state.favoritos.append(sec_row["nombre"])
+
+else:
+    st.title(opcion)
+    st.markdown("Esta sección está en construcción. Pronto disponible.")
