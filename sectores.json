@@ -1,812 +1,682 @@
-[
-  {
-    "sector_id": "01",
-    "nombre": "Asesorías y Gestorías",
-    "subsector": "Servicios Profesionales",
-    "fit": "Muy alto",
-    "tamano_mercado": "~27.000 asesorías",
-    "tamano_mercado_num": 27000,
-    "facturacion_agregada": "~8.500M€/año",
-    "facturacion_agregada_num": 8500,
-    "adopcion_ia": "~35%",
-    "adopcion_ia_num": 35,
-    "descripcion": "Despachos que gestionan contabilidad, fiscalidad y laboral para autónomos y pymes, normalmente con mucha carga administrativa y fuerte dependencia de procesos manuales.",
-    "problemas": [
-      "Introducción manual de datos de clientes",
-      "Conciliación bancaria y categorización de gastos manual",
-      "Informes trimestrales/IVA repetitivos y poco personalizados",
-      "Dificultad para escalar sin aumentar personal administrativo",
-      "Dependencia de personas clave"
+{
+  "1. Asesorías y Gestorías": {
+    "1. Descripción": "- Qué hacen: Asesorías y gestorías ofrecen servicios de gestión administrativa, contable, fiscal y laboral para autónomos y pymes.\n- Cómo ganan dinero: Cuotas mensuales por servicios recurrentes (contabilidad, fiscal, laboral) y proyectos puntuales (constituciones, etc.).\n- Tamaño habitual: Micro (1–3 personas), Pequeño (3–10 personas), Mediano (10–50 personas).\n- Perfil más habitual: Asesoría local con 3–10 personas, gestión manual de tareas, sin CRM ni automatización.\n- Datos de mercado: ~100.000 asesorías en España, facturación ~15.000M€.",
+    "2. Principales problemas": [
+      "Muchas tareas repetitivas y administrativas",
+      "Dependencia del conocimiento del socio/encargado",
+      "Falta de seguimiento de clientes y tareas",
+      "Márgenes ajustados por modelo de cuota fija",
+      "Dificultad para escalar sin contratar más personal"
     ],
-    "procesos_manuales": [
-      "Gestión documental",
-      "Introducción de datos",
-      "Conciliación bancaria",
-      "Preparación de impuestos",
-      "Informes a clientes",
-      "Atención al cliente",
-      "Seguimiento de impagados"
-    ],
-    "herramientas_ia": [
-      "Fintonic Business",
-      "Anytype",
-      "Zapier + ChatGPT para flujos de informes"
-    ],
-    "oportunidades_automatizacion": [
-      "Captura y clasificación automática de facturas y gastos",
-      "Conciliación bancaria asistida por IA",
-      "Generación automática de informes para clientes",
-      "Automatización de recordatorios y seguimiento",
-      "Chatbot / asistente para dudas frecuentes de clientes"
-    ],
-    "aplicaciones_ia": [
-      "Clasificación inteligente de gastos",
-      "Detección de anomalías en gastos e ingresos",
-      "Asistente para preparación de impuestos",
-      "Generación de informes en lenguaje natural",
+    "3. Procesos manuales": "- Gestión de tareas y recordatorios\n- Seguimiento de clientes\n- Generación de informes y documentos\n- Facturación y cobros\n- Onboarding de clientes",
+    "4. Oportunidades de automatización": [
+      "Recordatorios automáticos de tareas y documentos",
+      "Secuencias de comunicación con clientes (onboarding, seguimiento)",
+      "Generación de informes y documentos con IA",
+      "Automatización de facturación y cobros",
       "Análisis de rentabilidad por cliente"
     ],
-    "problemas_legales": [
-      "Protección de datos (RGPD)",
-      "Secreto profesional y confidencialidad",
-      "Normativa contable y fiscal",
-      "Facturación electrónica",
-      "Prevención de blanqueo de capitales cuando aplique"
+    "5. Aplicaciones de IA": [
+      "Clasificación de documentos y emails",
+      "Extracción de información de facturas y documentos",
+      "Predicción de impagos y scoring de clientes",
+      "Generación de informes y resúmenes",
+      "Chatbots para preguntas frecuentes de clientes"
     ],
-    "preguntas_descubrimiento": [
-      "¿Cómo recibís hoy la información de gastos e ingresos de vuestros clientes?",
-      "¿Qué porcentaje de facturas y gastos introducís manualmente en el software contable?",
-      "¿Cuántas horas/semana estimáis que dedicáis a introducir datos en periodos de alta carga?",
-      "¿Cómo gestionáis la conciliación bancaria de vuestros clientes?",
-      "¿Cuánto tiempo estimado dedicáis a conciliar bancos vs revisar y analizar la información?",
-      "¿Qué tipo de informes enviáis a vuestros clientes y con qué frecuencia?",
-      "¿Cómo gestionáis los recordatorios de documentos pendientes y plazos fiscales?",
-      "¿Tenéis algún proceso estandarizado para preparar los modelos de IVA y IRPF?",
-      "¿Qué software contable/fiscal utilizáis y qué funciones aprovecháis realmente?",
-      "¿Cómo medís la rentabilidad de cada cliente o cartera?",
-      "¿Qué porcentaje de vuestros clientes os envía la documentación de forma digital y ordenada?",
-      "¿Cómo gestionáis las dudas frecuentes de vuestros clientes fuera de reuniones?",
-      "¿Tenéis portal del cliente? ¿Qué funcionalidades usa realmente?",
-      "¿Cómo gestionáis el control de impagados y seguimiento de documentación atrasada?",
-      "Si pudierais liberar un 20–30% del tiempo de vuestro equipo administrativo, ¿en qué lo invertiríais?"
-    ],
-    "objeciones": [
-      {
-        "objecion": "Ahora mismo no tenemos tiempo para implantar nada nuevo.",
-        "respuesta": "Podemos empezar con un piloto muy acotado que requiera poco tiempo y alivie la tarea más repetitiva. ¿Te haría sentido probarlo durante 4–6 semanas?"
-      },
-      {
-        "objecion": "Es muy caro para nuestro tamaño.",
-        "respuesta": "Si reduce un 20–30% del tiempo administrativo, el retorno suele compensar rápido. Podemos empezar pequeño y medir el ahorro antes de escalar."
-      },
-      {
-        "objecion": "Ya tenemos software contable y estamos bien así.",
-        "respuesta": "La idea no es sustituirlo, sino añadir automatización encima para lectura de facturas, conciliación e informes."
-      },
-      {
-        "objecion": "Nos preocupa la seguridad de los datos de nuestros clientes.",
-        "respuesta": "Es una preocupación lógica. Cualquier solución debe cumplir RGPD, tener cifrado, backups y control de accesos."
-      },
-      {
-        "objecion": "No vemos claro el retorno de inversión de esto.",
-        "respuesta": "Antes de hablar de herramientas, definimos juntos qué horas se liberan y qué impacto económico tiene. Si el ROI no es claro, no avanzamos."
-      }
-    ],
-    "señal_prioridad": [
-      "Web moderna con portal del cliente",
-      "Ofrecen productos digitales",
-      "Buscan mejorar márgenes y no solo captar más clientes"
-    ],
-    "senales_problema": [
-      "Usan Excel para conciliaciones o control documental",
-      "Piden facturas por email o WhatsApp",
-      "Tienen carpetas físicas o archivos desordenados",
-      "Responden tarde en campañas fiscales",
-      "No tienen portal del cliente útil"
-    ],
-    "indicadores_prioridad": [
-      "Está creciendo",
-      "Tiene más de 200–300 clientes con equipo pequeño",
-      "Usa software moderno y quiere sacarle más partido",
-      "Quiere mejorar informes y subir tarifas con más valor"
-    ],
-    "senales_alarma": [
-      "Cartera muy pequeña sin intención de crecer",
-      "Todo basado en papel y sin interés en digitalizar",
-      "Resistencia fuerte al cambio",
-      "Historial de impagos o quejas frecuentes",
-      "Alta rotación de personal"
-    ],
-    "notas": ""
-  },
-  {
-    "sector_id": "02",
-    "nombre": "Clínicas Dentales",
-    "subsector": "Salud - Odontología",
-    "fit": "Muy alto",
-    "tamano_mercado": "~24.000 clínicas",
-    "tamano_mercado_num": 24000,
-    "facturacion_agregada": "~1.305M€",
-    "facturacion_agregada_num": 1305,
-    "adopcion_ia": "~25%",
-    "adopcion_ia_num": 25,
-    "descripcion": "Clínicas que ofrecen tratamientos odontológicos (limpiezas, empastes, ortodoncia, implantes, estética dental) a pacientes particulares y, en algunos casos, convenios con mutuas.",
-    "problemas": [
-      "Agenda con huecos improductivos",
-      "Seguimiento de pacientes post-tratamiento manual",
-      "Falta de upselling sistemático de tratamientos",
-      "Dependencia del dentista dueño para captar y cerrar tratamientos",
-      "Marketing y captación poco profesionalizados"
-    ],
-    "procesos_manuales": [
-      "Gestión de agenda",
-      "Seguimiento post-tratamiento",
-      "Propuesta de tratamientos",
-      "Captación de pacientes",
-      "Fidelización",
-      "Control de impagados y financiación"
-    ],
-    "herramientas_ia": [
-      "Overjet",
-      "Chatbots para recordatorios de citas",
-      "CRM con automatizaciones (HubSpot, Pipedrive)"
-    ],
-    "oportunidades_automatizacion": [
-      "Recordatorios automáticos de citas y revisiones",
-      "Secuencias de seguimiento post-tratamiento",
-      "Propuesta y seguimiento de tratamientos",
-      "Captación y nurturing de leads",
-      "Campañas de fidelización y mantenimiento"
-    ],
-    "aplicaciones_ia": [
-      "Predicción de ausencias y huecos en agenda",
-      "Recomendación de tratamientos adicionales",
-      "Clasificación de leads por probabilidad de conversión",
-      "Generación de contenido para pacientes",
-      "Análisis de satisfacción y reseñas"
-    ],
-    "problemas_legales": [
-      "Protección de datos (RGPD)",
-      "Consentimientos informados",
-      "Normativa sanitaria",
-      "Límites en publicidad sanitaria"
-    ],
-    "preguntas_descubrimiento": [
-      "¿Cómo gestionáis hoy la agenda y las cancelaciones de última hora?",
-      "¿Qué porcentaje de huecos en agenda estimáis que son por cancelaciones o no-shows?",
-      "¿Tenéis algún proceso sistemático de seguimiento post-tratamiento?",
-      "¿Cómo recordáis a los pacientes que deben volver para revisiones o mantenimiento?",
-      "¿Cómo gestionáis los presupuestos y el seguimiento de los que no se cierran?",
-      "¿Qué porcentaje de pacientes que vienen por primera vez acaban haciendo un tratamiento?",
-      "¿Tenéis algún proceso para proponer tratamientos complementarios de forma sistemática?",
-      "¿Cómo captáis nuevos pacientes hoy (Google, redes, recomendaciones, etc.)?",
-      "¿Medís la conversión por canal (cuántos leads se convierten en cita y en tratamiento)?",
-      "¿Cómo gestionáis las llamadas y mensajes de primeros contactos?",
-      "¿Tenéis campañas de fidelización o recordatorios de limpiezas/revisiones activas?",
-      "¿Qué software de gestión clínica utilizáis y qué funciones aprovecháis realmente?",
-      "¿Quién se encarga hoy de seguir a los pacientes que no cierran tratamiento?",
-      "¿Qué parte de vuestro tiempo dedicáis a gestionar citas y recordatorios vs atender pacientes?",
-      "Si pudierais llenar un 10–15% más de agenda sin más personal, ¿qué impacto tendría en vuestros ingresos?"
-    ],
-    "objeciones": [
-      {
-        "objecion": "La odontología es muy personal, no podemos automatizar el trato.",
-        "respuesta": "Totalmente, y nadie pretende automatizar la relación dentista-paciente. La idea es automatizar lo repetitivo (recordatorios, seguimientos) para que vosotros tengáis más tiempo para lo personal."
-      },
-      {
-        "objecion": "Ya tenemos software de clínica y va bien.",
-        "respuesta": "Me alegra. No se trata de sustituirlo, sino de añadir capas de automatización para recordatorios, seguimiento de presupuestos y fidelización, que normalmente el software no cubre bien."
-      },
-      {
-        "objecion": "No tenemos tiempo para implantar nada nuevo.",
-        "respuesta": "Lo entiendo. Por eso propongo un piloto pequeño que se centre en la tarea que más tiempo os quita hoy. Si no notáis alivio rápido, no tiene sentido continuar."
-      },
-      {
-        "objecion": "Es muy caro para nuestro tamaño.",
-        "respuesta": "Si conseguimos llenar un 10–15% más de agenda o cerrar más tratamientos, el coste se paga solo. Podemos empezar con un módulo pequeño y medir el ROI."
-      },
-      {
-        "objecion": "Nuestros pacientes no quieren que les mandemos muchos mensajes.",
-        "respuesta": "No se trata de saturar, sino de enviar mensajes útiles en el momento adecuado (recordatorios, cuidados, revisiones). Se puede configurar la frecuencia y el tipo de mensajes."
-      }
-    ],
-    "señal_prioridad": [
-      "Web moderna con cita online",
-      "Clínicas con varios doctores y varios tratamientos",
-      "Tratamientos de alto ticket (ortodoncia, implantes, estética)"
-    ],
-    "senales_problema": [
-      "Agenda con huecos visibles en horas clave",
-      "Sin secuencias de seguimiento post-tratamiento",
-      "Presupuestos que se envían y no se vuelven a mencionar",
-      "Dependen casi exclusivamente de Google Maps y boca a boca",
-      "Sin campañas activas de fidelización",
-      "La recepcionista pasa mucho tiempo llamando para confirmar citas"
-    ],
-    "indicadores_prioridad": [
-      "Tiene varias sillas y varios dentistas/higienistas",
-      "Agenda abierta a pacientes privados",
-      "Web moderna con cita online y presentación de tratamientos",
-      "Inversión visible en marketing (Google Ads, redes)",
-      "Ofrece tratamientos de alto ticket",
-      "Menciona que quiere llenar más agenda o mejorar la tasa de conversión",
-      "Tiene reseñas buenas en Google y se preocupa por la reputación online"
-    ],
-    "senales_alarma": [
-      "Clínica muy pequeña (1 silla, 1 dentista) y sin intención de crecer",
-      "Solo trabaja con convenios o mutuas, con márgenes muy ajustados",
-      "No tiene web o es muy básica, sin cita online",
-      "El responsable dice frases como 'nos va bien así', 'no queremos líos'",
-      "No hay ningún proceso de seguimiento, todo 'se va viendo'",
-      "Muestran resistencia fuerte a compartir información sobre su gestión",
-      "No hay presupuesto ni voluntad de invertir en nada fuera de lo obligatorio",
-      "Historial de impagados con proveedores o quejas frecuentes",
-      "Alta rotación de personal de recepcionista/higienista"
-    ],
-    "notas": ""
-  },
-  {
-    "sector_id": "03",
-    "nombre": "Inmobiliarias",
-    "subsector": "Servicios - Inmobiliario",
-    "fit": "Muy alto",
-    "tamano_mercado": "~60.683 agencias",
-    "tamano_mercado_num": 60683,
-    "facturacion_agregada": "~9.400M€/año",
-    "facturacion_agregada_num": 9400,
-    "adopcion_ia": "~20%",
-    "adopcion_ia_num": 20,
-    "descripcion": "Agencias que gestionan compraventa y alquiler de inmuebles, con captación, descripciones, visitas y negociación.",
-    "problemas": [
-      "Captación manual de propiedades",
-      "Descripciones de inmuebles repetitivas y poco persuasivas",
-      "Filtrado de leads poco eficiente",
-      "Seguimiento de clientes inconsistente",
-      "Dependencia de portales"
-    ],
-    "procesos_manuales": [
-      "Captación de propiedades",
-      "Descripción de inmuebles",
-      "Filtrado de leads",
-      "Seguimiento de clientes",
-      "Gestión de visitas",
-      "Negociación y cierre"
-    ],
-    "herramientas_ia": [
-      "Idealista AVM",
-      "ChatGPT para descripciones de inmuebles",
-      "CRM con scoring de leads"
-    ],
-    "oportunidades_automatizacion": [
-      "Captación asistida (OCR de documentos, formularios inteligentes)",
-      "Generación automática de descripciones (IA)",
-      "Scoring de leads por probabilidad de conversión",
-      "Secuencias de seguimiento post-visita",
-      "Campañas de nurturing para propietarios y compradores"
-    ],
-    "aplicaciones_ia": [
-      "Generación de descripciones persuasivas",
-      "Scoring de leads (portal, web, redes)",
-      "Predicción de probabilidad de venta/alquiler por propiedad",
-      "Análisis de precios de mercado (AVM)",
-      "Chatbots para primeras consultas y citas"
-    ],
-    "problemas_legales": [
-      "Protección de datos (RGPD)",
-      "Contratos de compraventa y alquiler",
-      "Normativa de intermediación inmobiliaria",
-      "Transparencia en precios y comisiones"
-    ],
-    "preguntas_descubrimiento": [
-      "¿Cómo capturáis propiedades hoy?",
-      "¿Cuánto tiempo pasáis en descripciones?",
-      "¿Cómo priorizáis leads de portales?",
-      "¿Tenéis proceso de seguimiento post-visita?",
-      "¿Qué porcentaje de leads acaban en visita?",
-      "¿Y en cierre?",
-      "¿Usáis CRM? ¿Qué funciones?",
-      "¿Cómo gestionáis las llamadas y mensajes?",
-      "¿Tenéis campañas activas para propietarios?",
-      "¿Medís conversión por canal?",
-      "¿Cómo fijáis los precios de venta/alquiler?",
-      "¿Usáis herramientas de valoración automática?",
-      "¿Qué parte del tiempo dedicáis a captación vs venta?",
-      "¿Qué os gustaría automatizar primero?",
-      "¿Qué impacto tendría mejorar conversión un 10%?"
-    ],
-    "objeciones": [
-      {
-        "objecion": "El sector es muy relacional.",
-        "respuesta": "La IA no reemplaza la relación, sino que libera tiempo para que la cuidéis más."
-      },
-      {
-        "objecion": "Ya usamos Idealista y portales.",
-        "respuesta": "Exacto, ahí es donde metemos IA para mejorar descripciones, pricing y seguimiento."
-      },
-      {
-        "objecion": "No tenemos tiempo.",
-        "respuesta": "Piloto pequeño en la tarea que más duele."
-      },
-      {
-        "objecion": "Es caro.",
-        "respuesta": "Si mejora conversión un 10%, se paga solo."
-      },
-      {
-        "objecion": "Nuestros clientes no quieren muchos mensajes.",
-        "respuesta": "Mensajes útiles, no saturación."
-      }
-    ],
-    "señal_prioridad": [
-      "Web moderna con buscador avanzado",
-      "Agencias con varios agentes y carteras altas",
-      "Inversión en marketing (Google Ads, redes)"
-    ],
-    "senales_problema": [
-      "Dependen mucho de portales",
-      "Descripciones genéricas",
+    "6. Problemas legales": "- RGPD (protección de datos personales)\n- Normativa contable y fiscal\n- Confidencialidad y secreto profesional\n- Normativa laboral",
+    "7. Señales de problema": [
+      "Tareas en Excel y papel",
+      "Sin seguimiento de clientes",
       "Sin CRM o muy básico",
-      "No miden conversión por canal",
-      "Sin seguimiento estructurado"
+      "No miden rentabilidad por cliente",
+      "Sin automatización"
     ],
-    "indicadores_prioridad": [
-      "Varias sedes, varios agentes",
-      "Web moderna con buscador avanzado",
-      "Inversión en marketing",
-      "Carteras altas de propiedades",
-      "Quiere mejorar captación o conversión"
+    "8. 15 preguntas de descubrimiento": [
+      "¿Cómo gestionáis hoy las tareas y recordatorios?",
+      "¿Tenéis algún sistema de seguimiento de clientes?",
+      "¿Medís márgenes por cliente?",
+      "¿Cómo gestionáis la documentación y los documentos?",
+      "¿Tenéis recordatorios automáticos de tareas y documentos?",
+      "¿Qué % de clientes son recurrentes?",
+      "¿Usáis CRM? ¿Cuál?",
+      "¿Cómo gestionáis las llamadas y emails?",
+      "¿Tenéis campañas activas?",
+      "¿Qué parte del tiempo dedicáis a gestión vs asesoría?",
+      "¿Qué os gustaría automatizar?",
+      "¿Qué impacto tendría reducir tiempo administrativo un 20%?",
+      "¿Tenéis datos de clientes para segmentar?",
+      "¿Qué herramientas usáis hoy?",
+      "¿Qué os gustaría mejorar?"
     ],
-    "senales_alarma": [
-      "Muy pequeña (1–2 agentes) sin crecer",
-      "Sin web o muy básica",
-      "Nos va bien así",
-      "Sin procesos",
-      "Resistencia a compartir información"
+    "9. 15 objeciones": [
+      "Sector tradicional",
+      "Ya usamos software",
+      "No tenemos tiempo",
+      "Es caro",
+      "Clientes no quieren muchos mensajes",
+      "Ya nos va bien",
+      "No queremos saturar",
+      "Última herramienta no sirvió",
+      "Preferimos seguir como siempre",
+      "No tenemos presupuesto",
+      "Preocupa privacidad",
+      "Ya tenemos suficientes clientes",
+      "No vemos claro el ROI",
+      "No queremos más proveedores",
+      "Esto no funcionará aquí"
     ],
-    "notas": ""
+    "10. Respuestas a objeciones": "- Sector tradicional: La IA no reemplaza asesores, sino que automatiza tareas repetitivas.\n- Ya usamos software: Partimos de vuestro software actual.\n- No tenemos tiempo: Piloto pequeño en una tarea que más_duele.\n- Es caro: Si reduce tiempo un 20%, se paga solo.\n- Clientes no quieren muchos mensajes: Mensajes útiles, no saturación.\n- Ya nos va bien: ¿Sostenible a medio plazo?\n- No queremos saturar: Menos mensajes, más relevantes.\n- Última herramienta no sirvió: Indicadores y periodo de prueba.\n- Preferimos seguir como siempre: Pequeños ajustes hoy evitan cambios dolorosos mañana.\n- No tenemos presupuesto: Piloto con objetivos claros.\n- Preocupa privacidad: RGPD, cifrado, backups.\n- Ya tenemos suficientes clientes: Foco en mejorar márgenes y fidelización.\n- No vemos claro el ROI: Definimos qué mejora os haría decir 'sí'.\n- No queremos más proveedores: Simplificar.\n- Esto no funcionará aquí: Asesorías que profesionalizan ganan."
   },
-  {
-    "sector_id": "04",
-    "nombre": "Hoteles",
-    "subsector": "Hostelería - Alojamiento",
-    "fit": "Muy alto",
-    "tamano_mercado": "~14.613 hoteles",
-    "tamano_mercado_num": 14613,
-    "facturacion_agregada": "~125.340M€",
-    "facturacion_agregada_num": 125340,
-    "adopcion_ia": "~25%",
-    "adopcion_ia_num": 25,
-    "descripcion": "Gestionan alojamiento turístico/business, con pricing, reservas, experiencia del huésped.",
-    "problemas": [
-      "Pricing estático o reactivo",
-      "Falta de personalización en experiencia del huésped",
-      "Reservas directas bajas frente a OTAs",
-      "Gestión manual de comunicaciones pre/durante estancia",
-      "Dependencia de OTAs con altas comisiones"
+  "2. Clínicas Dentales": {
+    "1. Descripción": "- Qué hacen: Clínicas dentales ofrecen servicios de salud dental (limpiezas, ortodoncia, implantes, etc.).\n- Cómo ganan dinero: Consultas, tratamientos, Ortodoncia, Implantes, etc.\n- Tamaño habitual: Micro (1–3 personas), Pequeño (3–10 personas), Mediano (10–20 personas).\n- Perfil más habitual: Clínica local con 1–3 dentistas, gestión manual de citas, sin CRM ni automatización.\n- Datos de mercado: ~15.000 clínicas dentales en España, facturación ~3.000M€.",
+    "2. Principales problemas": [
+      "Gestión manual de citas y seguimiento de pacientes",
+      "Falta de seguimiento post-tratamiento",
+      "Márgenes ajustados por competencia",
+      "Dependencia del dentista/encargado",
+      "Falta de fidelización de pacientes"
     ],
-    "procesos_manuales": [
-      "Pricing",
-      "Gestión de reservas",
-      "Atención al huésped",
-      "Comunicaciones pre-check-in",
-      "Upselling de servicios"
+    "3. Procesos manuales": "- Gestión de citas\n- Seguimiento de pacientes\n- Facturación\n- Marketing\n- Onboarding de pacientes",
+    "4. Oportunidades de automatización": [
+      "Recordatorios automáticos de citas y revisiones",
+      "Secuencias de fidelización post-tratamiento",
+      "Optimización de citas y huecos",
+      "Análisis de rentabilidad por tratamiento",
+      "Gestión de reseñas y reputación"
     ],
-    "herramientas_ia": [
-      "Duetto",
-      "Chatbots para pre-check-in y preguntas frecuentes",
-      "CRM hotelero con automatizaciones"
+    "5. Aplicaciones de IA": [
+      "Predicción de abandono de pacientes",
+      "Scoring de pacientes por probabilidad de retorno",
+      "Optimización de citas",
+      "Análisis de rentabilidad por tratamiento",
+      "Chatbots para citas y preguntas frecuentes"
     ],
-    "oportunidades_automatizacion": [
+    "6. Problemas legales": "- RGPD (datos de salud, categoría especial)\n- Normativa sanitaria y de publicidad\n- Facturación electrónica\n- Garantías y reclamaciones",
+    "7. Señales de problema": [
+      "Citas en papel o WhatsApp",
+      "Sin recordatorios de revisiones",
+      "Sin CRM o muy básico",
+      "No miden rentabilidad por tratamiento",
+      "Sin fidelización"
+    ],
+    "8. 15 preguntas de descubrimiento": [
+      "¿Cómo gestionáis citas y seguimiento de pacientes?",
+      "¿Tenéis seguimiento post-tratamiento?",
+      "¿Medís márgenes por tratamiento?",
+      "¿Cómo gestionáis las llamadas y mensajes?",
+      "¿Tenéis recordatorios de revisiones?",
+      "¿Qué % de pacientes son recurrentes?",
+      "¿Usáis CRM? ¿Cuál?",
+      "¿Cómo gestionáis las reseñas?",
+      "¿Tenéis campañas activas?",
+      "¿Qué parte del tiempo dedicáis a gestión vs dentistas?",
+      "¿Qué os gustaría automatizar?",
+      "¿Qué impacto tendría reducir abandono un 10%?",
+      "¿Tenéis datos de pacientes para segmentar?",
+      "¿Qué herramientas usáis hoy?",
+      "¿Qué os gustaría mejorar?"
+    ],
+    "9. 15 objeciones": [
+      "Sector tradicional",
+      "Ya usamos software",
+      "No tenemos tiempo",
+      "Es caro",
+      "Pacientes no quieren muchos mensajes",
+      "Ya nos va bien",
+      "No queremos saturar",
+      "Última herramienta no sirvió",
+      "Preferimos seguir como siempre",
+      "No tenemos presupuesto",
+      "Preocupa privacidad",
+      "Ya tenemos suficientes pacientes",
+      "No vemos claro el ROI",
+      "No queremos más proveedores",
+      "Esto no funcionará aquí"
+    ],
+    "10. Respuestas a objeciones": "- Sector tradicional: La IA no reemplaza dentistas, sino que ayuda a gestionar mejor.\n- Ya usamos software: Partimos de vuestro software actual.\n- No tenemos tiempo: Piloto pequeño en una tarea que más_duele.\n- Es caro: Si reduce abandono un 10%, se paga solo.\n- Pacientes no quieren muchos mensajes: Mensajes útiles, no saturación.\n- Ya nos va bien: ¿Sostenible a medio plazo?\n- No queremos saturar: Menos mensajes, más relevantes.\n- Última herramienta no sirvió: Indicadores y periodo de prueba.\n- Preferimos seguir como siempre: Pequeños ajustes hoy evitan cambios dolorosos mañana.\n- No tenemos presupuesto: Piloto con objetivos claros.\n- Preocupa privacidad: RGPD, cifrado, backups.\n- Ya tenemos suficientes pacientes: Foco en fidelizar y aumentar valor.\n- No vemos claro el ROI: Definimos qué mejora os haría decir 'sí'.\n- No queremos más proveedores: Simplificar.\n- Esto no funcionará aquí: Clínicas que profesionalizan ganan."
+  },
+  "3. Inmobiliarias": {
+    "1. Descripción": "- Qué hacen: Inmobiliarias gestionan compraventa y alquiler de propiedades, con captación, visitas, negociación y gestión documental.\n- Cómo ganan dinero: Comisiones por venta (2–5%) y alquiler (1 mes + gestión).\n- Tamaño habitual: Micro (1–3 personas), Pequeño (3–10 personas), Mediano (10–20 personas).\n- Perfil más habitual: Inmobiliaria local con 3–10 personas, gestión manual de propiedades y clientes, sin CRM avanzado.\n- Datos de mercado: ~30.000 inmobiliarias en España, facturación ~10.000M€.",
+    "2. Principales problemas": [
+      "Gestión manual de propiedades y clientes",
+      "Falta de seguimiento de leads y clientes",
+      "Márgenes ajustados por competencia",
+      "Dependencia del agente/encargado",
+      "Falta de fidelización de clientes"
+    ],
+    "3. Procesos manuales": "- Gestión de propiedades y clientes\n- Seguimiento de leads\n- Visitas y negociación\n- Gestión documental\n- Marketing",
+    "4. Oportunidades de automatización": [
+      "Seguimiento automático de leads y clientes",
+      "Secuencias de comunicación pre y post-venta",
+      "Optimización de visitas y citas",
+      "Análisis de rentabilidad por propiedad",
+      "Gestión de reseñas y reputación"
+    ],
+    "5. Aplicaciones de IA": [
+      "Predicción de abandono de clientes",
+      "Scoring de leads por probabilidad de conversión",
+      "Optimización de visitas",
+      "Análisis de rentabilidad por propiedad",
+      "Chatbots para preguntas frecuentes"
+    ],
+    "6. Problemas legales": "- RGPD (datos personales)\n- Normativa inmobiliaria y de publicidad\n- Facturación electrónica\n- Garantías y reclamaciones",
+    "7. Señales de problema": [
+      "Propiedades y clientes en Excel",
+      "Sin seguimiento de leads",
+      "Sin CRM o muy básico",
+      "No miden rentabilidad por propiedad",
+      "Sin fidelización"
+    ],
+    "8. 15 preguntas de descubrimiento": [
+      "¿Cómo gestionáis propiedades y clientes?",
+      "¿Tenéis seguimiento de leads y clientes?",
+      "¿Medís márgenes por propiedad?",
+      "¿Cómo gestionáis las llamadas y mensajes?",
+      "¿Tenéis recordatorios de visitas?",
+      "¿Qué % de clientes son recurrentes?",
+      "¿Usáis CRM? ¿Cuál?",
+      "¿Cómo gestionáis las reseñas?",
+      "¿Tenéis campañas activas?",
+      "¿Qué parte del tiempo dedicáis a gestión vs ventas?",
+      "¿Qué os gustaría automatizar?",
+      "¿Qué impacto tendría reducir abandono un 10%?",
+      "¿Tenéis datos de clientes para segmentar?",
+      "¿Qué herramientas usáis hoy?",
+      "¿Qué os gustaría mejorar?"
+    ],
+    "9. 15 objeciones": [
+      "Sector tradicional",
+      "Ya usamos software",
+      "No tenemos tiempo",
+      "Es caro",
+      "Clientes no quieren muchos mensajes",
+      "Ya nos va bien",
+      "No queremos saturar",
+      "Última herramienta no sirvió",
+      "Preferimos seguir como siempre",
+      "No tenemos presupuesto",
+      "Preocupa privacidad",
+      "Ya tenemos suficientes clientes",
+      "No vemos claro el ROI",
+      "No queremos más proveedores",
+      "Esto no funcionará aquí"
+    ],
+    "10. Respuestas a objeciones": "- Sector tradicional: La IA no reemplaza agentes, sino que ayuda a gestionar mejor.\n- Ya usamos software: Partimos de vuestro software actual.\n- No tenemos tiempo: Piloto pequeño en una tarea que más_duele.\n- Es caro: Si reduce abandono un 10%, se paga solo.\n- Clientes no quieren muchos mensajes: Mensajes útiles, no saturación.\n- Ya nos va bien: ¿Sostenible a medio plazo?\n- No queremos saturar: Menos mensajes, más relevantes.\n- Última herramienta no sirvió: Indicadores y periodo de prueba.\n- Preferimos seguir como siempre: Pequeños ajustes hoy evitan cambios dolorosos mañana.\n- No tenemos presupuesto: Piloto con objetivos claros.\n- Preocupa privacidad: RGPD, cifrado, backups.\n- Ya tenemos suficientes clientes: Foco en fidelizar y aumentar valor.\n- No vemos claro el ROI: Definimos qué mejora os haría decir 'sí'.\n- No queremos más proveedores: Simplificar.\n- Esto no funcionará aquí: Inmobiliarias que profesionalizan ganan."
+  },
+  "4. Hoteles": {
+    "1. Descripción": "- Qué hacen: Hoteles ofrecen alojamiento, con gestión de reservas, pricing, limpieza, mantenimiento y atención al huésped.\n- Cómo ganan dinero: Noches de alojamiento, servicios adicionales (desayuno, spa, eventos, etc.).\n- Tamaño habitual: Micro (1–10 habitaciones), Pequeño (10–30 habitaciones), Mediano (30–100 habitaciones).\n- Perfil más habitual: Hotel independiente o pequeña cadena, gestión manual de pricing y mensajes, sin automatización avanzada.\n- Datos de mercado: ~15.000 hoteles en España, facturación ~25.000M€.",
+    "2. Principales problemas": [
+      "Pricing estático o intuitivo",
+      "Gestión manual de reservas y mensajes",
+      "Falta de centralización de reservas directas",
+      "Gestión manual de limpieza y mantenimiento",
+      "Falta de fidelización de huéspedes"
+    ],
+    "3. Procesos manuales": "- Pricing por temporada\n- Gestión de reservas\n- Mensajes con huéspedes\n- Limpieza y mantenimiento\n- Fidelización",
+    "4. Oportunidades de automatización": [
       "Pricing dinámico asistido por IA",
-      "Secuencias de comunicación pre-check-in",
-      "Upselling automático de servicios",
-      "Análisis de reseñas y satisfacción",
+      "Chatbots para mensajes con huéspedes",
+      "Secuencias de comunicación pre-check-in y post-check-out",
+      "Coordinación automática de limpieza y mantenimiento",
       "Campañas de fidelización post-estancia"
     ],
-    "aplicaciones_ia": [
-      "Pricing dinámico",
-      "Recomendación de servicios por tipo de huésped",
+    "5. Aplicaciones de IA": [
+      "Pricing dinámico (PriceLabs, BeyondPricing)",
+      "Chatbots para WhatsApp y email",
       "Análisis de sentimiento en reseñas",
-      "Chatbots para preguntas frecuentes",
-      "Predicción de demanda"
+      "Predicción de ocupación",
+      "Recomendación de servicios adicionales"
     ],
-    "problemas_legales": [
-      "Protección de datos (RGPD)",
-      "Normativa hotelera",
-      "Accesibilidad",
-      "Seguridad y Prevención de Riesgos"
-    ],
-    "preguntas_descubrimiento": [
-      "¿Cómo fijáis precios hoy?",
-      "¿Qué % de reservas son directas vs OTAs?",
-      "¿Tenéis comunicación pre-check-in?",
-      "¿Hacéis upselling de servicios?",
-      "¿Cómo gestionáis las reseñas?",
-      "¿Usáis PMS? ¿Cuál?",
-      "¿Tenéis motor de reservas propio?",
-      "¿Medís satisfacción por canal?",
-      "¿Cómo gestionáis las llamadas y emails?",
-      "¿Tenéis campañas de fidelización?",
-      "¿Qué parte del tiempo dedicáis a pricing vs gestión?",
-      "¿Qué os gustaría automatizar primero?",
-      "¿Qué impacto tendría subir un 5% el precio medio?",
-      "¿Tenéis datos de huéspedes para segmentar?",
-      "¿Qué herramientas usáis hoy?"
-    ],
-    "objeciones": [
-      {
-        "objecion": "El sector es muy tradicional.",
-        "respuesta": "IA se usa ya en cadenas grandes."
-      },
-      {
-        "objecion": "Ya usamos un PMS.",
-        "respuesta": "Partimos de vuestro PMS y añadimos capas de IA."
-      },
-      {
-        "objecion": "No tenemos tiempo.",
-        "respuesta": "Piloto pequeño."
-      },
-      {
-        "objecion": "Es caro.",
-        "respuesta": "Si sube RevPAR un 5%, se paga solo."
-      },
-      {
-        "objecion": "Huéspedes no quieren muchos mensajes.",
-        "respuesta": "Mensajes útiles."
-      }
-    ],
-    "señal_prioridad": [
-      "Web moderna con motor de reservas",
-      "Hoteles con varios tipos de habitación y temporadas",
-      "Quiere mejorar RevPAR o reservas directas"
-    ],
-    "senales_problema": [
+    "6. Problemas legales": "- RGPD (datos de huéspedes)\n- Normativa turística y de publicidad\n- Facturación electrónica\n- Garantías y reclamaciones",
+    "7. Señales de problema": [
       "Pricing manual o intuitivo",
-      "Pocas reservas directas",
-      "Sin comunicación pre-check-in",
-      "Sin upselling sistemático",
-      "Muchas OTAs vs web propia"
+      "Muchas preguntas repetitivas de huéspedes",
+      "Dependen de plataformas >90%",
+      "Sin reservas directas",
+      "Gestión manual de limpieza"
     ],
-    "indicadores_prioridad": [
-      "Varias habitaciones, varios tipos",
-      "Web moderna con motor de reservas",
-      "Inversión en marketing",
-      "Quiere mejorar RevPAR o reservas directas",
-      "Reseñas buenas"
+    "8. 15 preguntas de descubrimiento": [
+      "¿Cómo fijáis hoy los precios por temporada?",
+      "¿Usáis alguna herramienta de pricing dinámico?",
+      "¿Cuánto tiempo pasáis respondiendo mensajes de huéspedes?",
+      "¿Qué preguntas se repiten más?",
+      "¿Tenéis algún proceso de comunicación pre-check-in?",
+      "¿Qué % de reservas os llegan directas vs plataformas?",
+      "¿Tenéis web propia con motor de reservas?",
+      "¿Cómo gestionáis la limpieza y el mantenimiento?",
+      "¿Tenéis algún proceso de fidelización de huéspedes?",
+      "¿Medís ocupación y ADR por propiedad?",
+      "¿Cómo gestionáis las reseñas en plataformas?",
+      "¿Tenéis datos de huéspedes para segmentar?",
+      "¿Qué parte del tiempo dedicáis a gestión vs estrategia?",
+      "¿Qué os gustaría automatizar primero?",
+      "¿Qué impacto tendría subir un 10% el ADR?"
     ],
-    "senales_alarma": [
-      "Muy pequeño (<20 habitaciones) sin crecer",
-      "Sin web o muy básica",
-      "Nos va bien así",
-      "Sin procesos",
-      "Resistencia"
+    "9. 15 objeciones": [
+      "Sector tradicional",
+      "Ya usamos software",
+      "No tenemos tiempo",
+      "Es caro",
+      "Huéspedes no quieren muchos mensajes",
+      "Ya nos va bien",
+      "No queremos saturar",
+      "Última herramienta no sirvió",
+      "Preferimos seguir como siempre",
+      "No tenemos presupuesto",
+      "Preocupa privacidad",
+      "Ya tenemos suficientes reservas",
+      "No vemos claro el ROI",
+      "No queremos más proveedores",
+      "Esto no funcionará aquí"
     ],
-    "notas": ""
+    "10. Respuestas a objeciones": "- Sector tradicional: La IA no reemplaza huéspedes, sino que ayuda a gestionar mejor.\n- Ya usamos software: Partimos de vuestro software actual.\n- No tenemos tiempo: Piloto pequeño en una tarea que más_duele.\n- Es caro: Si sube ADR un 10%, se paga solo.\n- Huéspedes no quieren muchos mensajes: Mensajes útiles, no saturación.\n- Ya nos va bien: ¿Sostenible a medio plazo?\n- No queremos saturar: Menos mensajes, más relevantes.\n- Última herramienta no sirvió: Indicadores y periodo de prueba.\n- Preferimos seguir como siempre: Pequeños ajustes hoy evitan cambios dolorosos mañana.\n- No tenemos presupuesto: Piloto con objetivos claros.\n- Preocupa privacidad: RGPD, cifrado, backups.\n- Ya tenemos suficientes reservas: Foco en mejorar ADR y reservas directas.\n- No vemos claro el ROI: Definimos qué mejora os haría decir 'sí'.\n- No queremos más proveedores: Simplificar.\n- Esto no funcionará aquí: Hoteles que profesionalizan ganan."
   },
-  {
-    "sector_id": "05",
-    "nombre": "Restaurantes",
-    "subsector": "Hostelería - Restauración",
-    "fit": "Alto",
-    "tamano_mercado": "~160.000 restaurantes",
-    "tamano_mercado_num": 160000,
-    "facturacion_agregada": "~85.000-95.000M€",
-    "facturacion_agregada_num": 90000,
-    "adopcion_ia": "~18%",
-    "adopcion_ia_num": 18,
-    "descripcion": "Gestionan servicio de comidas/bebidas, con cocina, sala, reservas, fidelización.",
-    "problemas": [
-      "Predicción de demanda inexacta",
-      "Desperdicio de comida por sobre-compra",
-      "Falta de fidelización sistemática de clientes",
-      "Gestión manual de reservas y eventos",
-      "Márgenes ajustados y costes crecientes"
+  "5. Restaurantes": {
+    "1. Descripción": "- Qué hacen: Restaurantes ofrecen comida y bebida, con gestión de reservas, pedidos, cocina y atención al cliente.\n- Cómo ganan dinero: Ventas de comida y bebida, servicios adicionales (eventos, catering, etc.).\n- Tamaño habitual: Micro (1–3 personas), Pequeño (3–10 personas), Mediano (10–20 personas).\n- Perfil más habitual: Restaurante local, gestión manual de reservas y pedidos, sin automatización avanzada.\n- Datos de mercado: ~200.000 restaurantes en España, facturación ~50.000M€.",
+    "2. Principales problemas": [
+      "Gestión manual de reservas y pedidos",
+      "Falta de seguimiento de clientes",
+      "Márgenes ajustados por competencia",
+      "Dependencia del encargado",
+      "Falta de fidelización de clientes"
     ],
-    "procesos_manuales": [
-      "Predicción de demanda",
-      "Compra de comida",
-      "Fidelización",
-      "Reservas",
-      "Eventos"
-    ],
-    "herramientas_ia": [
-      "Tenzo",
-      "Chatbots para reservas y preguntas frecuentes",
-      "CRM con campañas de fidelización"
-    ],
-    "oportunidades_automatizacion": [
-      "Forecasting de demanda asistido por IA",
-      "Optimización de compras",
-      "Campañas de fidelización",
-      "Recordatorios de reservas",
-      "Análisis de menú y rentabilidad por plato"
-    ],
-    "aplicaciones_ia": [
-      "Forecasting de demanda",
-      "Optimización de inventario",
+    "3. Procesos manuales": "- Gestión de reservas\n- Pedidos\n- Cocina\n- Atención al cliente\n- Marketing",
+    "4. Oportunidades de automatización": [
+      "Recordatorios automáticos de reservas",
+      "Secuencias de fidelización post-visita",
+      "Optimización de pedidos y cocina",
       "Análisis de rentabilidad por plato",
-      "Recomendación de menús",
-      "Chatbots para reservas"
+      "Gestión de reseñas y reputación"
     ],
-    "problemas_legales": [
-      "Protección de datos (RGPD)",
-      "Ley de desperdicio alimentario",
-      "Normativa de seguridad alimentaria",
-      "Licencias y horarios"
+    "5. Aplicaciones de IA": [
+      "Predicción de abandono de clientes",
+      "Scoring de clientes por probabilidad de retorno",
+      "Optimización de pedidos",
+      "Análisis de rentabilidad por plato",
+      "Chatbots para reservas y preguntas frecuentes"
     ],
-    "preguntas_descubrimiento": [
-      "¿Cómo decidís compra de comida?",
-      "¿Cuánto desperdiciáis por semana?",
-      "¿Tenéis fidelización?",
-      "¿Cómo gestionáis reservas?",
-      "¿Medís rentabilidad por plato?",
-      "¿Tenéis CRM?",
-      "¿Cómo gestionáis llamadas y emails?",
-      "¿Tenéis campañas activas?",
+    "6. Problemas legales": "- RGPD (datos personales)\n- Normativa sanitaria y de publicidad\n- Facturación electrónica\n- Garantías y reclamaciones",
+    "7. Señales de problema": [
+      "Reservas en papel o WhatsApp",
+      "Sin recordatorios de reservas",
+      "Sin CRM o muy básico",
+      "No miden rentabilidad por plato",
+      "Sin fidelización"
+    ],
+    "8. 15 preguntas de descubrimiento": [
+      "¿Cómo gestionáis reservas y pedidos?",
+      "¿Tenéis seguimiento de clientes?",
+      "¿Medís márgenes por plato?",
+      "¿Cómo gestionáis las llamadas y mensajes?",
+      "¿Tenéis recordatorios de reservas?",
       "¿Qué % de clientes son recurrentes?",
-      "¿Usáis delivery?",
-      "¿Qué parte del tiempo dedicáis a gestión vs cocina/sala?",
+      "¿Usáis CRM? ¿Cuál?",
+      "¿Cómo gestionáis las reseñas?",
+      "¿Tenéis campañas activas?",
+      "¿Qué parte del tiempo dedicáis a gestión vs cocina?",
       "¿Qué os gustaría automatizar?",
-      "¿Qué impacto tendría reducir desperdicio un 20%?",
+      "¿Qué impacto tendría reducir abandono un 10%?",
       "¿Tenéis datos de clientes para segmentar?",
-      "¿Qué herramientas usáis hoy?"
+      "¿Qué herramientas usáis hoy?",
+      "¿Qué os gustaría mejorar?"
     ],
-    "objeciones": [
-      {
-        "objecion": "El sector es muy tradicional.",
-        "respuesta": "IA no cocina, pero ayuda a comprar mejor."
-      },
-      {
-        "objecion": "Ya usamos software.",
-        "respuesta": "Partimos de vuestro software."
-      },
-      {
-        "objecion": "No tenemos tiempo.",
-        "respuesta": "Piloto pequeño."
-      },
-      {
-        "objecion": "Es caro.",
-        "respuesta": "Si reduce desperdicio un 20%, se paga solo."
-      },
-      {
-        "objecion": "Clientes no quieren muchos mensajes.",
-        "respuesta": "Mensajes útiles."
-      }
+    "9. 15 objeciones": [
+      "Sector tradicional",
+      "Ya usamos software",
+      "No tenemos tiempo",
+      "Es caro",
+      "Clientes no quieren muchos mensajes",
+      "Ya nos va bien",
+      "No queremos saturar",
+      "Última herramienta no sirvió",
+      "Preferimos seguir como siempre",
+      "No tenemos presupuesto",
+      "Preocupa privacidad",
+      "Ya tenemos suficientes clientes",
+      "No vemos claro el ROI",
+      "No queremos más proveedores",
+      "Esto no funcionará aquí"
     ],
-    "señal_prioridad": [
-      "Web moderna con reservas online",
-      "Restaurantes con varios turnos y carta extensa",
-      "Quiere reducir desperdicio o mejorar fidelización"
-    ],
-    "senales_problema": [
-      "Compra de comida intuitiva",
-      "Mucho desperdicio",
-      "Sin campañas de fidelización",
-      "Reservas manuales",
-      "Sin análisis de menú"
-    ],
-    "indicadores_prioridad": [
-      "Varios turnos, carta extensa",
-      "Web moderna con reservas online",
-      "Inversión en marketing",
-      "Quiere reducir desperdicio o mejorar fidelización",
-      "Reseñas buenas"
-    ],
-    "senales_alarma": [
-      "Muy pequeño (<5 personas) sin crecer",
-      "Sin web o muy básica",
-      "Nos va bien así",
-      "Sin procesos",
-      "Resistencia"
-    ],
-    "notas": ""
+    "10. Respuestas a objeciones": "- Sector tradicional: La IA no reemplaza cocineros, sino que ayuda a gestionar mejor.\n- Ya usamos software: Partimos de vuestro software actual.\n- No tenemos tiempo: Piloto pequeño en una tarea que más_duele.\n- Es caro: Si reduce abandono un 10%, se paga solo.\n- Clientes no quieren muchos mensajes: Mensajes útiles, no saturación.\n- Ya nos va bien: ¿Sostenible a medio plazo?\n- No queremos saturar: Menos mensajes, más relevantes.\n- Última herramienta no sirvió: Indicadores y periodo de prueba.\n- Preferimos seguir como siempre: Pequeños ajustes hoy evitan cambios dolorosos mañana.\n- No tenemos presupuesto: Piloto con objetivos claros.\n- Preocupa privacidad: RGPD, cifrado, backups.\n- Ya tenemos suficientes clientes: Foco en fidelizar y aumentar valor.\n- No vemos claro el ROI: Definimos qué mejora os haría decir 'sí'.\n- No queremos más proveedores: Simplificar.\n- Esto no funcionará aquí: Restaurantes que profesionalizan ganan."
   },
-  {
-    "sector_id": "06",
-    "nombre": "Apartamentos Turísticos",
-    "subsector": "Hostelería - Alojamiento Vacacional",
-    "fit": "Alto",
-    "tamano_mercado": "~400k-500k viviendas",
-    "tamano_mercado_num": 450000,
-    "facturacion_agregada": "~25.000-35.000M€",
-    "facturacion_agregada_num": 30000,
-    "adopcion_ia": "~15%",
-    "adopcion_ia_num": 15,
-    "descripcion": "Gestores de apartamentos turísticos, con pricing, mensajes con huéspedes y reservas directas vs plataformas.",
-    "problemas": [
+  "6. Apartamentos Turísticos": {
+    "1. Descripción": "- Qué hacen: Gestionan apartamentos turísticos (ATAV), con pricing, mensajes con huéspedes, reservas directas vs plataformas (Airbnb, Booking, etc.).\n- Cómo ganan dinero: Noches de alojamiento, servicios adicionales (limpieza, transfers).\n- Tamaño habitual: Micro (1–5 viviendas), Pequeño (5–20 viviendas), Mediano (20–50 viviendas), Grande (50+ viviendas).\n- Perfil más habitual: Gestor local con varias viviendas, uso de herramientas de pricing (PriceLabs), canales (Airbnb, Booking) y algo de reservas directas.\n- Datos de mercado: ~400k–500k viviendas en España, facturación ~25.000–35.000M€.",
+    "2. Principales problemas": [
       "Pricing estático o intuitivo",
       "Gestión de mensajes repetitivos con huéspedes",
-      "Falta de centralización de reservas directas"
+      "Falta de centralización de reservas directas",
+      "Gestión manual de limpieza y mantenimiento",
+      "Falta de fidelización de huéspedes"
     ],
-    "procesos_manuales": [
-      "Pricing",
-      "Mensajes con huéspedes",
-      "Gestión de reservas"
+    "3. Procesos manuales": "- Pricing por temporada\n- Mensajes con huéspedes (WhatsApp, email, plataformas)\n- Gestión de reservas\n- Coordinación de limpieza y mantenimiento\n- Fidelización de huéspedes",
+    "4. Oportunidades de automatización": [
+      "Pricing dinámico asistido por IA",
+      "Chatbots para mensajes con huéspedes",
+      "Secuencias de comunicación pre-check-in y post-check-out",
+      "Coordinación automática de limpieza y mantenimiento",
+      "Campañas de fidelización post-estancia"
     ],
-    "herramientas_ia": [
-      "PriceLabs",
+    "5. Aplicaciones de IA": [
+      "Pricing dinámico (PriceLabs, BeyondPricing)",
       "Chatbots para WhatsApp y email",
-      "Herramientas de canal + automatizaciones"
+      "Análisis de sentimiento en reseñas",
+      "Predicción de ocupación",
+      "Recomendación de servicios adicionales"
     ],
-    "oportunidades_automatizacion": [],
-    "aplicaciones_ia": [],
-    "problemas_legales": [],
-    "preguntas_descubrimiento": [
+    "6. Problemas legales": "- RGPD (datos de huéspedes)\n- Normativa turística (licencias, tasas)\n- Ley de propiedad horizontal\n- Fiscalidad (IRPF, IVA, modelos 179, etc.)",
+    "7. Señales de problema": [
+      "Pricing manual o intuitivo",
+      "Muchas preguntas repetitivas de huéspedes",
+      "Dependen de plataformas >90%",
+      "Sin reservas directas",
+      "Gestión manual de limpieza"
+    ],
+    "8. 15 preguntas de descubrimiento": [
       "¿Cómo fijáis hoy los precios por temporada?",
-      "¿Cuánto tiempo pasáis respondiendo mensajes repetitivos?",
-      "¿Qué porcentaje de reservas os llegan directas vs plataformas?"
+      "¿Usáis alguna herramienta de pricing dinámico?",
+      "¿Cuánto tiempo pasáis respondiendo mensajes de huéspedes?",
+      "¿Qué preguntas se repiten más?",
+      "¿Tenéis algún proceso de comunicación pre-check-in?",
+      "¿Qué % de reservas os llegan directas vs plataformas?",
+      "¿Tenéis web propia con motor de reservas?",
+      "¿Cómo gestionáis la limpieza y el mantenimiento?",
+      "¿Tenéis algún proceso de fidelización de huéspedes?",
+      "¿Medís ocupación y ADR por propiedad?",
+      "¿Cómo gestionáis las reseñas en plataformas?",
+      "¿Tenéis datos de huéspedes para segmentar?",
+      "¿Qué parte del tiempo dedicáis a gestión vs estrategia?",
+      "¿Qué os gustaría automatizar primero?",
+      "¿Qué impacto tendría subir un 10% el ADR?"
     ],
-    "objeciones": [
-      {
-        "objecion": "Los apartamentos se gestionan manualmente",
-        "respuesta": "La IA automatiza pricing y mensajes, no la limpieza ni el check-in físico."
-      },
-      {
-        "objecion": "Ya usamos Airbnb/Booking",
-        "respuesta": "Empezamos optimizando precios y mensajes ahí, y luego impulsamos reservas directas."
-      }
+    "9. 15 objeciones": [
+      "Sector tradicional",
+      "Ya usamos software",
+      "No tenemos tiempo",
+      "Es caro",
+      "Huéspedes no quieren muchos mensajes",
+      "Ya nos va bien",
+      "No queremos saturar",
+      "Última herramienta no sirvió",
+      "Preferimos seguir como siempre",
+      "No tenemos presupuesto",
+      "Preocupa privacidad",
+      "Ya tenemos suficientes reservas",
+      "No vemos claro el ROI",
+      "No queremos más proveedores",
+      "Esto no funcionará aquí"
     ],
-    "señal_prioridad": [
-      "Web moderna con motor de reservas",
-      "Gestores con varias viviendas (10+)"
-    ],
-    "senales_problema": [],
-    "indicadores_prioridad": [],
-    "senales_alarma": [],
-    "notas": ""
+    "10. Respuestas a objeciones": "- Sector tradicional: La IA no reemplaza huéspedes, sino que ayuda a gestionar mejor.\n- Ya usamos software: Partimos de vuestro software actual.\n- No tenemos tiempo: Piloto pequeño en una tarea que más_duele.\n- Es caro: Si sube ADR un 10%, se paga solo.\n- Huéspedes no quieren muchos mensajes: Mensajes útiles, no saturación.\n- Ya nos va bien: ¿Sostenible a medio plazo?\n- No queremos saturar: Menos mensajes, más relevantes.\n- Última herramienta no sirvió: Indicadores y periodo de prueba.\n- Preferimos seguir como siempre: Pequeños ajustes hoy evitan cambios dolorosos mañana.\n- No tenemos presupuesto: Piloto con objetivos claros.\n- Preocupa privacidad: RGPD, cifrado, backups.\n- Ya tenemos suficientes reservas: Foco en mejorar ADR y reservas directas.\n- No vemos claro el ROI: Definimos qué mejora os haría decir 'sí'.\n- No queremos más proveedores: Simplificar.\n- Esto no funcionará aquí: Gestores que profesionalizan ganan."
   },
-  {
-    "sector_id": "07",
-    "nombre": "Talleres Mecánicos",
-    "subsector": "Automoción - Reparación",
-    "fit": "Alto",
-    "tamano_mercado": "~30.000 talleres",
-    "tamano_mercado_num": 30000,
-    "facturacion_agregada": "~15.000M€/año",
-    "facturacion_agregada_num": 15000,
-    "adopcion_ia": "~12%",
-    "adopcion_ia_num": 12,
-    "descripcion": "Talleres de reparación y mantenimiento de vehículos, con gestión de citas, pedidos de recambios y facturación.",
-    "problemas": [
+  "7. Talleres Mecánicos": {
+    "1. Descripción": "- Qué hacen: Reparación y mantenimiento de vehículos, con gestión de citas, pedidos de recambios y facturación.\n- Cómo ganan dinero: Mano de obra + recambios + revisiones.\n- Tamaño habitual: Micro (1–3 personas), Pequeño (3–10 personas), Mediano (10–20 personas).\n- Perfil más habitual: Taller local, gestión manual de citas, pedidos y facturación.\n- Datos de mercado: ~30.000 talleres en España, facturación ~15.000M€.",
+    "2. Principales problemas": [
       "Gestión manual de citas y pedidos",
       "Falta de seguimiento de clientes",
-      "Márgenes ajustados"
+      "Márgenes ajustados por competencia",
+      "Gestión de inventario ineficiente",
+      "Dependencia del encargado"
     ],
-    "procesos_manuales": [
-      "Gestión de citas",
-      "Pedidos de recambios",
-      "Facturación"
+    "3. Procesos manuales": "- Gestión de citas\n- Pedidos de recambios\n- Facturación\n- Seguimiento de clientes\n- Gestión de inventario",
+    "4. Oportunidades de automatización": [
+      "Recordatorios automáticos de citas y revisiones",
+      "Secuencias de fidelización post-servicio",
+      "Optimización de pedidos de recambios",
+      "Gestión de inventario asistida por IA",
+      "Análisis de rentabilidad por servicio"
     ],
-    "herramientas_ia": [],
-    "oportunidades_automatizacion": [],
-    "aplicaciones_ia": [],
-    "problemas_legales": [],
-    "preguntas_descubrimiento": [
+    "5. Aplicaciones de IA": [
+      "Predicción de demanda por temporada",
+      "Scoring de clientes por probabilidad de retorno",
+      "Optimización de inventario",
+      "Análisis de rentabilidad por servicio",
+      "Chatbots para citas y preguntas frecuentes"
+    ],
+    "6. Problemas legales": "- RGPD (datos de clientes)\n- Normativa de seguridad y medioambiente\n- Facturación electrónica\n- Garantías y reclamaciones",
+    "7. Señales de problema": [
+      "Citas en papel o WhatsApp",
+      "Sin recordatorios de revisiones",
+      "Sin CRM o muy básico",
+      "No miden rentabilidad por servicio",
+      "Sin fidelización"
+    ],
+    "8. 15 preguntas de descubrimiento": [
       "¿Cómo gestionáis citas y pedidos?",
       "¿Tenéis seguimiento de clientes?",
-      "¿Medís márgenes por reparación?"
+      "¿Medís márgenes por reparación?",
+      "¿Cómo gestionáis el inventario?",
+      "¿Tenéis recordatorios de revisiones?",
+      "¿Qué % de clientes son recurrentes?",
+      "¿Usáis CRM? ¿Cuál?",
+      "¿Cómo gestionáis las llamadas y mensajes?",
+      "¿Tenéis campañas activas?",
+      "¿Qué parte del tiempo dedicáis a gestión vs reparación?",
+      "¿Qué os gustaría automatizar?",
+      "¿Qué impacto tendría reducir stock ineficiente un 20%?",
+      "¿Tenéis datos de clientes para segmentar?",
+      "¿Qué herramientas usáis hoy?",
+      "¿Qué os gustaría mejorar?"
     ],
-    "objeciones": [],
-    "señal_prioridad": [],
-    "senales_problema": [],
-    "indicadores_prioridad": [],
-    "senales_alarma": [],
-    "notas": ""
+    "9. 15 objeciones": [
+      "Sector tradicional",
+      "Ya usamos software",
+      "No tenemos tiempo",
+      "Es caro",
+      "Clientes no quieren muchos mensajes",
+      "Ya nos va bien",
+      "No queremos saturar",
+      "Última herramienta no sirvió",
+      "Preferimos seguir como siempre",
+      "No tenemos presupuesto",
+      "Preocupa privacidad",
+      "Ya tenemos suficientes clientes",
+      "No vemos claro el ROI",
+      "No queremos más proveedores",
+      "Esto no funcionará aquí"
+    ],
+    "10. Respuestas a objeciones": "- Sector tradicional: La IA no repara coches, pero ayuda a gestionar mejor.\n- Ya usamos software: Partimos de vuestro software actual.\n- No tenemos tiempo: Piloto pequeño en una tarea que más_duele.\n- Es caro: Si reduce stock un 20%, se paga solo.\n- Clientes no quieren muchos mensajes: Mensajes útiles, no saturación.\n- Ya nos va bien: ¿Sostenible a medio plazo?\n- No queremos saturar: Menos mensajes, más relevantes.\n- Última herramienta no sirvió: Indicadores y periodo de prueba.\n- Preferimos seguir como siempre: Pequeños ajustes hoy evitan cambios dolorosos mañana.\n- No tenemos presupuesto: Piloto con objetivos claros.\n- Preocupa privacidad: RGPD, cifrado, backups.\n- Ya tenemos suficientes clientes: Foco en fidelizar y aumentar valor.\n- No vemos claro el ROI: Definimos qué mejora os haría decir 'sí'.\n- No queremos más proveedores: Simplificar.\n- Esto no funcionará aquí: Talleres que profesionalizan ganan."
   },
-  {
-    "sector_id": "08",
-    "nombre": "Constructoras",
-    "subsector": "Construcción",
-    "fit": "Medio",
-    "tamano_mercado": "~100.000 empresas",
-    "tamano_mercado_num": 100000,
-    "facturacion_agregada": "~50.000M€/año",
-    "facturacion_agregada_num": 50000,
-    "adopcion_ia": "~10%",
-    "adopcion_ia_num": 10,
-    "descripcion": "Empresas de construcción, con gestión de proyectos, compras, subcontratas y certificación.",
-    "problemas": [
+  "8. Constructoras": {
+    "1. Descripción": "- Qué hacen: Construcción de viviendas, edificios, obras públicas, con gestión de proyectos, compras, subcontratas y certificación.\n- Cómo ganan dinero: Presupuestos certificados, cambios, extras.\n- Tamaño habitual: Micro (1–3 personas), Pequeño (3–20 personas), Mediano (20–100 personas).\n- Perfil más habitual: Constructora local, gestión manual de proyectos, subcontratas, compras.\n- Datos de mercado: ~100.000 empresas en España, facturación ~50.000M€.",
+    "2. Principales problemas": [
       "Gestión manual de proyectos y subcontratas",
       "Control de costes y certificaciones",
-      "Retrasos y sobrecostes"
+      "Retrasos y sobrecostes",
+      "Compras ineficientes",
+      "Dependencia del encargado"
     ],
-    "procesos_manuales": [
-      "Gestión de proyectos",
-      "Compras",
-      "Subcontratas",
-      "Certificaciones"
+    "3. Procesos manuales": "- Gestión de proyectos\n- Compras\n- Subcontratas\n- Certificaciones\n- Control de costes",
+    "4. Oportunidades de automatización": [
+      "Seguimiento de proyectos y hitos",
+      "Optimización de compras",
+      "Análisis de costes y márgenes",
+      "Gestión de subcontratas",
+      "Certificaciones automáticas"
     ],
-    "herramientas_ia": [],
-    "oportunidades_automatizacion": [],
-    "aplicaciones_ia": [],
-    "problemas_legales": [],
-    "preguntas_descubrimiento": [
+    "5. Aplicaciones de IA": [
+      "Predicción de retrasos por tipo de proyecto",
+      "Optimización de compras",
+      "Análisis de costes y márgenes",
+      "Scoring de subcontratas",
+      "Chatbots para gestión de documentación"
+    ],
+    "6. Problemas legales": "- RGPD\n- Normativa de seguridad y prevención\n- Certificaciones y fiscalidad\n- Garantías y reclamaciones",
+    "7. Señales de problema": [
+      "Proyectos en Excel",
+      "Sin control de costes",
+      "Sin seguimiento de subcontratas",
+      "Sin certificaciones automáticas",
+      "Sin análisis de márgenes"
+    ],
+    "8. 15 preguntas de descubrimiento": [
       "¿Cómo gestionáis proyectos y subcontratas?",
       "¿Medís costes y certificaciones?",
-      "¿Tenéis problemas de retrasos?"
+      "¿Tenéis problemas de retrasos?",
+      "¿Cómo gestionáis compras?",
+      "¿Tenéis control de márgenes?",
+      "¿Usáis ERP? ¿Cuál?",
+      "¿Cómo gestionáis las llamadas y emails?",
+      "¿Tenéis campañas activas?",
+      "¿Qué parte del tiempo dedicáis a gestión vs obra?",
+      "¿Qué os gustaría automatizar?",
+      "¿Qué impacto tendría reducir retrasos un 10%?",
+      "¿Tenéis datos de proyectos para segmentar?",
+      "¿Qué herramientas usáis hoy?",
+      "¿Qué os gustaría mejorar?",
+      "¿Qué os preocupa más?"
     ],
-    "objeciones": [],
-    "señal_prioridad": [],
-    "senales_problema": [],
-    "indicadores_prioridad": [],
-    "senales_alarma": [],
-    "notas": ""
+    "9. 15 objeciones": [
+      "Sector tradicional",
+      "Ya usamos software",
+      "No tenemos tiempo",
+      "Es caro",
+      "Clientes no quieren muchos mensajes",
+      "Ya nos va bien",
+      "No queremos saturar",
+      "Última herramienta no sirvió",
+      "Preferimos seguir como siempre",
+      "No tenemos presupuesto",
+      "Preocupa privacidad",
+      "Ya tenemos suficientes proyectos",
+      "No vemos claro el ROI",
+      "No queremos más proveedores",
+      "Esto no funcionará aquí"
+    ],
+    "10. Respuestas a objeciones": "- Sector tradicional: La IA no construye, pero ayuda a gestionar mejor.\n- Ya usamos software: Partimos de vuestro software actual.\n- No tenemos tiempo: Piloto pequeño en una tarea que más_duele.\n- Es caro: Si reduce retrasos un 10%, se paga solo.\n- Clientes no quieren muchos mensajes: Mensajes útiles, no saturación.\n- Ya nos va bien: ¿Sostenible a medio plazo?\n- No queremos saturar: Menos mensajes, más relevantes.\n- Última herramienta no sirvió: Indicadores y periodo de prueba.\n- Preferimos seguir como siempre: Pequeños ajustes hoy evitan cambios dolorosos mañana.\n- No tenemos presupuesto: Piloto con objetivos claros.\n- Preocupa privacidad: RGPD, cifrado, backups.\n- Ya tenemos suficientes proyectos: Foco en mejorar márgenes y plazos.\n- No vemos claro el ROI: Definimos qué mejora os haría decir 'sí'.\n- No queremos más proveedores: Simplificar.\n- Esto no funcionará aquí: Constructoras que profesionalizan ganan."
   },
-  {
-    "sector_id": "09",
-    "nombre": "Empresas de Transporte",
-    "subsector": "Logística - Transporte",
-    "fit": "Medio",
-    "tamano_mercado": "~50.000 empresas",
-    "tamano_mercado_num": 50000,
-    "facturacion_agregada": "~25.000M€/año",
-    "facturacion_agregada_num": 25000,
-    "adopcion_ia": "~15%",
-    "adopcion_ia_num": 15,
-    "descripcion": "Empresas de transporte de mercancías, con gestión de flotas, rutas, conductores y facturación.",
-    "problemas": [
+  "9. Empresas de Transporte": {
+    "1. Descripción": "- Qué hacen: Transporte de mercancías, con gestión de flotas, rutas, conductores y facturación.\n- Cómo ganan dinero: Servicios de transporte, logística, etc.\n- Tamaño habitual: Micro (1–3 vehículos), Pequeño (3–10 vehículos), Mediano (10–50 vehículos).\n- Perfil más habitual: Empresa local, gestión manual de rutas, flotas, conductores.\n- Datos de mercado: ~50.000 empresas en España, facturación ~25.000M€.",
+    "2. Principales problemas": [
       "Gestión manual de rutas y flotas",
       "Control de costes y combustible",
-      "Retrasos y eficiencia"
+      "Retrasos y eficiencia",
+      "Gestión de conductores",
+      "Dependencia del encargado"
     ],
-    "procesos_manuales": [
-      "Gestión de rutas",
-      "Flotas",
-      "Conductores",
-      "Facturación"
+    "3. Procesos manuales": "- Gestión de rutas\n- Flotas\n- Conductores\n- Facturación\n- Control de costes",
+    "4. Oportunidades de automatización": [
+      "Optimización de rutas asistida por IA",
+      "Análisis de costes y combustible",
+      "Seguimiento de conductores",
+      "Facturación automática",
+      "Análisis de eficiencia por ruta"
     ],
-    "herramientas_ia": [],
-    "oportunidades_automatizacion": [],
-    "aplicaciones_ia": [],
-    "problemas_legales": [],
-    "preguntas_descubrimiento": [
+    "5. Aplicaciones de IA": [
+      "Optimización de rutas",
+      "Predicción de consumo",
+      "Análisis de costes y márgenes",
+      "Scoring de conductores",
+      "Chatbots para gestión de incidencias"
+    ],
+    "6. Problemas legales": "- RGPD\n- Normativa de transporte y seguridad\n- Facturación electrónica\n- Control de tiempos y descansos",
+    "7. Señales de problema": [
+      "Rutas en Excel",
+      "Sin control de costes",
+      "Sin seguimiento de conductores",
+      "Sin facturación automática",
+      "Sin análisis de eficiencia"
+    ],
+    "8. 15 preguntas de descubrimiento": [
       "¿Cómo gestionáis rutas y flotas?",
       "¿Medís costes y combustible?",
-      "¿Tenéis problemas de retrasos?"
+      "¿Tenéis problemas de retrasos?",
+      "¿Cómo gestionáis conductores?",
+      "¿Tenéis control de márgenes?",
+      "¿Usáis TMS? ¿Cuál?",
+      "¿Cómo gestionáis las llamadas y emails?",
+      "¿Tenéis campañas activas?",
+      "¿Qué parte del tiempo dedicáis a gestión vs conducción?",
+      "¿Qué os gustaría automatizar?",
+      "¿Qué impacto tendría reducir combustible un 10%?",
+      "¿Tenéis datos de rutas para segmentar?",
+      "¿Qué herramientas usáis hoy?",
+      "¿Qué os gustaría mejorar?",
+      "¿Qué os preocupa más?"
     ],
-    "objeciones": [],
-    "señal_prioridad": [],
-    "senales_problema": [],
-    "indicadores_prioridad": [],
-    "senales_alarma": [],
-    "notas": ""
+    "9. 15 objeciones": [
+      "Sector tradicional",
+      "Ya usamos software",
+      "No tenemos tiempo",
+      "Es caro",
+      "Clientes no quieren muchos mensajes",
+      "Ya nos va bien",
+      "No queremos saturar",
+      "Última herramienta no sirvió",
+      "Preferimos seguir como siempre",
+      "No tenemos presupuesto",
+      "Preocupa privacidad",
+      "Ya tenemos suficientes rutas",
+      "No vemos claro el ROI",
+      "No queremos más proveedores",
+      "Esto no funcionará aquí"
+    ],
+    "10. Respuestas a objeciones": "- Sector tradicional: La IA no conduce, pero ayuda a gestionar mejor.\n- Ya usamos software: Partimos de vuestro software actual.\n- No tenemos tiempo: Piloto pequeño en una tarea que más_duele.\n- Es caro: Si reduce combustible un 10%, se paga solo.\n- Clientes no quieren muchos mensajes: Mensajes útiles, no saturación.\n- Ya nos va bien: ¿Sostenible a medio plazo?\n- No queremos saturar: Menos mensajes, más relevantes.\n- Última herramienta no sirvió: Indicadores y periodo de prueba.\n- Preferimos seguir como siempre: Pequeños ajustes hoy evitan cambios dolorosos mañana.\n- No tenemos presupuesto: Piloto con objetivos claros.\n- Preocupa privacidad: RGPD, cifrado, backups.\n- Ya tenemos suficientes rutas: Foco en mejorar márgenes y plazos.\n- No vemos claro el ROI: Definimos qué mejora os haría decir 'sí'.\n- No queremos más proveedores: Simplificar.\n- Esto no funcionará aquí: Empresas que profesionalizan ganan."
   },
-  {
-    "sector_id": "10",
-    "nombre": "Academias y Centros de Formación",
-    "subsector": "Educación - Formación",
-    "fit": "Medio",
-    "tamano_mercado": "~20.000 centros",
-    "tamano_mercado_num": 20000,
-    "facturacion_agregada": "~5.000M€/año",
-    "facturacion_agregada_num": 5000,
-    "adopcion_ia": "~18%",
-    "adopcion_ia_num": 18,
-    "descripcion": "Centros de formación, con gestión de alumnos, cursos, horarios y facturación.",
-    "problemas": [
+  "10. Academias y Centros de Formación": {
+    "1. Descripción": "- Qué hacen: Formación (idiomas, oposiciones, cursos profesionales), con gestión de alumnos, cursos, horarios y facturación.\n- Cómo ganan dinero: Matrículas, cuotas mensuales, cursos.\n- Tamaño habitual: Micro (1–3 profesores), Pequeño (3–10 profesores), Mediano (10–50 profesores).\n- Perfil más habitual: Academia local, gestión manual de alumnos, cursos, horarios.\n- Datos de mercado: ~20.000 centros en España, facturación ~5.000M€.",
+    "2. Principales problemas": [
       "Gestión manual de alumnos y cursos",
       "Falta de seguimiento de estudiantes",
-      "Márgenes ajustados"
+      "Márgenes ajustados por competencia",
+      "Gestión de horarios ineficiente",
+      "Dependencia del encargado"
     ],
-    "procesos_manuales": [
-      "Gestión de alumnos",
-      "Cursos",
-      "Horarios",
-      "Facturación"
+    "3. Procesos manuales": "- Gestión de alumnos\n- Cursos\n- Horarios\n- Facturación\n- Seguimiento de estudiantes",
+    "4. Oportunidades de automatización": [
+      "Recordatorios automáticos de clases y pagos",
+      "Secuencias de fidelización post-curso",
+      "Optimización de horarios",
+      "Análisis de rentabilidad por curso",
+      "Gestión de matrículas asistida por IA"
     ],
-    "herramientas_ia": [],
-    "oportunidades_automatizacion": [],
-    "aplicaciones_ia": [],
-    "problemas_legales": [],
-    "preguntas_descubrimiento": [
+    "5. Aplicaciones de IA": [
+      "Predicción de abandono de estudiantes",
+      "Scoring de alumnos por probabilidad de renovación",
+      "Optimización de horarios",
+      "Análisis de rentabilidad por curso",
+      "Chatbots para matrículas y preguntas frecuentes"
+    ],
+    "6. Problemas legales": "- RGPD\n- Normativa educativa\n- Facturación electrónica\n- Garantías y reclamaciones",
+    "7. Señales de problema": [
+      "Alumnos en Excel",
+      "Sin recordatorios de clases",
+      "Sin CRM o muy básico",
+      "No miden rentabilidad por curso",
+      "Sin fidelización"
+    ],
+    "8. 15 preguntas de descubrimiento": [
       "¿Cómo gestionáis alumnos y cursos?",
       "¿Tenéis seguimiento de estudiantes?",
-      "¿Medís márgenes por curso?"
+      "¿Medís márgenes por curso?",
+      "¿Cómo gestionáis horarios?",
+      "¿Tenéis recordatorios de clases y pagos?",
+      "¿Qué % de alumnos renuevan?",
+      "¿Usáis CRM? ¿Cuál?",
+      "¿Cómo gestionáis las llamadas y emails?",
+      "¿Tenéis campañas activas?",
+      "¿Qué parte del tiempo dedicáis a gestión vs enseñanza?",
+      "¿Qué os gustaría automatizar?",
+      "¿Qué impacto tendría reducir abandono un 10%?",
+      "¿Tenéis datos de alumnos para segmentar?",
+      "¿Qué herramientas usáis hoy?",
+      "¿Qué os gustaría mejorar?"
     ],
-    "objeciones": [],
-    "señal_prioridad": [],
-    "senales_problema": [],
-    "indicadores_prioridad": [],
-    "senales_alarma": [],
-    "notas": ""
+    "9. 15 objeciones": [
+      "Sector tradicional",
+      "Ya usamos software",
+      "No tenemos tiempo",
+      "Es caro",
+      "Alumnos no quieren muchos mensajes",
+      "Ya nos va bien",
+      "No queremos saturar",
+      "Última herramienta no sirvió",
+      "Preferimos seguir como siempre",
+      "No tenemos presupuesto",
+      "Preocupa privacidad",
+      "Ya tenemos suficientes alumnos",
+      "No vemos claro el ROI",
+      "No queremos más proveedores",
+      "Esto no funcionará aquí"
+    ],
+    "10. Respuestas a objeciones": "- Sector tradicional: La IA no enseña, pero ayuda a gestionar mejor.\n- Ya usamos software: Partimos de vuestro software actual.\n- No tenemos tiempo: Piloto pequeño en una tarea que más_duele.\n- Es caro: Si reduce abandono un 10%, se paga solo.\n- Alumnos no quieren muchos mensajes: Mensajes útiles, no saturación.\n- Ya nos va bien: ¿Sostenible a medio plazo?\n- No queremos saturar: Menos mensajes, más relevantes.\n- Última herramienta no sirvió: Indicadores y periodo de prueba.\n- Preferimos seguir como siempre: Pequeños ajustes hoy evitan cambios dolorosos mañana.\n- No tenemos presupuesto: Piloto con objetivos claros.\n- Preocupa privacidad: RGPD, cifrado, backups.\n- Ya tenemos suficientes alumnos: Foco en fidelizar y aumentar valor.\n- No vemos claro el ROI: Definimos qué mejora os haría decir 'sí'.\n- No queremos más proveedores: Simplificar.\n- Esto no funcionará aquí: Academias que profesionalizan ganan."
   }
-]
+}
