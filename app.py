@@ -79,7 +79,6 @@ for nombre, datos in sectores_raw.items():
     descripcion = datos.get("1. Descripción", "")
     
     # Extraer datos numéricos estimados de la descripción (o defaults)
-    # Por defecto, asignamos valores estimados por sector
     tamano_map = {
         "1. Asesorías y Gestorías": 100000,
         "2. Clínicas Dentales": 15000,
@@ -201,6 +200,10 @@ st.sidebar.markdown("### Opciones")
 modo_reunion = st.sidebar.checkbox("Modo reunión", value=st.session_state.modo_reunion)
 st.session_state.modo_reunion = modo_reunion
 
+st.sidebar.markdown("---")
+if st.sidebar.button("📋 Limpiar favoritos"):
+    st.session_state.favoritos = []
+
 # -----------------------
 # UTILS
 # -----------------------
@@ -210,6 +213,9 @@ def to_csv(df_local):
 
 def safe_list(lst):
     return lst if isinstance(lst, list) else []
+
+def safe_str(s):
+    return s if isinstance(s, str) else str(s) if s else ""
 
 # -----------------------
 # PÁGINAS
@@ -575,6 +581,189 @@ elif opcion == "Explorador de sectores":
     else:
         if st.button("⭐ Añadir a favoritos"):
             st.session_state.favoritos.append(sec_row["nombre"])
+
+elif opcion == "Estrategia comercial":
+    st.title("Estrategia comercial")
+    st.markdown("Define tu estrategia de venta por sector.")
+
+    st.markdown("### Sectores por prioridad")
+    
+    # Agrupar por fit
+    muy_alto = [s for s in sectores if s.get("fit") == "Muy alto"]
+    alto = [s for s in sectores if s.get("fit") == "Alto"]
+    
+    c1, c2 = st.columns(2)
+    with c1:
+        st.subheader("🔴 Fit Muy Alto")
+        for s in muy_alto:
+            st.write(f"- **{s['nombre']}**: {s['tamano_mercado_num']:,} empresas, {s['facturacion_agregada_num']:,} M€")
+    
+    with c2:
+        st.subheader("🟠 Fit Alto")
+        for s in alto:
+            st.write(f"- **{s['nombre']}**: {s['tamano_mercado_num']:,} empresas, {s['facturacion_agregada_num']:,} M€")
+
+    st.markdown("---")
+    st.markdown("### Recomendaciones por sector")
+    
+    sector_estrategia = st.selectbox(
+        "Selecciona un sector para ver recomendaciones",
+        options=[s["nombre"] for s in sectores],
+    )
+    
+    sec_estrategia = next(s for s in sectores if s["nombre"] == sector_estrategia)
+    
+    st.markdown(f"**{sec_estrategia['nombre']}**")
+    st.write(f"**Tamaño:** {sec_estrategia['tamano_mercado_num']:,} empresas")
+    st.write(f"**Facturación:** {sec_estrategia['facturacion_agregada_num']:,} M€")
+    st.write(f"**Adopción IA:** {sec_estrategia['adopcion_ia_num']}%")
+    st.write(f"**Fit:** {sec_estrategia['fit']}")
+    
+    st.markdown("**Problemas principales:**")
+    problemas = sec_estrategia.get("problemas", [])
+    if isinstance(problemas, str):
+        st.write(problemas)
+    elif problemas:
+        for p in problemas[:5]:
+            st.write(f"- {p}")
+    
+    st.markdown("**Aplicaciones de IA:**")
+    ia = sec_estrategia.get("aplicaciones_ia", [])
+    if isinstance(ia, str):
+        st.write(ia)
+    elif ia:
+        for i in ia[:5]:
+            st.write(f"- {i}")
+
+elif opcion == "Comparador":
+    st.title("Comparador de sectores")
+    st.markdown("Compara hasta 3 sectores lado a lado.")
+
+    sectores_sel = st.multiselect(
+        "Selecciona sectores para comparar",
+        options=[s["nombre"] for s in sectores],
+        max_selections=3,
+    )
+
+    if len(sectores_sel) >= 2:
+        cols = st.columns(len(sectores_sel))
+        
+        for idx, nombre_sector in enumerate(sectores_sel):
+            with cols[idx]:
+                sec = next(s for s in sectores if s["nombre"] == nombre_sector)
+                st.markdown(f"#### {sec['nombre']}")
+                
+                st.write(f"**Tamaño:** {sec['tamano_mercado_num']:,}")
+                st.write(f"**Facturación:** {sec['facturacion_agregada_num']:,} M€")
+                st.write(f"**Adopción IA:** {sec['adopcion_ia_num']}%")
+                st.write(f"**Fit:** {sec['fit']}")
+                
+                st.markdown("**Problemas:**")
+                problemas = sec.get("problemas", [])
+                if isinstance(problemas, str):
+                    st.write(problemas[:200] + "...")
+                elif problemas:
+                    for p in problemas[:3]:
+                        st.write(f"- {p}")
+                
+                st.markdown("**IA:**")
+                ia = sec.get("aplicaciones_ia", [])
+                if isinstance(ia, str):
+                    st.write(ia[:200] + "...")
+                elif ia:
+                    for i in ia[:3]:
+                        st.write(f"- {i}")
+
+    elif len(sectores_sel) == 1:
+        st.info("Selecciona al menos 2 sectores para comparar.")
+    else:
+        st.info("Selecciona sectores arriba para comparar.")
+
+elif opcion == "Priorización":
+    st.title("Priorización")
+    st.markdown("Filtra por prioridad y sector.")
+
+    # Filtros
+    fit_filter = st.multiselect(
+        "Filtrar por Fit",
+        options=["Muy alto", "Alto"],
+        default=["Muy alto", "Alto"],
+    )
+    
+    tamano_min = st.slider(
+        "Tamaño mínimo de mercado",
+        min_value=0,
+        max_value=500000,
+        value=0,
+        step=10000,
+    )
+    
+    df_prior = df[
+        (df["fit"].isin(fit_filter)) &
+        (df["tamano_mercado_num"] >= tamano_min)
+    ]
+    
+    st.markdown(f"**{len(df_prior)} sectores** encontrados")
+    
+    if not df_prior.empty:
+        # Ordenar por facturación
+        df_prior_sorted = df_prior.sort_values("facturacion_agregada_num", ascending=False)
+        
+        st.markdown("### Sectores priorizados (por facturación)")
+        
+        for idx, row in df_prior_sorted.iterrows():
+            with st.expander(f"**{row['nombre']}** - {row['facturacion_agregada_num']:,} M€ ({row['fit']})"):
+                st.write(f"**Tamaño:** {row['tamano_mercado_num']:,}")
+                st.write(f"**Adopción IA:** {row['adopcion_ia_num']}%")
+                
+                st.markdown("**Problemas:**")
+                problemas = row.get("problemas", [])
+                if isinstance(problemas, str):
+                    st.write(problemas)
+                elif problemas:
+                    for p in problemas:
+                        st.write(f"- {p}")
+
+elif opcion == "Export / API":
+    st.title("Export / API")
+    st.markdown("Exporta los datos en diferentes formatos.")
+
+    st.markdown("### Descargar JSON completo")
+    st.json(sectores_raw)
+
+    st.markdown("---")
+    st.markdown("### Descargar CSV")
+    
+    csv = df.to_csv(index=False).encode("utf-8")
+    
+    st.download_button(
+        label="📥 Descargar CSV",
+        data=csv,
+        file_name="sectores_salesos.csv",
+        mime="text/csv",
+    )
+
+    st.markdown("---")
+    st.markdown("### Favoritos")
+    if st.session_state.favoritos:
+        st.write("Tus sectores favoritos:")
+        for fav in st.session_state.favoritos:
+            st.write(f"- {fav}")
+        
+        # Exportar favoritos
+        fav_data = [s for s in sectores if s["nombre"] in st.session_state.favoritos]
+        fav_df = pd.DataFrame(fav_data)
+        fav_csv = fav_df.to_csv(index=False).encode("utf-8")
+        
+        st.download_button(
+            label="📥 Descargar favoritos (CSV)",
+            data=fav_csv,
+            file_name="favoritos_salesos.csv",
+            mime="text/csv",
+        )
+    else:
+        st.write("No tienes sectores favoritos aún.")
+
 # -----------------------
 # FOOTER
 # -----------------------
