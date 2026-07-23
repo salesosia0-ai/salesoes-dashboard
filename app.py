@@ -363,57 +363,105 @@ elif opcion == "Explorador de sectores":
     st.write(f"**Subsector:** {sec_row.get('subsector', 'N/A')}")
 
     st.markdown("### Problemas principales")
-    for p in safe_list(sec_row.get("problemas", [])):
-        st.write(f"- {p}")
+    problemas = safe_list(sec_row.get("problemas", []))
+    if problemas:
+        for p in problemas:
+            st.write(f"- {p}")
+    else:
+        st.write("Sin problemas registrados.")
 
     st.markdown("### Procesos manuales habituales")
-    for p in safe_list(sec_row.get("procesos_manuales", [])):
-        st.write(f"- {p}")
+    procesos = safe_list(sec_row.get("procesos_manuales", []))
+    if procesos:
+        for p in procesos:
+            st.write(f"- {p}")
+    else:
+        st.write("Sin procesos registrados.")
 
     st.markdown("### Oportunidades de automatización")
-    for p in safe_list(sec_row.get("oportunidades_automatizacion", [])):
-        st.write(f"- {p}")
+    oportunidades = safe_list(sec_row.get("oportunidades_automatizacion", []))
+    if oportunidades:
+        for p in oportunidades:
+            st.write(f"- {p}")
+    else:
+        st.write("Sin oportunidades registradas.")
 
     st.markdown("### Aplicaciones de IA")
-    for p in safe_list(sec_row.get("aplicaciones_ia", [])):
-        st.write(f"- {p}")
+    aplicaciones = safe_list(sec_row.get("aplicaciones_ia", []))
+    if aplicaciones:
+        for p in aplicaciones:
+            st.write(f"- {p}")
+    else:
+        st.write("Sin aplicaciones registradas.")
 
     st.markdown("### Problemas legales / normativos")
-    for p in safe_list(sec_row.get("problemas_legales", [])):
-        st.write(f"- {p}")
+    legales = safe_list(sec_row.get("problemas_legales", []))
+    if legales:
+        for p in legales:
+            st.write(f"- {p}")
+    else:
+        st.write("Sin problemas legales registrados.")
 
     st.markdown("### Señales de problema")
-    for p in safe_list(sec_row.get("senales_problema", [])):
-        st.write(f"- {p}")
+    senales_prob = safe_list(sec_row.get("senales_problema", []))
+    if senales_prob:
+        for p in senales_prob:
+            st.write(f"- {p}")
+    else:
+        st.write("Sin señales registradas.")
 
     st.markdown("### Indicadores de prioridad")
-    for p in safe_list(sec_row.get("indicadores_prioridad", [])):
-        st.write(f"- {p}")
+    indicadores = safe_list(sec_row.get("indicadores_prioridad", []))
+    if indicadores:
+        for p in indicadores:
+            st.write(f"- {p}")
+    else:
+        st.write("Sin indicadores registrados.")
 
     st.markdown("### Señales de alarma")
-    for p in safe_list(sec_row.get("senales_alarma", [])):
-        st.write(f"- {p}")
+    senales_alarma = safe_list(sec_row.get("senales_alarma", []))
+    if senales_alarma:
+        for p in senales_alarma:
+            st.write(f"- {p}")
+    else:
+        st.write("Sin señales de alarma registradas.")
 
     st.markdown("### Herramientas IA de referencia")
-    for h in safe_list(sec_row.get("herramientas_ia", [])):
-        st.write(f"- {h}")
+    herramientas = safe_list(sec_row.get("herramientas_ia", []))
+    if herramientas:
+        for h in herramientas:
+            st.write(f"- {h}")
+    else:
+        st.write("Sin herramientas registradas.")
 
     st.markdown("### Preguntas de descubrimiento")
-    for q in safe_list(sec_row.get("preguntas_descubrimiento", [])):
-        st.write(f"- {q}")
+    preguntas = safe_list(sec_row.get("preguntas_descubrimiento", []))
+    if preguntas:
+        for q in preguntas:
+            st.write(f"- {q}")
+    else:
+        st.write("Sin preguntas registradas.")
 
     st.markdown("### Objeciones típicas y respuestas")
-    for o in safe_list(sec_row.get("objeciones", [])):
-        if isinstance(o, dict):
-            st.write(f"**Objeción:** {o.get('objecion', '')}")
-            st.write(f"*Respuesta:* {o.get('respuesta', '')}")
-        else:
-            st.write(f"- {o}")
-        st.write("")
+    objeciones = safe_list(sec_row.get("objeciones", []))
+    if objeciones:
+        for o in objeciones:
+            if isinstance(o, dict):
+                st.write(f"**Objeción:** {o.get('objecion', '')}")
+                st.write(f"*Respuesta:* {o.get('respuesta', '')}")
+            else:
+                st.write(f"- {o}")
+            st.write("")
+    else:
+        st.write("Sin objeciones registradas.")
 
     st.markdown("### Señales de prioridad")
-    for s in safe_list(sec_row.get("señal_prioridad", [])):
-        st.write(f"- {s}")
+    senales_pri = safe_list(sec_row.get("señal_prioridad", []))
+    if senales_pri:
+        for p in senales_pri:
+            st.write(f"- {p}")
+    else:
+        st.write("Sin señales de prioridad registradas.")
 
     # Notas por sector
     st.markdown("---")
