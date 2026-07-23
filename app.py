@@ -88,4 +88,101 @@ sectores = [
     {
         "sector_id": "07",
         "nombre": "Apartamentos Turísticos",
-        "subsector":
+        "subsector": "Hostelería - Alojamiento Vacacional",
+        "fit": "Alto",
+        "tamano_mercado": "~400k-500k viviendas",
+        "facturacion_agregada": "~25.000-35.000M€",
+        "adopcion_ia": "~15%",
+        "top_problema": "Pricing estático o intuitivo",
+        "top_herramienta": "PriceLabs",
+        "top_objecion": "Los apartamentos se gestionan manualmente",
+        "señal_prioridad": "Web moderna con motor de reservas",
+    },
+    {
+        "sector_id": "08",
+        "nombre": "Restaurantes",
+        "subsector": "Hostelería - Restauración",
+        "fit": "Alto",
+        "tamano_mercado": "~160.000 restaurantes",
+        "facturacion_agregada": "~85.000-95.000M€",
+        "adopcion_ia": "~18%",
+        "top_problema": "Predicción de demanda inexacta",
+        "top_herramienta": "Tenzo",
+        "top_objecion": "El sector es muy tradicional",
+        "señal_prioridad": "Web moderna con reservas online",
+    },
+    {
+        "sector_id": "09",
+        "nombre": "Gimnasios y Centros Deportivos",
+        "subsector": "Deporte y Bienestar",
+        "fit": "Alto",
+        "tamano_mercado": "~5.800 centros",
+        "facturacion_agregada": "~3.200M€/año",
+        "adopcion_ia": "Media-alta",
+        "top_problema": "Baja retención",
+        "top_herramienta": "Virtuagym",
+        "top_objecion": "No tenemos presupuesto",
+        "señal_prioridad": "Web moderna con app o reservas online",
+    },
+    {
+        "sector_id": "10",
+        "nombre": "Clínicas de Estética y Centros de Belleza",
+        "subsector": "Salud y Bienestar - Estética",
+        "fit": "Alto",
+        "tamano_mercado": "Cientos de centros",
+        "facturacion_agregada": "Cientos de M€",
+        "adopcion_ia": "Media-alta",
+        "top_problema": "Agenda con huecos improductivos",
+        "top_herramienta": "HubSpot",
+        "top_objecion": "Nuestras clientes no usarían una app",
+        "señal_prioridad": "Web moderna con reservas online",
+    },
+]
+
+# KPIs
+c1, c2, c3, c4 = st.columns(4)
+with c1:
+    st.metric("Sectores", len(sectores))
+with c2:
+    st.metric("Fit muy alto", sum(1 for s in sectores if s["fit"] == "Muy alto"))
+with c3:
+    st.metric("Fit alto", sum(1 for s in sectores if s["fit"] == "Alto"))
+with c4:
+    st.metric("Campos por sector", len(sectores[0].keys()))
+
+st.subheader("Filtros")
+
+fit_sel = st.multiselect(
+    "Fit",
+    options=["Muy alto", "Alto"],
+    default=["Muy alto", "Alto"]
+)
+
+sectores_filt = [s for s in sectores if s["fit"] in fit_sel]
+
+if not sectores_filt:
+    st.warning("No hay sectores con ese filtro. Selecciona otro fit.")
+    st.stop()
+
+sector_sel = st.selectbox(
+    "Selecciona un sector",
+    options=[s["nombre"] for s in sectores_filt]
+)
+
+sec_row = next(s for s in sectores_filt if s["nombre"] == sector_sel)
+
+st.subheader(f"Sector: {sec_row['nombre']}")
+c1, c2, c3 = st.columns(3)
+with c1:
+    st.info(f"Tamaño: {sec_row['tamano_mercado']}")
+with c2:
+    st.info(f"Facturación: {sec_row['facturacion_agregada']}")
+with c3:
+    st.info(f"Adopción IA: {sec_row['adopcion_ia']}")
+
+st.markdown("### Ficha rápida")
+st.write(f"**Subsector:** {sec_row['subsector']}")
+st.write(f"**Problema principal:** {sec_row['top_problema']}")
+st.write(f"**Herramienta IA:** {sec_row['top_herramienta']}")
+st.write(f"**Objeción típica:** {sec_row['top_objecion']}")
+st.write(f"**Señal de prioridad:** {sec_row['señal_prioridad']}")
