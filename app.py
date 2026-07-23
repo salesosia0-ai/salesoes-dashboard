@@ -15,10 +15,37 @@ sectores = [
         "tamano_mercado": "~27.000 asesorías",
         "facturacion_agregada": "~8.500M€/año",
         "adopcion_ia": "~35%",
-        "top_problema": "Introducción manual de datos de clientes",
-        "top_herramienta": "Fintonic Business",
-        "top_objecion": "No tenemos presupuesto",
-        "señal_prioridad": "Web moderna con portal del cliente",
+        "problemas": [
+            "Introducción manual de datos de clientes",
+            "Conciliación bancaria y categorización de gastos manual",
+            "Informes trimestrales/IVA repetitivos y poco personalizados",
+            "Dificultad para escalar sin aumentar personal administrativo",
+        ],
+        "herramientas_ia": [
+            "Fintonic Business",
+            "Anytype",
+            "Zapier + ChatGPT para flujos de informes",
+        ],
+        "preguntas_descubrimiento": [
+            "¿Cuánto tiempo pasáis introduciendo datos de clientes manualmente?",
+            "¿Cómo gestionáis hoy la conciliación y clasificación de gastos?",
+            "¿Qué tipo de informes estáis entregando a clientes hoy?",
+            "¿Os gustaría automatizar parte de la preparación de IVA y trimestrales?",
+        ],
+        "objeciones": [
+            {
+                "objecion": "No tenemos presupuesto",
+                "respuesta": "Empezamos con un piloto pequeño que se paga con el ahorro de tiempo en 1–2 meses.",
+            },
+            {
+                "objecion": "Nuestros clientes no valoran la tecnología",
+                "respuesta": "No se trata de venderles tecnología, sino de darles más tiempo y claridad en sus números.",
+            },
+        ],
+        "señal_prioridad": [
+            "Web moderna con portal del cliente",
+            "Ofrecen productos digitales (nóminas, high-ticket, etc.)",
+        ],
     },
     {
         "sector_id": "02",
@@ -28,10 +55,35 @@ sectores = [
         "tamano_mercado": "~140.000 abogados",
         "facturacion_agregada": "~12.000M€/año",
         "adopcion_ia": "~28%",
-        "top_problema": "Búsqueda de jurisprudencia manual",
-        "top_herramienta": "LegesAI",
-        "top_objecion": "No tenemos presupuesto",
-        "señal_prioridad": "Web moderna con portal del cliente",
+        "problemas": [
+            "Búsqueda de jurisprudencia y doctrina manual",
+            "Redacción de escritos y contratos muy repetitiva",
+            "Gestión del tiempo por abogado poco eficiente",
+        ],
+        "herramientas_ia": [
+            "LegesAI",
+            "ChatGPT avanzado para esbozos y resúmenes",
+            "Notion AI para gestión de conocimiento interno",
+        ],
+        "preguntas_descubrimiento": [
+            "¿Cuánto tiempo pasáis buscando jurisprudencia y doctrina?",
+            "¿Tenéis plantillas estandarizadas para escritos y contratos?",
+            "¿Cómo medís la productividad de cada abogado?",
+        ],
+        "objeciones": [
+            {
+                "objecion": "No tenemos presupuesto",
+                "respuesta": "Empezamos con un piloto en un área (ej. laboral) donde el ROI es muy rápido.",
+            },
+            {
+                "objecion": "La abogacía es muy artesanal",
+                "respuesta": "La IA no reemplaza el criterio, solo automatiza la parte repetitiva de la búsqueda y redacción.",
+            },
+        ],
+        "señal_prioridad": [
+            "Web moderna con portal del cliente",
+            "Especialización en áreas con alto volumen de escritos",
+        ],
     },
     {
         "sector_id": "03",
@@ -41,10 +93,35 @@ sectores = [
         "tamano_mercado": "~24.000 clínicas",
         "facturacion_agregada": "~1.305M€",
         "adopcion_ia": "~25%",
-        "top_problema": "Agenda con huecos improductivos",
-        "top_herramienta": "Overjet",
-        "top_objecion": "La odontología es muy manual",
-        "señal_prioridad": "Web moderna con cita online",
+        "problemas": [
+            "Agenda con huecos improductivos",
+            "Seguimiento de pacientes post-tratamiento manual",
+            "Falta de upselling sistemático de tratamientos",
+        ],
+        "herramientas_ia": [
+            "Overjet",
+            "Chatbots para recordatorios de citas",
+            "CRM con automatizaciones (HubSpot, Pipedrive)",
+        ],
+        "preguntas_descubrimiento": [
+            "¿Cuántos huecos improductivos tenéis en agenda por semana?",
+            "¿Cómo seguís a los pacientes tras un tratamiento?",
+            "¿Tenéis algún proceso sistemático para proponer tratamientos adicionales?",
+        ],
+        "objeciones": [
+            {
+                "objecion": "La odontología es muy manual",
+                "respuesta": "La IA no toca el sillón, pero sí llena la agenda y mejora el seguimiento.",
+            },
+            {
+                "objecion": "Ya usamos un software de clínica",
+                "respuesta": "Lo integraremos o partiremos de ahí para añadir automatizaciones, no para sustituirlo.",
+            },
+        ],
+        "señal_prioridad": [
+            "Web moderna con cita online",
+            "Clínicas con varios doctores y varios tratamientos",
+        ],
     },
     {
         "sector_id": "04",
@@ -54,10 +131,35 @@ sectores = [
         "tamano_mercado": "~7.032 clínicas",
         "facturacion_agregada": "~3.069M€/año",
         "adopcion_ia": "~15%",
-        "top_problema": "Agenda con huecos improductivos",
-        "top_herramienta": "SignalPET",
-        "top_objecion": "La veterinaria es muy manual",
-        "señal_prioridad": "Web moderna con cita online",
+        "problemas": [
+            "Agenda con huecos improductivos",
+            "Falta de seguimiento de campañas de vacunación y desparasitación",
+            "Poca fidelización sistemática de clientes",
+        ],
+        "herramientas_ia": [
+            "SignalPET",
+            "Chatbots para recordatorios de vacunas",
+            "CRM con automatizaciones",
+        ],
+        "preguntas_descubrimiento": [
+            "¿Cuántos huecos improductivos tenéis en agenda por semana?",
+            "¿Cómo gestionáis hoy los recordatorios de vacunas y desparasitaciones?",
+            "¿Tenéis algún programa de fidelización activo?",
+        ],
+        "objeciones": [
+            {
+                "objecion": "La veterinaria es muy manual",
+                "respuesta": "La IA no toca al paciente, pero ayuda a llenar agenda y fidelizar dueños.",
+            },
+            {
+                "objecion": "Ya usamos un software veterinario",
+                "respuesta": "Partimos de vuestro software y añadimos capas de automatización encima.",
+            },
+        ],
+        "señal_prioridad": [
+            "Web moderna con cita online",
+            "Clínicas con varios veterinarios y servicios avanzados",
+        ],
     },
     {
         "sector_id": "05",
@@ -67,10 +169,35 @@ sectores = [
         "tamano_mercado": "~60.683 agencias",
         "facturacion_agregada": "~9.400M€/año",
         "adopcion_ia": "~20%",
-        "top_problema": "Captación manual de propiedades",
-        "top_herramienta": "Idealista AVM",
-        "top_objecion": "El sector es muy relacional",
-        "señal_prioridad": "Web moderna con buscador avanzado",
+        "problemas": [
+            "Captación manual de propiedades",
+            "Descripciones de inmuebles repetitivas y poco persuasivas",
+            "Filtrado de leads poco eficiente",
+        ],
+        "herramientas_ia": [
+            "Idealista AVM",
+            "ChatGPT para descripciones de inmuebles",
+            "CRM con scoring de leads",
+        ],
+        "preguntas_descubrimiento": [
+            "¿Cuánto tiempo pasáis captando y describiendo propiedades?",
+            "¿Cómo filtráis hoy los leads que llegan de portales?",
+            "¿Tenéis algún proceso de seguimiento tras la primera visita?",
+        ],
+        "objeciones": [
+            {
+                "objecion": "El sector es muy relacional",
+                "respuesta": "La IA no reemplaza la relación, sino que libera tiempo para que la cuidéis más.",
+            },
+            {
+                "objecion": "Ya usamos Idealista y portales",
+                "respuesta": "Exacto, ahí es donde metemos IA para mejorar descripciones, pricing y seguimiento.",
+            },
+        ],
+        "señal_prioridad": [
+            "Web moderna con buscador avanzado",
+            "Agencias con varios agentes y carteras altas",
+        ],
     },
     {
         "sector_id": "06",
@@ -80,10 +207,35 @@ sectores = [
         "tamano_mercado": "~14.613 hoteles",
         "facturacion_agregada": "~125.340M€",
         "adopcion_ia": "~25%",
-        "top_problema": "Pricing estático o reactivo",
-        "top_herramienta": "Duetto",
-        "top_objecion": "El sector es muy tradicional",
-        "señal_prioridad": "Web moderna con motor de reservas",
+        "problemas": [
+            "Pricing estático o reactivo",
+            "Falta de personalización en la experiencia del huésped",
+            "Reservas directas bajas frente a OTAs",
+        ],
+        "herramientas_ia": [
+            "Duetto",
+            "Chatbots para pre-check-in y preguntas frecuentes",
+            "CRM hotelero con automatizaciones",
+        ],
+        "preguntas_descubrimiento": [
+            "¿Cómo fijáis hoy los precios de habitación?",
+            "¿Qué porcentaje de reservas son directas vs OTAs?",
+            "¿Tenéis algún proceso de personalización antes/durante la estancia?",
+        ],
+        "objeciones": [
+            {
+                "objecion": "El sector es muy tradicional",
+                "respuesta": "La IA se usa ya en cadenas grandes; la clave es empezar con un caso claro (pricing o reservas).",
+            },
+            {
+                "objecion": "Ya usamos un PMS",
+                "respuesta": "Partimos de vuestro PMS y añadimos capas de IA para pricing y comunicación.",
+            },
+        ],
+        "señal_prioridad": [
+            "Web moderna con motor de reservas",
+            "Hoteles con varios tipos de habitación y temporadas",
+        ],
     },
     {
         "sector_id": "07",
@@ -93,10 +245,35 @@ sectores = [
         "tamano_mercado": "~400k-500k viviendas",
         "facturacion_agregada": "~25.000-35.000M€",
         "adopcion_ia": "~15%",
-        "top_problema": "Pricing estático o intuitivo",
-        "top_herramienta": "PriceLabs",
-        "top_objecion": "Los apartamentos se gestionan manualmente",
-        "señal_prioridad": "Web moderna con motor de reservas",
+        "problemas": [
+            "Pricing estático o intuitivo",
+            "Gestión de mensajes repetitivos con huéspedes",
+            "Falta de centralización de reservas directas",
+        ],
+        "herramientas_ia": [
+            "PriceLabs",
+            "Chatbots para WhatsApp y email",
+            "Herramientas de canal + automatizaciones",
+        ],
+        "preguntas_descubrimiento": [
+            "¿Cómo fijáis hoy los precios por temporada?",
+            "¿Cuánto tiempo pasáis respondiendo mensajes repetitivos?",
+            "¿Qué porcentaje de reservas os llegan directas vs plataformas?",
+        ],
+        "objeciones": [
+            {
+                "objecion": "Los apartamentos se gestionan manualmente",
+                "respuesta": "La IA automatiza pricing y mensajes, no la limpieza ni el check-in físico.",
+            },
+            {
+                "objecion": "Ya usamos Airbnb/Booking",
+                "respuesta": "Empezamos optimizando precios y mensajes ahí, y luego impulsamos reservas directas.",
+            },
+        ],
+        "señal_prioridad": [
+            "Web moderna con motor de reservas",
+            "Gestores con varias viviendas (10+)",
+        ],
     },
     {
         "sector_id": "08",
@@ -106,10 +283,35 @@ sectores = [
         "tamano_mercado": "~160.000 restaurantes",
         "facturacion_agregada": "~85.000-95.000M€",
         "adopcion_ia": "~18%",
-        "top_problema": "Predicción de demanda inexacta",
-        "top_herramienta": "Tenzo",
-        "top_objecion": "El sector es muy tradicional",
-        "señal_prioridad": "Web moderna con reservas online",
+        "problemas": [
+            "Predicción de demanda inexacta",
+            "Desperdicio de comida por sobre-compra",
+            "Falta de fidelización sistemática de clientes",
+        ],
+        "herramientas_ia": [
+            "Tenzo",
+            "Chatbots para reservas y preguntas frecuentes",
+            "CRM con campañas de fidelización",
+        ],
+        "preguntas_descubrimiento": [
+            "¿Cómo decidís cuánta comida comprar cada semana?",
+            "¿Cuánto estimáis que tiráis de comida por semana?",
+            "¿Tenéis algún programa de fidelización o base de datos de clientes?",
+        ],
+        "objeciones": [
+            {
+                "objecion": "El sector es muy tradicional",
+                "respuesta": "La IA no cocina, pero ayuda a comprar mejor y llenar mesas en horas bajas.",
+            },
+            {
+                "objecion": "Ya usamos reservas online",
+                "respuesta": "Perfecto, ahí es donde metemos IA para forecasting y fidelización.",
+            },
+        ],
+        "señal_prioridad": [
+            "Web moderna con reservas online",
+            "Restaurantes con varios turnos y carta extensa",
+        ],
     },
     {
         "sector_id": "09",
@@ -119,10 +321,35 @@ sectores = [
         "tamano_mercado": "~5.800 centros",
         "facturacion_agregada": "~3.200M€/año",
         "adopcion_ia": "Media-alta",
-        "top_problema": "Baja retención",
-        "top_herramienta": "Virtuagym",
-        "top_objecion": "No tenemos presupuesto",
-        "señal_prioridad": "Web moderna con app o reservas online",
+        "problemas": [
+            "Baja retención de abonados",
+            "Falta de personalización en rutinas y seguimiento",
+            "Comunicación genérica y poco segmentada",
+        ],
+        "herramientas_ia": [
+            "Virtuagym",
+            "Chatbots para dudas y recordatorios",
+            "CRM con segmentación y automatizaciones",
+        ],
+        "preguntas_descubrimiento": [
+            "¿Cuál es vuestra tasa de bajas mensual/anual?",
+            "¿Cómo seguís a los abonados que dejan de venir?",
+            "¿Ofrecéis planes personalizados o solo acceso general?",
+        ],
+        "objeciones": [
+            {
+                "objecion": "No tenemos presupuesto",
+                "respuesta": "Empezamos con un piloto en retención que se paga con menos bajas.",
+            },
+            {
+                "objecion": "Nuestros clientes no usarían una app",
+                "respuesta": "No hace falta que la usen; la IA trabaja desde el lado del gimnasio (mensajes, análisis).",
+            },
+        ],
+        "señal_prioridad": [
+            "Web moderna con app o reservas online",
+            "Centros con varias salas y actividades",
+        ],
     },
     {
         "sector_id": "10",
@@ -132,10 +359,35 @@ sectores = [
         "tamano_mercado": "Cientos de centros",
         "facturacion_agregada": "Cientos de M€",
         "adopcion_ia": "Media-alta",
-        "top_problema": "Agenda con huecos improductivos",
-        "top_herramienta": "HubSpot",
-        "top_objecion": "Nuestras clientes no usarían una app",
-        "señal_prioridad": "Web moderna con reservas online",
+        "problemas": [
+            "Agenda con huecos improductivos",
+            "Falta de seguimiento post-tratamiento",
+            "Poco upselling sistemático de tratamientos",
+        ],
+        "herramientas_ia": [
+            "HubSpot",
+            "Chatbots para recordatorios y citas",
+            "CRM con automatizaciones de marketing",
+        ],
+        "preguntas_descubrimiento": [
+            "¿Cuántos huecos improductivos tenéis en agenda por semana?",
+            "¿Cómo seguís a las clientas tras un tratamiento?",
+            "¿Tenéis algún proceso para proponer tratamientos complementarios?",
+        ],
+        "objeciones": [
+            {
+                "objecion": "Nuestras clientes no usarían una app",
+                "respuesta": "La IA no necesita que usen app; automatiza mensajes y seguimiento desde vuestro lado.",
+            },
+            {
+                "objecion": "Ya usamos un software de gestión",
+                "respuesta": "Partimos de él y añadimos capas de automatización y mensajes inteligentes.",
+            },
+        ],
+        "señal_prioridad": [
+            "Web moderna con reservas online",
+            "Centros con varios tratamientos de alto ticket",
+        ],
     },
 ]
 
@@ -182,7 +434,25 @@ with c3:
 
 st.markdown("### Ficha rápida")
 st.write(f"**Subsector:** {sec_row['subsector']}")
-st.write(f"**Problema principal:** {sec_row['top_problema']}")
-st.write(f"**Herramienta IA:** {sec_row['top_herramienta']}")
-st.write(f"**Objeción típica:** {sec_row['top_objecion']}")
-st.write(f"**Señal de prioridad:** {sec_row['señal_prioridad']}")
+
+st.markdown("### Problemas principales")
+for p in sec_row["problemas"]:
+    st.write(f"- {p}")
+
+st.markdown("### Herramientas IA de referencia")
+for h in sec_row["herramientas_ia"]:
+    st.write(f"- {h}")
+
+st.markdown("### Preguntas de descubrimiento")
+for q in sec_row["preguntas_descubrimiento"]:
+    st.write(f"- {q}")
+
+st.markdown("### Objeciones típicas y respuestas")
+for o in sec_row["objeciones"]:
+    st.write(f"**Objeción:** {o['objecion']}")
+    st.write(f"*Respuesta:* {o['respuesta']}")
+    st.write("")
+
+st.markdown("### Señales de prioridad")
+for s in sec_row["señal_prioridad"]:
+    st.write(f"- {s}")
