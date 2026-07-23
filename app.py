@@ -154,7 +154,7 @@ for nombre, datos in sectores_raw.items():
         "facturacion_agregada_num": fact_map.get(nombre, 10000),
         "adopcion_ia_num": ia_map.get(nombre, 25),
     })
-    
+
 df = pd.DataFrame(sectores)
 df["nombre_corto"] = df["nombre"].str.replace(" y ", " & ")
 
@@ -512,23 +512,28 @@ elif opcion == "Explorador de sectores":
     else:
         st.write("Sin señales registradas.")
 
+    # CORRECCIÓN OBLIGATORIA: Apartado 11
     st.markdown("### Indicadores de prioridad")
-    indicadores = sec_row.get("indicadores_prioridad", [])
-    if isinstance(indicadores, str):
-        st.write(indicadores)
-    elif indicadores:
-        for i in indicadores:
+    # Extraer directamente del JSON raw
+    sec_raw = sectores_raw.get(sec_row["nombre"], {})
+    indicadores_raw = sec_raw.get("11. Indicadores de prioridad", [])
+    if isinstance(indicadores_raw, str):
+        st.write(indicadores_raw)
+    elif indicadores_raw:
+        for i in indicadores_raw:
             st.write(f"- {i}")
     else:
         st.write("Sin indicadores registrados.")
 
+    # CORRECCIÓN OBLIGATORIA: Apartado 12
     st.markdown("### Señales de alarma")
-    senales_alarma = sec_row.get("senales_alarma", [])
-    if isinstance(senales_alarma, str):
-        st.write(senales_alarma)
-    elif senales_alarma:
-        for s in senales_alarma:
-            st.write(f"- {s}")
+    # Extraer directamente del JSON raw
+    alarmas_raw = sec_raw.get("12. Señales de alarma", [])
+    if isinstance(alarmas_raw, str):
+        st.write(alarmas_raw)
+    elif alarmas_raw:
+        for a in alarmas_raw:
+            st.write(f"- {a}")
     else:
         st.write("Sin señales de alarma registradas.")
 
