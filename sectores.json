@@ -1,852 +1,777 @@
-{
-  "1. Asesorías y Gestorías": {
-    "1. Descripción": "Qué hacen: Asesorías y gestorías ofrecen servicios de gestión administrativa, contable, fiscal y laboral para autónomos y pymes.\nCómo ganan dinero: Cuotas mensuales por servicios recurrentes (contabilidad, fiscal, laboral) y proyectos puntuales (constituciones, etc.).\nTamaño habitual: Micro (1–3 personas), Pequeño (3–10 personas), Mediano (10–50 personas).\nPerfil más habitual: Asesoría local con 3–10 personas, gestión manual de tareas, sin CRM ni automatización.\nDatos de mercado: ~100.000 asesorías en España, facturación ~15.000M€.",
-    "2. Principales problemas": [
-      "Muchas tareas repetitivas y administrativas",
-      "Dependencia del conocimiento del socio/encargado",
-      "Falta de seguimiento de clientes y tareas",
-      "Márgenes ajustados por modelo de cuota fija",
-      "Dificultad para escalar sin contratar más personal"
+import streamlit as st
+import plotly.express as px
+import pandas as pd
+import json
+
+# -----------------------
+# CONFIGURACIÓN Y ESTILO
+# -----------------------
+
+st.set_page_config(
+    page_title="SalesOS IA",
+    page_icon="📊",
+    layout="wide"
+)
+
+COLOR_BG = "#f4f6f8"
+COLOR_CARD = "#ffffff"
+COLOR_TEXT = "#0f172a"
+COLOR_TEXT_SEC = "#475569"
+COLOR_ACCENT = "#2563eb"
+
+st.markdown(f"""
+    <style>
+    .stApp {{
+        background-color: {COLOR_BG};
+        color: {COLOR_TEXT};
+        font-family: "Inter", system-ui, -apple-system, sans-serif;
+    }}
+    .stMetric {{
+        background-color: {COLOR_CARD};
+        border-radius: 12px;
+        padding: 18px;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+    }}
+    .stMetricLabel {{
+        color: {COLOR_TEXT_SEC};
+        font-size: 14px;
+    }}
+    .stMetricValue {{
+        color: {COLOR_ACCENT};
+        font-size: 24px;
+        font-weight: 700;
+    }}
+    h1 {{
+        font-size: 28px;
+        font-weight: 700;
+        color: {COLOR_TEXT};
+        margin-bottom: 10px;
+    }}
+    h2, h3 {{
+        font-size: 20px;
+        font-weight: 600;
+        color: {COLOR_TEXT};
+    }}
+    .stTabs [data-baseweb="tab-list"] {{
+        gap: 12px;
+    }}
+    .stTabs [data-baseweb="tab"] {{
+        border-radius: 8px;
+        padding: 8px 16px;
+    }}
+    </style>
+""", unsafe_allow_html=True)
+
+# -----------------------
+# CARGA DE DATOS
+# -----------------------
+
+@st.cache_data
+def load_sectores():
+    with open("sectores.json", "r", encoding="utf-8") as f:
+        return json.load(f)
+
+sectores_raw = load_sectores()
+
+# Transformar el JSON nuevo a la estructura que el app.py original esperaba
+sectores = []
+for nombre, datos in sectores_raw.items():
+    descripcion = datos.get("1. Descripción", "")
+    
+    # Extraer datos numéricos estimados de la descripción (o defaults)
+    tamano_map = {
+        "1. Asesorías y Gestorías": 100000,
+        "2. Clínicas Dentales": 15000,
+        "3. Inmobiliarias": 30000,
+        "4. Hoteles": 15000,
+        "5. Restaurantes": 200000,
+        "6. Apartamentos Turísticos": 400000,
+        "7. Talleres Mecánicos": 30000,
+        "8. Constructoras": 100000,
+        "9. Empresas de Transporte": 50000,
+        "10. Academias y Centros de Formación": 20000,
+    }
+    
+    fact_map = {
+        "1. Asesorías y Gestorías": 15000,
+        "2. Clínicas Dentales": 3000,
+        "3. Inmobiliarias": 10000,
+        "4. Hoteles": 25000,
+        "5. Restaurantes": 50000,
+        "6. Apartamentos Turísticos": 30000,
+        "7. Talleres Mecánicos": 15000,
+        "8. Constructoras": 50000,
+        "9. Empresas de Transporte": 25000,
+        "10. Academias y Centros de Formación": 5000,
+    }
+    
+    ia_map = {
+        "1. Asesorías y Gestorías": 15,
+        "2. Clínicas Dentales": 25,
+        "3. Inmobiliarias": 30,
+        "4. Hoteles": 35,
+        "5. Restaurantes": 20,
+        "6. Apartamentos Turísticos": 40,
+        "7. Talleres Mecánicos": 15,
+        "8. Constructoras": 20,
+        "9. Empresas de Transporte": 25,
+        "10. Academias y Centros de Formación": 20,
+    }
+    
+    fit_map = {
+        "1. Asesorías y Gestorías": "Muy alto",
+        "2. Clínicas Dentales": "Muy alto",
+        "3. Inmobiliarias": "Muy alto",
+        "4. Hoteles": "Muy alto",
+        "5. Restaurantes": "Muy alto",
+        "6. Apartamentos Turísticos": "Alto",
+        "7. Talleres Mecánicos": "Alto",
+        "8. Constructoras": "Alto",
+        "9. Empresas de Transporte": "Alto",
+        "10. Academias y Centros de Formación": "Alto",
+    }
+    
+    sectores.append({
+        "nombre": nombre,
+        "subsector": "Pymes y autónomos",
+        "descripcion": descripcion,
+        "problemas": datos.get("2. Principales problemas", []),
+        "procesos_manuales": datos.get("3. Procesos manuales", []),
+        "oportunidades_automatizacion": datos.get("4. Oportunidades de automatización", []),
+        "aplicaciones_ia": datos.get("5. Aplicaciones de IA", []),
+        "problemas_legales": datos.get("6. Problemas legales", []),
+        "senales_problema": datos.get("7. Señales de problema", []),
+        "indicadores_prioridad": datos.get("11. Indicadores de prioridad", []),
+        "senales_alarma": datos.get("12. Señales de alarma", []),
+        "preguntas_descubrimiento": datos.get("8. 15 preguntas de descubrimiento", []),
+        "objeciones": datos.get("9. 15 objeciones", []),
+        "respuestas_objeciones": datos.get("10. Respuestas a objeciones", []),
+        "tamano_mercado": descripcion,
+        "facturacion_agregada": descripcion,
+        "adopcion_ia": descripcion,
+        "fit": fit_map.get(nombre, "Alto"),
+        "tamano_mercado_num": tamano_map.get(nombre, 50000),
+        "facturacion_agregada_num": fact_map.get(nombre, 10000),
+        "adopcion_ia_num": ia_map.get(nombre, 25),
+    })
+
+df = pd.DataFrame(sectores)
+df["nombre_corto"] = df["nombre"].str.replace(" y ", " & ")
+
+# -----------------------
+# ESTADO (favoritos, notas, modo reunión)
+# -----------------------
+
+if "favoritos" not in st.session_state:
+    st.session_state.favoritos = []
+if "notas" not in st.session_state:
+    st.session_state.notas = {s["nombre"]: "" for s in sectores}
+if "modo_reunion" not in st.session_state:
+    st.session_state.modo_reunion = False
+
+# -----------------------
+# SIDEBAR – MENÚ
+# -----------------------
+
+st.sidebar.title("SalesOS IA")
+st.sidebar.markdown("Menú")
+
+opcion = st.sidebar.radio(
+    "Navegación",
+    [
+        "Inicio / Resumen",
+        "Explorador de sectores",
+        "Estrategia comercial",
+        "Comparador",
+        "Priorización",
+        "Export / API",
     ],
-    "3. Procesos manuales": "- Gestión de tareas y recordatorios\n- Seguimiento de clientes\n- Generación de informes y documentos\n- Facturación y cobros\n- Onboarding de clientes",
-    "4. Oportunidades de automatización": [
-      "Recordatorios automáticos de tareas y documentos",
-      "Secuencias de comunicación con clientes (onboarding, seguimiento)",
-      "Generación de informes y documentos con IA",
-      "Automatización de facturación y cobros",
-      "Análisis de rentabilidad por cliente"
-    ],
-    "5. Aplicaciones de IA": [
-      "Clasificación de documentos y emails",
-      "Extracción de información de facturas y documentos",
-      "Predicción de impagos y scoring de clientes",
-      "Generación de informes y resúmenes",
-      "Chatbots para preguntas frecuentes de clientes"
-    ],
-    "6. Problemas legales": "- RGPD (protección de datos personales)\n- Normativa contable y fiscal\n- Confidencialidad y secreto profesional\n- Normativa laboral",
-    "7. Señales de problema": [
-      "Tareas en Excel y papel",
-      "Sin seguimiento de clientes",
-      "Sin CRM o muy básico",
-      "No miden rentabilidad por cliente",
-      "Sin automatización"
-    ],
-    "8. 15 preguntas de descubrimiento": [
-      "¿Cómo gestionáis hoy las tareas y recordatorios?",
-      "¿Tenéis algún sistema de seguimiento de clientes?",
-      "¿Medís márgenes por cliente?",
-      "¿Cómo gestionáis la documentación y los documentos?",
-      "¿Tenéis recordatorios automáticos de tareas y documentos?",
-      "¿Qué % de clientes son recurrentes?",
-      "¿Usáis CRM? ¿Cuál?",
-      "¿Cómo gestionáis las llamadas y emails?",
-      "¿Tenéis campañas activas?",
-      "¿Qué parte del tiempo dedicáis a gestión vs asesoría?",
-      "¿Qué os gustaría automatizar?",
-      "¿Qué impacto tendría reducir tiempo administrativo un 20%?",
-      "¿Tenéis datos de clientes para segmentar?",
-      "¿Qué herramientas usáis hoy?",
-      "¿Qué os gustaría mejorar?"
-    ],
-    "9. 15 objeciones": [
-      "Sector tradicional",
-      "Ya usamos software",
-      "No tenemos tiempo",
-      "Es caro",
-      "Clientes no quieren muchos mensajes",
-      "Ya nos va bien",
-      "No queremos saturar",
-      "Última herramienta no sirvió",
-      "Preferimos seguir como siempre",
-      "No tenemos presupuesto",
-      "Preocupa privacidad",
-      "Ya tenemos suficientes clientes",
-      "No vemos claro el ROI",
-      "No queremos más proveedores",
-      "Esto no funcionará aquí"
-    ],
-    "10. Respuestas a objeciones": "Sector tradicional: La IA no reemplaza asesores, sino que automatiza tareas repetitivas.\nYa usamos software: Partimos de vuestro software actual.\nNo tenemos tiempo: Piloto pequeño en una tarea que más_duele.\nEs caro: Si reduce tiempo un 20%, se paga solo.\nClientes no quieren muchos mensajes: Mensajes útiles, no saturación.\nYa nos va bien: ¿Sostenible a medio plazo?\nNo queremos saturar: Menos mensajes, más relevantes.\nÚltima herramienta no sirvió: Indicadores y periodo de prueba.\nPreferimos seguir como siempre: Pequeños ajustes hoy evitan cambios dolorosos mañana.\nNo tenemos presupuesto: Piloto con objetivos claros.\nPreocupa privacidad: RGPD, cifrado, backups.\nYa tenemos suficientes clientes: Foco en mejorar márgenes y fidelización.\nNo vemos claro el ROI: Definimos qué mejora os haría decir 'sí'.\nNo queremos más proveedores: Simplificar.\nEsto no funcionará aquí: Asesorías que profesionalizan ganan.",
-    "11. Indicadores de prioridad": [
-      "Varios clientes (20+)",
-      "Web moderna con área de clientes",
-      "Inversión en marketing",
-      "Quiere reducir tiempo administrativo",
-      "Reseñas buenas"
-    ],
-    "12. Señales de alarma": [
-      "Muy pequeño (1–2 personas) sin crecer",
-      "Sin web o muy básica",
-      "\"Nos va bien así\"",
-      "Sin procesos",
-      "Resistencia",
-      "Sin presupuesto",
-      "Impagados",
-      "Alta rotación"
+    index=0,
+)
+
+st.sidebar.markdown("---")
+st.sidebar.markdown("### Herramientas")
+
+buscar = st.sidebar.text_input("🔍 Buscar por palabra clave", "")
+
+st.sidebar.markdown("---")
+st.sidebar.markdown("### Opciones")
+
+modo_reunion = st.sidebar.checkbox("Modo reunión", value=st.session_state.modo_reunion)
+st.session_state.modo_reunion = modo_reunion
+
+st.sidebar.markdown("---")
+if st.sidebar.button("📋 Limpiar favoritos"):
+    st.session_state.favoritos = []
+
+# -----------------------
+# UTILS
+# -----------------------
+
+def to_csv(df_local):
+    return df_local.to_csv(index=False).encode("utf-8")
+
+def safe_list(lst):
+    return lst if isinstance(lst, list) else []
+
+def safe_str(s):
+    return s if isinstance(s, str) else str(s) if s else ""
+
+# -----------------------
+# PÁGINAS
+# -----------------------
+
+if opcion == "Inicio / Resumen":
+    st.title("SalesOS IA")
+    st.markdown("Dashboard de inteligencia comercial por sectores.")
+
+    # KPIs globales
+    c1, c2, c3, c4 = st.columns(4)
+    with c1:
+        st.metric("Sectores", len(sectores))
+    with c2:
+        st.metric("Fit muy alto", sum(1 for s in sectores if s.get("fit") == "Muy alto"))
+    with c3:
+        st.metric("Fit alto", sum(1 for s in sectores if s.get("fit") == "Alto"))
+    with c4:
+        total_fact = sum(s.get("facturacion_agregada_num", 0) for s in sectores)
+        st.metric("Facturación agregada (aprox)", f"~{total_fact:,} M€")
+
+    st.markdown("---")
+
+    # Filtro por búsqueda
+    if buscar:
+        q = buscar.lower()
+        df_fil = df[
+            df["nombre"].str.lower().str.contains(q) |
+            df["subsector"].str.lower().str.contains(q) |
+            df["problemas"].apply(lambda x: any(q in str(p).lower() for p in safe_list(x))) |
+            df["aplicaciones_ia"].apply(lambda x: any(q in str(p).lower() for p in safe_list(x))) |
+            df["preguntas_descubrimiento"].apply(lambda x: any(q in str(p).lower() for p in safe_list(x)))
+        ]
+    else:
+        df_fil = df
+
+    if df_fil.empty:
+        st.warning("No se encontraron sectores con ese filtro.")
+    else:
+        # Gráficas en rejilla 2x2
+        row1_col1, row1_col2 = st.columns(2)
+        row2_col1, row2_col2 = st.columns(2)
+
+        # 1. Tamaño de mercado
+        with row1_col1:
+            st.subheader("Tamaño de mercado por sector")
+            fig_tamano = px.bar(
+                df_fil,
+                x="nombre_corto",
+                y="tamano_mercado_num",
+                title="Tamaño de mercado (nº de empresas / centros)",
+                labels={"nombre_corto": "Sector", "tamano_mercado_num": "Tamaño"},
+                color="tamano_mercado_num",
+                color_continuous_scale="Blues",
+            )
+            fig_tamano.update_traces(marker_line_color="white", marker_line_width=1)
+            fig_tamano.update_layout(
+                margin=dict(l=40, r=40, t=60, b=100),
+                showlegend=False,
+                xaxis_tickangle=-45,
+                title_font_size=16,
+                xaxis_title_font_size=13,
+                yaxis_title_font_size=13,
+                xaxis_tickfont_size=11,
+                yaxis_tickfont_size=11,
+                plot_bgcolor="rgba(0,0,0,0)",
+                paper_bgcolor="rgba(0,0,0,0)",
+                font_color=COLOR_TEXT,
+            )
+            st.plotly_chart(fig_tamano, use_container_width=True)
+            st.download_button(
+                label="📥 Descargar datos (CSV)",
+                data=to_csv(df_fil[["nombre", "tamano_mercado_num"]]),
+                file_name="tamano_mercado.csv",
+                mime="text/csv",
+            )
+
+        # 2. Facturación agregada
+        with row1_col2:
+            st.subheader("Facturación agregada por sector")
+            fig_fact = px.bar(
+                df_fil,
+                x="nombre_corto",
+                y="facturacion_agregada_num",
+                title="Facturación agregada (M€)",
+                labels={"nombre_corto": "Sector", "facturacion_agregada_num": "Facturación (M€)"},
+                color="facturacion_agregada_num",
+                color_continuous_scale="Greens",
+            )
+            fig_fact.update_traces(marker_line_color="white", marker_line_width=1)
+            fig_fact.update_layout(
+                margin=dict(l=40, r=40, t=60, b=100),
+                showlegend=False,
+                xaxis_tickangle=-45,
+                title_font_size=16,
+                xaxis_title_font_size=13,
+                yaxis_title_font_size=13,
+                xaxis_tickfont_size=11,
+                yaxis_tickfont_size=11,
+                plot_bgcolor="rgba(0,0,0,0)",
+                paper_bgcolor="rgba(0,0,0,0)",
+                font_color=COLOR_TEXT,
+            )
+            st.plotly_chart(fig_fact, use_container_width=True)
+            st.download_button(
+                label="📥 Descargar datos (CSV)",
+                data=to_csv(df_fil[["nombre", "facturacion_agregada_num"]]),
+                file_name="facturacion_agregada.csv",
+                mime="text/csv",
+            )
+
+        # 3. Adopción de IA
+        with row2_col1:
+            st.subheader("Adopción de IA por sector")
+            fig_ia = px.bar(
+                df_fil,
+                x="nombre_corto",
+                y="adopcion_ia_num",
+                title="Adopción estimada de IA (%)",
+                labels={"nombre_corto": "Sector", "adopcion_ia_num": "Adopción IA (%)"},
+                color="adopcion_ia_num",
+                color_continuous_scale="Purples",
+            )
+            fig_ia.update_traces(marker_line_color="white", marker_line_width=1)
+            fig_ia.update_layout(
+                margin=dict(l=40, r=40, t=60, b=100),
+                showlegend=False,
+                xaxis_tickangle=-45,
+                title_font_size=16,
+                xaxis_title_font_size=13,
+                yaxis_title_font_size=13,
+                xaxis_tickfont_size=11,
+                yaxis_tickfont_size=11,
+                plot_bgcolor="rgba(0,0,0,0)",
+                paper_bgcolor="rgba(0,0,0,0)",
+                font_color=COLOR_TEXT,
+            )
+            st.plotly_chart(fig_ia, use_container_width=True)
+            st.download_button(
+                label="📥 Descargar datos (CSV)",
+                data=to_csv(df_fil[["nombre", "adopcion_ia_num"]]),
+                file_name="adopcion_ia.csv",
+                mime="text/csv",
+            )
+
+        # 4. Matriz Fit vs Adopción
+        with row2_col2:
+            st.subheader("Matriz Fit vs Adopción de IA")
+            df_scatter = df_fil.copy()
+            df_scatter["fit_num"] = df_scatter["fit"].map({"Muy alto": 2, "Alto": 1})
+            fig_scatter = px.scatter(
+                df_scatter,
+                x="adopcion_ia_num",
+                y="fit_num",
+                text="nombre",
+                title="Fit vs Adopción de IA (cada punto es un sector)",
+                labels={
+                    "adopcion_ia_num": "Adopción IA (%)",
+                    "fit_num": "Fit (1=Alto, 2=Muy alto)",
+                },
+                size="facturacion_agregada_num",
+                color="fit",
+                color_discrete_map={"Muy alto": COLOR_ACCENT, "Alto": "#94a3b8"},
+                size_max=20,
+                opacity=0.8,
+            )
+            fig_scatter.update_traces(
+                textposition="top center",
+                marker_line_width=1,
+                marker_line_color="white",
+            )
+            fig_scatter.update_layout(
+                margin=dict(l=50, r=50, t=60, b=50),
+                title_font_size=16,
+                xaxis_title_font_size=13,
+                yaxis_title_font_size=13,
+                xaxis_tickfont_size=11,
+                yaxis_tickfont_size=11,
+                plot_bgcolor="rgba(0,0,0,0)",
+                paper_bgcolor="rgba(0,0,0,0)",
+                font_color=COLOR_TEXT,
+                legend_title_font_size=13,
+                legend_font_size=12,
+                xaxis_range=[0, max(df_scatter["adopcion_ia_num"]) * 1.2],
+                yaxis_range=[0.5, 2.5],
+            )
+            st.plotly_chart(fig_scatter, use_container_width=True)
+            st.download_button(
+                label="📥 Descargar datos (CSV)",
+                data=to_csv(df_scatter[["nombre", "fit", "adopcion_ia_num", "facturacion_agregada_num"]]),
+                file_name="matriz_fit_ia.csv",
+                mime="text/csv",
+            )
+
+elif opcion == "Explorador de sectores":
+    st.title("Explorador de sectores")
+    st.markdown("Navega sector a sector con toda la información estructurada.")
+
+    fit_sel = st.multiselect(
+        "Filtrar por Fit",
+        options=["Muy alto", "Alto"],
+        default=["Muy alto", "Alto"],
+    )
+
+    sectores_filt = [s for s in sectores if s.get("fit") in fit_sel]
+
+    if not sectores_filt:
+        st.warning("No hay sectores con ese filtro. Selecciona otro fit.")
+        st.stop()
+
+    sector_sel = st.selectbox(
+        "Selecciona un sector",
+        options=[s["nombre"] for s in sectores_filt],
+    )
+
+    sec_row = next(s for s in sectores_filt if s["nombre"] == sector_sel)
+
+    st.subheader(f"Sector: {sec_row['nombre']}")
+    c1, c2, c3, c4 = st.columns(4)
+    with c1:
+        st.info(f"Tamaño: {sec_row.get('tamano_mercado_num', 'N/A'):,}")
+    with c2:
+        st.info(f"Facturación: {sec_row.get('facturacion_agregada_num', 'N/A'):,} M€")
+    with c3:
+        st.info(f"Adopción IA: {sec_row.get('adopcion_ia_num', 'N/A')}%")
+    with c4:
+        st.info(f"Fit: {sec_row.get('fit', 'N/A')}")
+
+    st.markdown("---")
+
+    st.markdown("### Descripción")
+    st.write(sec_row.get("descripcion", "Sin descripción disponible."))
+
+    st.markdown("### Ficha rápida")
+    st.write(f"**Subsector:** {sec_row.get('subsector', 'N/A')}")
+
+    st.markdown("### Problemas principales")
+    problemas = sec_row.get("problemas", [])
+    if isinstance(problemas, str):
+        st.write(problemas)
+    elif problemas:
+        for p in problemas:
+            st.write(f"- {p}")
+    else:
+        st.write("Sin problemas registrados.")
+
+    st.markdown("### Procesos manuales habituales")
+    procesos = sec_row.get("procesos_manuales", [])
+    if isinstance(procesos, str):
+        st.write(procesos)
+    elif procesos:
+        for p in procesos:
+            st.write(f"- {p}")
+    else:
+        st.write("Sin procesos registrados.")
+
+    st.markdown("### Oportunidades de automatización")
+    oportunidades = sec_row.get("oportunidades_automatizacion", [])
+    if isinstance(oportunidades, str):
+        st.write(oportunidades)
+    elif oportunidades:
+        for o in oportunidades:
+            st.write(f"- {o}")
+    else:
+        st.write("Sin oportunidades registradas.")
+
+    st.markdown("### Aplicaciones de IA")
+    aplicaciones = sec_row.get("aplicaciones_ia", [])
+    if isinstance(aplicaciones, str):
+        st.write(aplicaciones)
+    elif aplicaciones:
+        for a in aplicaciones:
+            st.write(f"- {a}")
+    else:
+        st.write("Sin aplicaciones registradas.")
+
+    st.markdown("### Problemas legales / normativos")
+    legales = sec_row.get("problemas_legales", [])
+    if isinstance(legales, str):
+        st.write(legales)
+    elif legales:
+        for l in legales:
+            st.write(f"- {l}")
+    else:
+        st.write("Sin problemas legales registrados.")
+
+    st.markdown("### Señales de problema")
+    senales_prob = sec_row.get("senales_problema", [])
+    if isinstance(senales_prob, str):
+        st.write(senales_prob)
+    elif senales_prob:
+        for s in senales_prob:
+            st.write(f"- {s}")
+    else:
+        st.write("Sin señales registradas.")
+
+    # CORRECCIÓN OBLIGATORIA: Apartado 11
+    st.markdown("### Indicadores de prioridad")
+    # Extraer directamente del JSON raw
+    sec_raw = sectores_raw.get(sec_row["nombre"], {})
+    indicadores_raw = sec_raw.get("11. Indicadores de prioridad", [])
+    if isinstance(indicadores_raw, str):
+        st.write(indicadores_raw)
+    elif indicadores_raw:
+        for i in indicadores_raw:
+            st.write(f"- {i}")
+    else:
+        st.write("Sin indicadores registrados.")
+
+    # CORRECCIÓN OBLIGATORIA: Apartado 12
+    st.markdown("### Señales de alarma")
+    # Extraer directamente del JSON raw
+    alarmas_raw = sec_raw.get("12. Señales de alarma", [])
+    if isinstance(alarmas_raw, str):
+        st.write(alarmas_raw)
+    elif alarmas_raw:
+        for a in alarmas_raw:
+            st.write(f"- {a}")
+    else:
+        st.write("Sin señales de alarma registradas.")
+
+    st.markdown("### Preguntas de descubrimiento")
+    preguntas = sec_row.get("preguntas_descubrimiento", [])
+    if isinstance(preguntas, str):
+        st.write(preguntas)
+    elif preguntas:
+        for q in preguntas:
+            st.write(f"- {q}")
+    else:
+        st.write("Sin preguntas registradas.")
+
+    st.markdown("### Objeciones típicas y respuestas")
+    objeciones = sec_row.get("objeciones", [])
+    if isinstance(objeciones, str):
+        st.write(objeciones)
+    elif objeciones:
+        for o in objeciones:
+            st.write(f"- {o}")
+        st.write("")
+    else:
+        st.write("Sin objeciones registradas.")
+
+    st.markdown("### Respuestas a objeciones")
+    respuestas = sec_row.get("respuestas_objeciones", [])
+    if isinstance(respuestas, str):
+        st.write(respuestas)
+    elif respuestas:
+        for r in respuestas:
+            st.write(f"{r}")
+    else:
+        st.write("Sin respuestas registradas.")
+
+    # Notas por sector
+    st.markdown("---")
+    st.markdown("### Notas")
+    notas_val = st.text_area(
+        "Añade notas personales sobre este sector",
+        value=st.session_state.notas.get(sec_row["nombre"], ""),
+        key=f"notas_{sec_row['nombre']}",
+    )
+    st.session_state.notas[sec_row["nombre"]] = notas_val
+
+    # Favoritos
+    st.markdown("---")
+    if sec_row["nombre"] in st.session_state.favoritos:
+        if st.button("⭐ Quitar de favoritos"):
+            st.session_state.favoritos.remove(sec_row["nombre"])
+    else:
+        if st.button("⭐ Añadir a favoritos"):
+            st.session_state.favoritos.append(sec_row["nombre"])
+
+elif opcion == "Estrategia comercial":
+    st.title("Estrategia comercial")
+    st.markdown("Define tu estrategia de venta por sector.")
+
+    st.markdown("### Sectores por prioridad")
+    
+    # Agrupar por fit
+    muy_alto = [s for s in sectores if s.get("fit") == "Muy alto"]
+    alto = [s for s in sectores if s.get("fit") == "Alto"]
+    
+    c1, c2 = st.columns(2)
+    with c1:
+        st.subheader("🔴 Fit Muy Alto")
+        for s in muy_alto:
+            st.write(f"- **{s['nombre']}**: {s['tamano_mercado_num']:,} empresas, {s['facturacion_agregada_num']:,} M€")
+    
+    with c2:
+        st.subheader("🟠 Fit Alto")
+        for s in alto:
+            st.write(f"- **{s['nombre']}**: {s['tamano_mercado_num']:,} empresas, {s['facturacion_agregada_num']:,} M€")
+
+    st.markdown("---")
+    st.markdown("### Recomendaciones por sector")
+    
+    sector_estrategia = st.selectbox(
+        "Selecciona un sector para ver recomendaciones",
+        options=[s["nombre"] for s in sectores],
+    )
+    
+    sec_estrategia = next(s for s in sectores if s["nombre"] == sector_estrategia)
+    
+    st.markdown(f"**{sec_estrategia['nombre']}**")
+    st.write(f"**Tamaño:** {sec_estrategia['tamano_mercado_num']:,} empresas")
+    st.write(f"**Facturación:** {sec_estrategia['facturacion_agregada_num']:,} M€")
+    st.write(f"**Adopción IA:** {sec_estrategia['adopcion_ia_num']}%")
+    st.write(f"**Fit:** {sec_estrategia['fit']}")
+    
+    st.markdown("**Problemas principales:**")
+    problemas = sec_estrategia.get("problemas", [])
+    if isinstance(problemas, str):
+        st.write(problemas)
+    elif problemas:
+        for p in problemas[:5]:
+            st.write(f"- {p}")
+    
+    st.markdown("**Aplicaciones de IA:**")
+    ia = sec_estrategia.get("aplicaciones_ia", [])
+    if isinstance(ia, str):
+        st.write(ia)
+    elif ia:
+        for i in ia[:5]:
+            st.write(f"- {i}")
+
+elif opcion == "Comparador":
+    st.title("Comparador de sectores")
+    st.markdown("Compara hasta 3 sectores lado a lado.")
+
+    sectores_sel = st.multiselect(
+        "Selecciona sectores para comparar",
+        options=[s["nombre"] for s in sectores],
+        max_selections=3,
+    )
+
+    if len(sectores_sel) >= 2:
+        cols = st.columns(len(sectores_sel))
+        
+        for idx, nombre_sector in enumerate(sectores_sel):
+            with cols[idx]:
+                sec = next(s for s in sectores if s["nombre"] == nombre_sector)
+                st.markdown(f"#### {sec['nombre']}")
+                
+                st.write(f"**Tamaño:** {sec['tamano_mercado_num']:,}")
+                st.write(f"**Facturación:** {sec['facturacion_agregada_num']:,} M€")
+                st.write(f"**Adopción IA:** {sec['adopcion_ia_num']}%")
+                st.write(f"**Fit:** {sec['fit']}")
+                
+                st.markdown("**Problemas:**")
+                problemas = sec.get("problemas", [])
+                if isinstance(problemas, str):
+                    st.write(problemas[:200] + "...")
+                elif problemas:
+                    for p in problemas[:3]:
+                        st.write(f"- {p}")
+                
+                st.markdown("**IA:**")
+                ia = sec.get("aplicaciones_ia", [])
+                if isinstance(ia, str):
+                    st.write(ia[:200] + "...")
+                elif ia:
+                    for i in ia[:3]:
+                        st.write(f"- {i}")
+
+    elif len(sectores_sel) == 1:
+        st.info("Selecciona al menos 2 sectores para comparar.")
+    else:
+        st.info("Selecciona sectores arriba para comparar.")
+
+elif opcion == "Priorización":
+    st.title("Priorización")
+    st.markdown("Filtra por prioridad y sector.")
+
+    # Filtros
+    fit_filter = st.multiselect(
+        "Filtrar por Fit",
+        options=["Muy alto", "Alto"],
+        default=["Muy alto", "Alto"],
+    )
+    
+    tamano_min = st.slider(
+        "Tamaño mínimo de mercado",
+        min_value=0,
+        max_value=500000,
+        value=0,
+        step=10000,
+    )
+    
+    df_prior = df[
+        (df["fit"].isin(fit_filter)) &
+        (df["tamano_mercado_num"] >= tamano_min)
     ]
-  },
-  "2. Clínicas Dentales": {
-    "1. Descripción": "Qué hacen: Clínicas dentales ofrecen servicios de salud dental (limpiezas, ortodoncia, implantes, etc.).\nCómo ganan dinero: Consultas, tratamientos, Ortodoncia, Implantes, etc.\nTamaño habitual: Micro (1–3 personas), Pequeño (3–10 personas), Mediano (10–20 personas).\nPerfil más habitual: Clínica local con 1–3 dentistas, gestión manual de citas, sin CRM ni automatización.\nDatos de mercado: ~15.000 clínicas dentales en España, facturación ~3.000M€.",
-    "2. Principales problemas": [
-      "Gestión manual de citas y seguimiento de pacientes",
-      "Falta de seguimiento post-tratamiento",
-      "Márgenes ajustados por competencia",
-      "Dependencia del dentista/encargado",
-      "Falta de fidelización de pacientes"
-    ],
-    "3. Procesos manuales": "- Gestión de citas\n- Seguimiento de pacientes\n- Facturación\n- Marketing\n- Onboarding de pacientes",
-    "4. Oportunidades de automatización": [
-      "Recordatorios automáticos de citas y revisiones",
-      "Secuencias de fidelización post-tratamiento",
-      "Optimización de citas y huecos",
-      "Análisis de rentabilidad por tratamiento",
-      "Gestión de reseñas y reputación"
-    ],
-    "5. Aplicaciones de IA": [
-      "Predicción de abandono de pacientes",
-      "Scoring de pacientes por probabilidad de retorno",
-      "Optimización de citas",
-      "Análisis de rentabilidad por tratamiento",
-      "Chatbots para citas y preguntas frecuentes"
-    ],
-    "6. Problemas legales": "- RGPD (datos de salud, categoría especial)\n- Normativa sanitaria y de publicidad\n- Facturación electrónica\n- Garantías y reclamaciones",
-    "7. Señales de problema": [
-      "Citas en papel o WhatsApp",
-      "Sin recordatorios de revisiones",
-      "Sin CRM o muy básico",
-      "No miden rentabilidad por tratamiento",
-      "Sin fidelización"
-    ],
-    "8. 15 preguntas de descubrimiento": [
-      "¿Cómo gestionáis citas y seguimiento de pacientes?",
-      "¿Tenéis seguimiento post-tratamiento?",
-      "¿Medís márgenes por tratamiento?",
-      "¿Cómo gestionáis las llamadas y mensajes?",
-      "¿Tenéis recordatorios de revisiones?",
-      "¿Qué % de pacientes son recurrentes?",
-      "¿Usáis CRM? ¿Cuál?",
-      "¿Cómo gestionáis las reseñas?",
-      "¿Tenéis campañas activas?",
-      "¿Qué parte del tiempo dedicáis a gestión vs dentistas?",
-      "¿Qué os gustaría automatizar?",
-      "¿Qué impacto tendría reducir abandono un 10%?",
-      "¿Tenéis datos de pacientes para segmentar?",
-      "¿Qué herramientas usáis hoy?",
-      "¿Qué os gustaría mejorar?"
-    ],
-    "9. 15 objeciones": [
-      "Sector tradicional",
-      "Ya usamos software",
-      "No tenemos tiempo",
-      "Es caro",
-      "Pacientes no quieren muchos mensajes",
-      "Ya nos va bien",
-      "No queremos saturar",
-      "Última herramienta no sirvió",
-      "Preferimos seguir como siempre",
-      "No tenemos presupuesto",
-      "Preocupa privacidad",
-      "Ya tenemos suficientes pacientes",
-      "No vemos claro el ROI",
-      "No queremos más proveedores",
-      "Esto no funcionará aquí"
-    ],
-    "10. Respuestas a objeciones": "Sector tradicional: La IA no reemplaza dentistas, sino que ayuda a gestionar mejor.\nYa usamos software: Partimos de vuestro software actual.\nNo tenemos tiempo: Piloto pequeño en una tarea que más_duele.\nEs caro: Si reduce abandono un 10%, se paga solo.\nPacientes no quieren muchos mensajes: Mensajes útiles, no saturación.\nYa nos va bien: ¿Sostenible a medio plazo?\nNo queremos saturar: Menos mensajes, más relevantes.\nÚltima herramienta no sirvió: Indicadores y periodo de prueba.\nPreferimos seguir como siempre: Pequeños ajustes hoy evitan cambios dolorosos mañana.\nNo tenemos presupuesto: Piloto con objetivos claros.\nPreocupa privacidad: RGPD, cifrado, backups.\nYa tenemos suficientes pacientes: Foco en fidelizar y aumentar valor.\nNo vemos claro el ROI: Definimos qué mejora os haría decir 'sí'.\nNo queremos más proveedores: Simplificar.\nEsto no funcionará aquí: Clínicas que profesionalizan ganan.",
-    "11. Indicadores de prioridad": [
-      "Varios dentistas, varias sillas",
-      "Web moderna con citas online",
-      "Inversión en marketing",
-      "Quiere mejorar fidelización",
-      "Reseñas buenas"
-    ],
-    "12. Señales de alarma": [
-      "Muy pequeño (1–2 personas) sin crecer",
-      "Sin web o muy básica",
-      "\"Nos va bien así\"",
-      "Sin procesos",
-      "Resistencia",
-      "Sin presupuesto",
-      "Impagados",
-      "Alta rotación"
-    ]
-  },
-  "3. Inmobiliarias": {
-    "1. Descripción": "Qué hacen: Inmobiliarias gestionan compraventa y alquiler de propiedades, con captación, visitas, negociación y gestión documental.\nCómo ganan dinero: Comisiones por venta (2–5%) y alquiler (1 mes + gestión).\nTamaño habitual: Micro (1–3 personas), Pequeño (3–10 personas), Mediano (10–20 personas).\nPerfil más habitual: Inmobiliaria local con 3–10 personas, gestión manual de propiedades y clientes, sin CRM avanzado.\nDatos de mercado: ~30.000 inmobiliarias en España, facturación ~10.000M€.",
-    "2. Principales problemas": [
-      "Gestión manual de propiedades y clientes",
-      "Falta de seguimiento de leads y clientes",
-      "Márgenes ajustados por competencia",
-      "Dependencia del agente/encargado",
-      "Falta de fidelización de clientes"
-    ],
-    "3. Procesos manuales": "- Gestión de propiedades y clientes\n- Seguimiento de leads\n- Visitas y negociación\n- Gestión documental\n- Marketing",
-    "4. Oportunidades de automatización": [
-      "Seguimiento automático de leads y clientes",
-      "Secuencias de comunicación pre y post-venta",
-      "Optimización de visitas y citas",
-      "Análisis de rentabilidad por propiedad",
-      "Gestión de reseñas y reputación"
-    ],
-    "5. Aplicaciones de IA": [
-      "Predicción de abandono de clientes",
-      "Scoring de leads por probabilidad de conversión",
-      "Optimización de visitas",
-      "Análisis de rentabilidad por propiedad",
-      "Chatbots para preguntas frecuentes"
-    ],
-    "6. Problemas legales": "- RGPD (datos personales)\n- Normativa inmobiliaria y de publicidad\n- Facturación electrónica\n- Garantías y reclamaciones",
-    "7. Señales de problema": [
-      "Propiedades y clientes en Excel",
-      "Sin seguimiento de leads",
-      "Sin CRM o muy básico",
-      "No miden rentabilidad por propiedad",
-      "Sin fidelización"
-    ],
-    "8. 15 preguntas de descubrimiento": [
-      "¿Cómo gestionáis propiedades y clientes?",
-      "¿Tenéis seguimiento de leads y clientes?",
-      "¿Medís márgenes por propiedad?",
-      "¿Cómo gestionáis las llamadas y mensajes?",
-      "¿Tenéis recordatorios de visitas?",
-      "¿Qué % de clientes son recurrentes?",
-      "¿Usáis CRM? ¿Cuál?",
-      "¿Cómo gestionáis las reseñas?",
-      "¿Tenéis campañas activas?",
-      "¿Qué parte del tiempo dedicáis a gestión vs ventas?",
-      "¿Qué os gustaría automatizar?",
-      "¿Qué impacto tendría reducir abandono un 10%?",
-      "¿Tenéis datos de clientes para segmentar?",
-      "¿Qué herramientas usáis hoy?",
-      "¿Qué os gustaría mejorar?"
-    ],
-    "9. 15 objeciones": [
-      "Sector tradicional",
-      "Ya usamos software",
-      "No tenemos tiempo",
-      "Es caro",
-      "Clientes no quieren muchos mensajes",
-      "Ya nos va bien",
-      "No queremos saturar",
-      "Última herramienta no sirvió",
-      "Preferimos seguir como siempre",
-      "No tenemos presupuesto",
-      "Preocupa privacidad",
-      "Ya tenemos suficientes clientes",
-      "No vemos claro el ROI",
-      "No queremos más proveedores",
-      "Esto no funcionará aquí"
-    ],
-    "10. Respuestas a objeciones": "Sector tradicional: La IA no reemplaza agentes, sino que ayuda a gestionar mejor.\nYa usamos software: Partimos de vuestro software actual.\nNo tenemos tiempo: Piloto pequeño en una tarea que más_duele.\nEs caro: Si reduce abandono un 10%, se paga solo.\nClientes no quieren muchos mensajes: Mensajes útiles, no saturación.\nYa nos va bien: ¿Sostenible a medio plazo?\nNo queremos saturar: Menos mensajes, más relevantes.\nÚltima herramienta no sirvió: Indicadores y periodo de prueba.\nPreferimos seguir como siempre: Pequeños ajustes hoy evitan cambios dolorosos mañana.\nNo tenemos presupuesto: Piloto con objetivos claros.\nPreocupa privacidad: RGPD, cifrado, backups.\nYa tenemos suficientes clientes: Foco en fidelizar y aumentar valor.\nNo vemos claro el ROI: Definimos qué mejora os haría decir 'sí'.\nNo queremos más proveedores: Simplificar.\nEsto no funcionará aquí: Inmobiliarias que profesionalizan ganan.",
-    "11. Indicadores de prioridad": [
-      "Varios agentes (5+)",
-      "Web moderna con propiedades",
-      "Inversión en marketing",
-      "Quiere mejorar conversión",
-      "Reseñas buenas"
-    ],
-    "12. Señales de alarma": [
-      "Muy pequeño (1–2 personas) sin crecer",
-      "Sin web o muy básica",
-      "\"Nos va bien así\"",
-      "Sin procesos",
-      "Resistencia",
-      "Sin presupuesto",
-      "Impagados",
-      "Alta rotación"
-    ]
-  },
-  "4. Hoteles": {
-    "1. Descripción": "Qué hacen: Hoteles ofrecen alojamiento, con gestión de reservas, pricing, limpieza, mantenimiento y atención al huésped.\nCómo ganan dinero: Noches de alojamiento, servicios adicionales (desayuno, spa, eventos, etc.).\nTamaño habitual: Micro (1–10 habitaciones), Pequeño (10–30 habitaciones), Mediano (30–100 habitaciones).\nPerfil más habitual: Hotel independiente o pequeña cadena, gestión manual de pricing y mensajes, sin automatización avanzada.\nDatos de mercado: ~15.000 hoteles en España, facturación ~25.000M€.",
-    "2. Principales problemas": [
-      "Pricing estático o intuitivo",
-      "Gestión manual de reservas y mensajes",
-      "Falta de centralización de reservas directas",
-      "Gestión manual de limpieza y mantenimiento",
-      "Falta de fidelización de huéspedes"
-    ],
-    "3. Procesos manuales": "- Pricing por temporada\n- Gestión de reservas\n- Mensajes con huéspedes\n- Limpieza y mantenimiento\n- Fidelización",
-    "4. Oportunidades de automatización": [
-      "Pricing dinámico asistido por IA",
-      "Chatbots para mensajes con huéspedes",
-      "Secuencias de comunicación pre-check-in y post-check-out",
-      "Coordinación automática de limpieza y mantenimiento",
-      "Campañas de fidelización post-estancia"
-    ],
-    "5. Aplicaciones de IA": [
-      "Pricing dinámico (PriceLabs, BeyondPricing)",
-      "Chatbots para WhatsApp y email",
-      "Análisis de sentimiento en reseñas",
-      "Predicción de ocupación",
-      "Recomendación de servicios adicionales"
-    ],
-    "6. Problemas legales": "- RGPD (datos de huéspedes)\n- Normativa turística y de publicidad\n- Facturación electrónica\n- Garantías y reclamaciones",
-    "7. Señales de problema": [
-      "Pricing manual o intuitivo",
-      "Muchas preguntas repetitivas de huéspedes",
-      "Dependen de plataformas >90%",
-      "Sin reservas directas",
-      "Gestión manual de limpieza"
-    ],
-    "8. 15 preguntas de descubrimiento": [
-      "¿Cómo fijáis hoy los precios por temporada?",
-      "¿Usáis alguna herramienta de pricing dinámico?",
-      "¿Cuánto tiempo pasáis respondiendo mensajes de huéspedes?",
-      "¿Qué preguntas se repiten más?",
-      "¿Tenéis algún proceso de comunicación pre-check-in?",
-      "¿Qué % de reservas os llegan directas vs plataformas?",
-      "¿Tenéis web propia con motor de reservas?",
-      "¿Cómo gestionáis la limpieza y el mantenimiento?",
-      "¿Tenéis algún proceso de fidelización de huéspedes?",
-      "¿Medís ocupación y ADR por propiedad?",
-      "¿Cómo gestionáis las reseñas en plataformas?",
-      "¿Tenéis datos de huéspedes para segmentar?",
-      "¿Qué parte del tiempo dedicáis a gestión vs estrategia?",
-      "¿Qué os gustaría automatizar primero?",
-      "¿Qué impacto tendría subir un 10% el ADR?"
-    ],
-    "9. 15 objeciones": [
-      "Sector tradicional",
-      "Ya usamos software",
-      "No tenemos tiempo",
-      "Es caro",
-      "Huéspedes no quieren muchos mensajes",
-      "Ya nos va bien",
-      "No queremos saturar",
-      "Última herramienta no sirvió",
-      "Preferimos seguir como siempre",
-      "No tenemos presupuesto",
-      "Preocupa privacidad",
-      "Ya tenemos suficientes reservas",
-      "No vemos claro el ROI",
-      "No queremos más proveedores",
-      "Esto no funcionará aquí"
-    ],
-    "10. Respuestas a objeciones": "Sector tradicional: La IA no reemplaza huéspedes, sino que ayuda a gestionar mejor.\nYa usamos software: Partimos de vuestro software actual.\nNo tenemos tiempo: Piloto pequeño en una tarea que más_duele.\nEs caro: Si sube ADR un 10%, se paga solo.\nHuéspedes no quieren muchos mensajes: Mensajes útiles, no saturación.\nYa nos va bien: ¿Sostenible a medio plazo?\nNo queremos saturar: Menos mensajes, más relevantes.\nÚltima herramienta no sirvió: Indicadores y periodo de prueba.\nPreferimos seguir como siempre: Pequeños ajustes hoy evitan cambios dolorosos mañana.\nNo tenemos presupuesto: Piloto con objetivos claros.\nPreocupa privacidad: RGPD, cifrado, backups.\nYa tenemos suficientes reservas: Foco en mejorar ADR y reservas directas.\nNo vemos claro el ROI: Definimos qué mejora os haría decir 'sí'.\nNo queremos más proveedores: Simplificar.\nEsto no funcionará aquí: Hoteles que profesionalizan ganan.",
-    "11. Indicadores de prioridad": [
-      "Varias habitaciones (20+)",
-      "Web moderna con motor de reservas",
-      "Inversión en marketing",
-      "Quiere mejorar ADR o reservas directas",
-      "Reseñas buenas"
-    ],
-    "12. Señales de alarma": [
-      "Muy pequeño (1–10 habitaciones) sin crecer",
-      "Sin web o muy básica",
-      "\"Nos va bien así\"",
-      "Sin procesos",
-      "Resistencia",
-      "Sin presupuesto",
-      "Impagados",
-      "Alta rotación"
-    ]
-  },
-  "5. Restaurantes": {
-    "1. Descripción": "Qué hacen: Restaurantes ofrecen comida y bebida, con gestión de reservas, pedidos, cocina y atención al cliente.\nCómo ganan dinero: Ventas de comida y bebida, servicios adicionales (eventos, catering, etc.).\nTamaño habitual: Micro (1–3 personas), Pequeño (3–10 personas), Mediano (10–20 personas).\nPerfil más habitual: Restaurante local, gestión manual de reservas y pedidos, sin automatización avanzada.\nDatos de mercado: ~200.000 restaurantes en España, facturación ~50.000M€.",
-    "2. Principales problemas": [
-      "Gestión manual de reservas y pedidos",
-      "Falta de seguimiento de clientes",
-      "Márgenes ajustados por competencia",
-      "Dependencia del encargado",
-      "Falta de fidelización de clientes"
-    ],
-    "3. Procesos manuales": "- Gestión de reservas\n- Pedidos\n- Cocina\n- Atención al cliente\n- Marketing",
-    "4. Oportunidades de automatización": [
-      "Recordatorios automáticos de reservas",
-      "Secuencias de fidelización post-visita",
-      "Optimización de pedidos y cocina",
-      "Análisis de rentabilidad por plato",
-      "Gestión de reseñas y reputación"
-    ],
-    "5. Aplicaciones de IA": [
-      "Predicción de abandono de clientes",
-      "Scoring de clientes por probabilidad de retorno",
-      "Optimización de pedidos",
-      "Análisis de rentabilidad por plato",
-      "Chatbots para reservas y preguntas frecuentes"
-    ],
-    "6. Problemas legales": "- RGPD (datos personales)\n- Normativa sanitaria y de publicidad\n- Facturación electrónica\n- Garantías y reclamaciones",
-    "7. Señales de problema": [
-      "Reservas en papel o WhatsApp",
-      "Sin recordatorios de reservas",
-      "Sin CRM o muy básico",
-      "No miden rentabilidad por plato",
-      "Sin fidelización"
-    ],
-    "8. 15 preguntas de descubrimiento": [
-      "¿Cómo gestionáis reservas y pedidos?",
-      "¿Tenéis seguimiento de clientes?",
-      "¿Medís márgenes por plato?",
-      "¿Cómo gestionáis las llamadas y mensajes?",
-      "¿Tenéis recordatorios de reservas?",
-      "¿Qué % de clientes son recurrentes?",
-      "¿Usáis CRM? ¿Cuál?",
-      "¿Cómo gestionáis las reseñas?",
-      "¿Tenéis campañas activas?",
-      "¿Qué parte del tiempo dedicáis a gestión vs cocina?",
-      "¿Qué os gustaría automatizar?",
-      "¿Qué impacto tendría reducir abandono un 10%?",
-      "¿Tenéis datos de clientes para segmentar?",
-      "¿Qué herramientas usáis hoy?",
-      "¿Qué os gustaría mejorar?"
-    ],
-    "9. 15 objeciones": [
-      "Sector tradicional",
-      "Ya usamos software",
-      "No tenemos tiempo",
-      "Es caro",
-      "Clientes no quieren muchos mensajes",
-      "Ya nos va bien",
-      "No queremos saturar",
-      "Última herramienta no sirvió",
-      "Preferimos seguir como siempre",
-      "No tenemos presupuesto",
-      "Preocupa privacidad",
-      "Ya tenemos suficientes clientes",
-      "No vemos claro el ROI",
-      "No queremos más proveedores",
-      "Esto no funcionará aquí"
-    ],
-    "10. Respuestas a objeciones": "Sector tradicional: La IA no reemplaza cocineros, sino que ayuda a gestionar mejor.\nYa usamos software: Partimos de vuestro software actual.\nNo tenemos tiempo: Piloto pequeño en una tarea que más_duele.\nEs caro: Si reduce abandono un 10%, se paga solo.\nClientes no quieren muchos mensajes: Mensajes útiles, no saturación.\nYa nos va bien: ¿Sostenible a medio plazo?\nNo queremos saturar: Menos mensajes, más relevantes.\nÚltima herramienta no sirvió: Indicadores y periodo de prueba.\nPreferimos seguir como siempre: Pequeños ajustes hoy evitan cambios dolorosos mañana.\nNo tenemos presupuesto: Piloto con objetivos claros.\nPreocupa privacidad: RGPD, cifrado, backups.\nYa tenemos suficientes clientes: Foco en fidelizar y aumentar valor.\nNo vemos claro el ROI: Definimos qué mejora os haría decir 'sí'.\nNo queremos más proveedores: Simplificar.\nEsto no funcionará aquí: Restaurantes que profesionalizan ganan.",
-    "11. Indicadores de prioridad": [
-      "Varios empleados (10+)",
-      "Web moderna con reservas online",
-      "Inversión en marketing",
-      "Quiere mejorar fidelización",
-      "Reseñas buenas"
-    ],
-    "12. Señales de alarma": [
-      "Muy pequeño (1–3 personas) sin crecer",
-      "Sin web o muy básica",
-      "\"Nos va bien así\"",
-      "Sin procesos",
-      "Resistencia",
-      "Sin presupuesto",
-      "Impagados",
-      "Alta rotación"
-    ]
-  },
-  "6. Apartamentos Turísticos": {
-    "1. Descripción": "Qué hacen: Gestionan apartamentos turísticos (ATAV), con pricing, mensajes con huéspedes, reservas directas vs plataformas (Airbnb, Booking, etc.).\nCómo ganan dinero: Noches de alojamiento, servicios adicionales (limpieza, transfers).\nTamaño habitual: Micro (1–5 viviendas), Pequeño (5–20 viviendas), Mediano (20–50 viviendas), Grande (50+ viviendas).\nPerfil más habitual: Gestor local con varias viviendas, uso de herramientas de pricing (PriceLabs), canales (Airbnb, Booking) y algo de reservas directas.\nDatos de mercado: ~400k–500k viviendas en España, facturación ~25.000–35.000M€.",
-    "2. Principales problemas": [
-      "Pricing estático o intuitivo",
-      "Gestión de mensajes repetitivos con huéspedes",
-      "Falta de centralización de reservas directas",
-      "Gestión manual de limpieza y mantenimiento",
-      "Falta de fidelización de huéspedes"
-    ],
-    "3. Procesos manuales": "- Pricing por temporada\n- Mensajes con huéspedes (WhatsApp, email, plataformas)\n- Gestión de reservas\n- Coordinación de limpieza y mantenimiento\n- Fidelización de huéspedes",
-    "4. Oportunidades de automatización": [
-      "Pricing dinámico asistido por IA",
-      "Chatbots para mensajes con huéspedes",
-      "Secuencias de comunicación pre-check-in y post-check-out",
-      "Coordinación automática de limpieza y mantenimiento",
-      "Campañas de fidelización post-estancia"
-    ],
-    "5. Aplicaciones de IA": [
-      "Pricing dinámico (PriceLabs, BeyondPricing)",
-      "Chatbots para WhatsApp y email",
-      "Análisis de sentimiento en reseñas",
-      "Predicción de ocupación",
-      "Recomendación de servicios adicionales"
-    ],
-    "6. Problemas legales": "- RGPD (datos de huéspedes)\n- Normativa turística (licencias, tasas)\n- Ley de propiedad horizontal\n- Fiscalidad (IRPF, IVA, modelos 179, etc.)",
-    "7. Señales de problema": [
-      "Pricing manual o intuitivo",
-      "Muchas preguntas repetitivas de huéspedes",
-      "Dependen de plataformas >90%",
-      "Sin reservas directas",
-      "Gestión manual de limpieza"
-    ],
-    "8. 15 preguntas de descubrimiento": [
-      "¿Cómo fijáis hoy los precios por temporada?",
-      "¿Usáis alguna herramienta de pricing dinámico?",
-      "¿Cuánto tiempo pasáis respondiendo mensajes de huéspedes?",
-      "¿Qué preguntas se repiten más?",
-      "¿Tenéis algún proceso de comunicación pre-check-in?",
-      "¿Qué % de reservas os llegan directas vs plataformas?",
-      "¿Tenéis web propia con motor de reservas?",
-      "¿Cómo gestionáis la limpieza y el mantenimiento?",
-      "¿Tenéis algún proceso de fidelización de huéspedes?",
-      "¿Medís ocupación y ADR por propiedad?",
-      "¿Cómo gestionáis las reseñas en plataformas?",
-      "¿Tenéis datos de huéspedes para segmentar?",
-      "¿Qué parte del tiempo dedicáis a gestión vs estrategia?",
-      "¿Qué os gustaría automatizar primero?",
-      "¿Qué impacto tendría subir un 10% el ADR?"
-    ],
-    "9. 15 objeciones": [
-      "Sector tradicional",
-      "Ya usamos software",
-      "No tenemos tiempo",
-      "Es caro",
-      "Huéspedes no quieren muchos mensajes",
-      "Ya nos va bien",
-      "No queremos saturar",
-      "Última herramienta no sirvió",
-      "Preferimos seguir como siempre",
-      "No tenemos presupuesto",
-      "Preocupa privacidad",
-      "Ya tenemos suficientes reservas",
-      "No vemos claro el ROI",
-      "No queremos más proveedores",
-      "Esto no funcionará aquí"
-    ],
-    "10. Respuestas a objeciones": "Sector tradicional: La IA no reemplaza huéspedes, sino que ayuda a gestionar mejor.\nYa usamos software: Partimos de vuestro software actual.\nNo tenemos tiempo: Piloto pequeño en una tarea que más_duele.\nEs caro: Si sube ADR un 10%, se paga solo.\nHuéspedes no quieren muchos mensajes: Mensajes útiles, no saturación.\nYa nos va bien: ¿Sostenible a medio plazo?\nNo queremos saturar: Menos mensajes, más relevantes.\nÚltima herramienta no sirvió: Indicadores y periodo de prueba.\nPreferimos seguir como siempre: Pequeños ajustes hoy evitan cambios dolorosos mañana.\nNo tenemos presupuesto: Piloto con objetivos claros.\nPreocupa privacidad: RGPD, cifrado, backups.\nYa tenemos suficientes reservas: Foco en mejorar ADR y reservas directas.\nNo vemos claro el ROI: Definimos qué mejora os haría decir 'sí'.\nNo queremos más proveedores: Simplificar.\nEsto no funcionará aquí: Gestores que profesionalizan ganan.",
-    "11. Indicadores de prioridad": [
-      "Varias viviendas (10+)",
-      "Web moderna con motor de reservas",
-      "Inversión en marketing",
-      "Quiere mejorar ADR o reservas directas",
-      "Reseñas buenas"
-    ],
-    "12. Señales de alarma": [
-      "Muy pequeño (1–3 viviendas) sin crecer",
-      "Sin web o muy básica",
-      "\"Nos va bien así\"",
-      "Sin procesos",
-      "Resistencia",
-      "Sin presupuesto",
-      "Impagados",
-      "Alta rotación"
-    ]
-  },
-  "7. Talleres Mecánicos": {
-    "1. Descripción": "Qué hacen: Reparación y mantenimiento de vehículos, con gestión de citas, pedidos de recambios y facturación.\nCómo ganan dinero: Mano de obra + recambios + revisiones.\nTamaño habitual: Micro (1–3 personas), Pequeño (3–10 personas), Mediano (10–20 personas).\nPerfil más habitual: Taller local, gestión manual de citas, pedidos y facturación.\nDatos de mercado: ~30.000 talleres en España, facturación ~15.000M€.",
-    "2. Principales problemas": [
-      "Gestión manual de citas y pedidos",
-      "Falta de seguimiento de clientes",
-      "Márgenes ajustados por competencia",
-      "Gestión de inventario ineficiente",
-      "Dependencia del encargado"
-    ],
-    "3. Procesos manuales": "- Gestión de citas\n- Pedidos de recambios\n- Facturación\n- Seguimiento de clientes\n- Gestión de inventario",
-    "4. Oportunidades de automatización": [
-      "Recordatorios automáticos de citas y revisiones",
-      "Secuencias de fidelización post-servicio",
-      "Optimización de pedidos de recambios",
-      "Gestión de inventario asistida por IA",
-      "Análisis de rentabilidad por servicio"
-    ],
-    "5. Aplicaciones de IA": [
-      "Predicción de demanda por temporada",
-      "Scoring de clientes por probabilidad de retorno",
-      "Optimización de inventario",
-      "Análisis de rentabilidad por servicio",
-      "Chatbots para citas y preguntas frecuentes"
-    ],
-    "6. Problemas legales": "- RGPD (datos de clientes)\n- Normativa de seguridad y medioambiente\n- Facturación electrónica\n- Garantías y reclamaciones",
-    "7. Señales de problema": [
-      "Citas en papel o WhatsApp",
-      "Sin recordatorios de revisiones",
-      "Sin CRM o muy básico",
-      "No miden rentabilidad por servicio",
-      "Sin fidelización"
-    ],
-    "8. 15 preguntas de descubrimiento": [
-      "¿Cómo gestionáis citas y pedidos?",
-      "¿Tenéis seguimiento de clientes?",
-      "¿Medís márgenes por reparación?",
-      "¿Cómo gestionáis el inventario?",
-      "¿Tenéis recordatorios de revisiones?",
-      "¿Qué % de clientes son recurrentes?",
-      "¿Usáis CRM? ¿Cuál?",
-      "¿Cómo gestionáis las llamadas y mensajes?",
-      "¿Tenéis campañas activas?",
-      "¿Qué parte del tiempo dedicáis a gestión vs reparación?",
-      "¿Qué os gustaría automatizar?",
-      "¿Qué impacto tendría reducir stock ineficiente un 20%?",
-      "¿Tenéis datos de clientes para segmentar?",
-      "¿Qué herramientas usáis hoy?",
-      "¿Qué os gustaría mejorar?"
-    ],
-    "9. 15 objeciones": [
-      "Sector tradicional",
-      "Ya usamos software",
-      "No tenemos tiempo",
-      "Es caro",
-      "Clientes no quieren muchos mensajes",
-      "Ya nos va bien",
-      "No queremos saturar",
-      "Última herramienta no sirvió",
-      "Preferimos seguir como siempre",
-      "No tenemos presupuesto",
-      "Preocupa privacidad",
-      "Ya tenemos suficientes clientes",
-      "No vemos claro el ROI",
-      "No queremos más proveedores",
-      "Esto no funcionará aquí"
-    ],
-    "10. Respuestas a objeciones": "Sector tradicional: La IA no repara coches, pero ayuda a gestionar mejor.\nYa usamos software: Partimos de vuestro software actual.\nNo tenemos tiempo: Piloto pequeño en una tarea que más_duele.\nEs caro: Si reduce stock un 20%, se paga solo.\nClientes no quieren muchos mensajes: Mensajes útiles, no saturación.\nYa nos va bien: ¿Sostenible a medio plazo?\nNo queremos saturar: Menos mensajes, más relevantes.\nÚltima herramienta no sirvió: Indicadores y periodo de prueba.\nPreferimos seguir como siempre: Pequeños ajustes hoy evitan cambios dolorosos mañana.\nNo tenemos presupuesto: Piloto con objetivos claros.\nPreocupa privacidad: RGPD, cifrado, backups.\nYa tenemos suficientes clientes: Foco en fidelizar y aumentar valor.\nNo vemos claro el ROI: Definimos qué mejora os haría decir 'sí'.\nNo queremos más proveedores: Simplificar.\nEsto no funcionará aquí: Talleres que profesionalizan ganan.",
-    "11. Indicadores de prioridad": [
-      "Varios mecánicos, varias bahías",
-      "Web moderna con citas online",
-      "Inversión en marketing",
-      "Quiere reducir stock o mejorar fidelización",
-      "Reseñas buenas"
-    ],
-    "12. Señales de alarma": [
-      "Muy pequeño (1–2 personas) sin crecer",
-      "Sin web o muy básica",
-      "\"Nos va bien así\"",
-      "Sin procesos",
-      "Resistencia",
-      "Sin presupuesto",
-      "Impagados",
-      "Alta rotación"
-    ]
-  },
-  "8. Constructoras": {
-    "1. Descripción": "Qué hacen: Construcción de viviendas, edificios, obras públicas, con gestión de proyectos, compras, subcontratas y certificación.\nCómo ganan dinero: Presupuestos certificados, cambios, extras.\nTamaño habitual: Micro (1–3 personas), Pequeño (3–20 personas), Mediano (20–100 personas).\nPerfil más habitual: Constructora local, gestión manual de proyectos, subcontratas, compras.\nDatos de mercado: ~100.000 empresas en España, facturación ~50.000M€.",
-    "2. Principales problemas": [
-      "Gestión manual de proyectos y subcontratas",
-      "Control de costes y certificaciones",
-      "Retrasos y sobrecostes",
-      "Compras ineficientes",
-      "Dependencia del encargado"
-    ],
-    "3. Procesos manuales": "- Gestión de proyectos\n- Compras\n- Subcontratas\n- Certificaciones\n- Control de costes",
-    "4. Oportunidades de automatización": [
-      "Seguimiento de proyectos y hitos",
-      "Optimización de compras",
-      "Análisis de costes y márgenes",
-      "Gestión de subcontratas",
-      "Certificaciones automáticas"
-    ],
-    "5. Aplicaciones de IA": [
-      "Predicción de retrasos por tipo de proyecto",
-      "Optimización de compras",
-      "Análisis de costes y márgenes",
-      "Scoring de subcontratas",
-      "Chatbots para gestión de documentación"
-    ],
-    "6. Problemas legales": "- RGPD\n- Normativa de seguridad y prevención\n- Certificaciones y fiscalidad\n- Garantías y reclamaciones",
-    "7. Señales de problema": [
-      "Proyectos en Excel",
-      "Sin control de costes",
-      "Sin seguimiento de subcontratas",
-      "Sin certificaciones automáticas",
-      "Sin análisis de márgenes"
-    ],
-    "8. 15 preguntas de descubrimiento": [
-      "¿Cómo gestionáis proyectos y subcontratas?",
-      "¿Medís costes y certificaciones?",
-      "¿Tenéis problemas de retrasos?",
-      "¿Cómo gestionáis compras?",
-      "¿Tenéis control de márgenes?",
-      "¿Usáis ERP? ¿Cuál?",
-      "¿Cómo gestionáis las llamadas y emails?",
-      "¿Tenéis campañas activas?",
-      "¿Qué parte del tiempo dedicáis a gestión vs obra?",
-      "¿Qué os gustaría automatizar?",
-      "¿Qué impacto tendría reducir retrasos un 10%?",
-      "¿Tenéis datos de proyectos para segmentar?",
-      "¿Qué herramientas usáis hoy?",
-      "¿Qué os gustaría mejorar?",
-      "¿Qué os preocupa más?"
-    ],
-    "9. 15 objeciones": [
-      "Sector tradicional",
-      "Ya usamos software",
-      "No tenemos tiempo",
-      "Es caro",
-      "Clientes no quieren muchos mensajes",
-      "Ya nos va bien",
-      "No queremos saturar",
-      "Última herramienta no sirvió",
-      "Preferimos seguir como siempre",
-      "No tenemos presupuesto",
-      "Preocupa privacidad",
-      "Ya tenemos suficientes proyectos",
-      "No vemos claro el ROI",
-      "No queremos más proveedores",
-      "Esto no funcionará aquí"
-    ],
-    "10. Respuestas a objeciones": "Sector tradicional: La IA no construye, pero ayuda a gestionar mejor.\nYa usamos software: Partimos de vuestro software actual.\nNo tenemos tiempo: Piloto pequeño en una tarea que más_duele.\nEs caro: Si reduce retrasos un 10%, se paga solo.\nClientes no quieren muchos mensajes: Mensajes útiles, no saturación.\nYa nos va bien: ¿Sostenible a medio plazo?\nNo queremos saturar: Menos mensajes, más relevantes.\nÚltima herramienta no sirvió: Indicadores y periodo de prueba.\nPreferimos seguir como siempre: Pequeños ajustes hoy evitan cambios dolorosos mañana.\nNo tenemos presupuesto: Piloto con objetivos claros.\nPreocupa privacidad: RGPD, cifrado, backups.\nYa tenemos suficientes proyectos: Foco en mejorar márgenes y plazos.\nNo vemos claro el ROI: Definimos qué mejora os haría decir 'sí'.\nNo queremos más proveedores: Simplificar.\nEsto no funcionará aquí: Constructoras que profesionalizan ganan.",
-    "11. Indicadores de prioridad": [
-      "Varios proyectos, varias subcontratas",
-      "Web moderna con información de proyectos",
-      "Inversión en marketing",
-      "Quiere mejorar márgenes y plazos",
-      "Reseñas buenas"
-    ],
-    "12. Señales de alarma": [
-      "Muy pequeña (1–3 personas) sin crecer",
-      "Sin web o muy básica",
-      "\"Nos va bien así\"",
-      "Sin procesos",
-      "Resistencia",
-      "Sin presupuesto",
-      "Impagados",
-      "Alta rotación"
-    ]
-  },
-  "9. Empresas de Transporte": {
-    "1. Descripción": "Qué hacen: Transporte de mercancías, con gestión de flotas, rutas, conductores y facturación.\nCómo ganan dinero: Servicios de transporte, logística, etc.\nTamaño habitual: Micro (1–3 vehículos), Pequeño (3–10 vehículos), Mediano (10–50 vehículos).\nPerfil más habitual: Empresa local, gestión manual de rutas, flotas, conductores.\nDatos de mercado: ~50.000 empresas en España, facturación ~25.000M€.",
-    "2. Principales problemas": [
-      "Gestión manual de rutas y flotas",
-      "Control de costes y combustible",
-      "Retrasos y eficiencia",
-      "Gestión de conductores",
-      "Dependencia del encargado"
-    ],
-    "3. Procesos manuales": "- Gestión de rutas\n- Flotas\n- Conductores\n- Facturación\n- Control de costes",
-    "4. Oportunidades de automatización": [
-      "Optimización de rutas asistida por IA",
-      "Análisis de costes y combustible",
-      "Seguimiento de conductores",
-      "Facturación automática",
-      "Análisis de eficiencia por ruta"
-    ],
-    "5. Aplicaciones de IA": [
-      "Optimización de rutas",
-      "Predicción de consumo",
-      "Análisis de costes y márgenes",
-      "Scoring de conductores",
-      "Chatbots para gestión de incidencias"
-    ],
-    "6. Problemas legales": "- RGPD\n- Normativa de transporte y seguridad\n- Facturación electrónica\n- Control de tiempos y descansos",
-    "7. Señales de problema": [
-      "Rutas en Excel",
-      "Sin control de costes",
-      "Sin seguimiento de conductores",
-      "Sin facturación automática",
-      "Sin análisis de eficiencia"
-    ],
-    "8. 15 preguntas de descubrimiento": [
-      "¿Cómo gestionáis rutas y flotas?",
-      "¿Medís costes y combustible?",
-      "¿Tenéis problemas de retrasos?",
-      "¿Cómo gestionáis conductores?",
-      "¿Tenéis control de márgenes?",
-      "¿Usáis TMS? ¿Cuál?",
-      "¿Cómo gestionáis las llamadas y emails?",
-      "¿Tenéis campañas activas?",
-      "¿Qué parte del tiempo dedicáis a gestión vs conducción?",
-      "¿Qué os gustaría automatizar?",
-      "¿Qué impacto tendría reducir combustible un 10%?",
-      "¿Tenéis datos de rutas para segmentar?",
-      "¿Qué herramientas usáis hoy?",
-      "¿Qué os gustaría mejorar?",
-      "¿Qué os preocupa más?"
-    ],
-    "9. 15 objeciones": [
-      "Sector tradicional",
-      "Ya usamos software",
-      "No tenemos tiempo",
-      "Es caro",
-      "Clientes no quieren muchos mensajes",
-      "Ya nos va bien",
-      "No queremos saturar",
-      "Última herramienta no sirvió",
-      "Preferimos seguir como siempre",
-      "No tenemos presupuesto",
-      "Preocupa privacidad",
-      "Ya tenemos suficientes rutas",
-      "No vemos claro el ROI",
-      "No queremos más proveedores",
-      "Esto no funcionará aquí"
-    ],
-    "10. Respuestas a objeciones": "Sector tradicional: La IA no conduce, pero ayuda a gestionar mejor.\nYa usamos software: Partimos de vuestro software actual.\nNo tenemos tiempo: Piloto pequeño en una tarea que más_duele.\nEs caro: Si reduce combustible un 10%, se paga solo.\nClientes no quieren muchos mensajes: Mensajes útiles, no saturación.\nYa nos va bien: ¿Sostenible a medio plazo?\nNo queremos saturar: Menos mensajes, más relevantes.\nÚltima herramienta no sirvió: Indicadores y periodo de prueba.\nPreferimos seguir como siempre: Pequeños ajustes hoy evitan cambios dolorosos mañana.\nNo tenemos presupuesto: Piloto con objetivos claros.\nPreocupa privacidad: RGPD, cifrado, backups.\nYa tenemos suficientes rutas: Foco en mejorar márgenes y plazos.\nNo vemos claro el ROI: Definimos qué mejora os haría decir 'sí'.\nNo queremos más proveedores: Simplificar.\nEsto no funcionará aquí: Empresas que profesionalizan ganan.",
-    "11. Indicadores de prioridad": [
-      "Varios vehículos, varios conductores",
-      "Web moderna con información de servicios",
-      "Inversión en marketing",
-      "Quiere mejorar márgenes y plazos",
-      "Reseñas buenas"
-    ],
-    "12. Señales de alarma": [
-      "Muy pequeña (1–2 vehículos) sin crecer",
-      "Sin web o muy básica",
-      "\"Nos va bien así\"",
-      "Sin procesos",
-      "Resistencia",
-      "Sin presupuesto",
-      "Impagados",
-      "Alta rotación"
-    ]
-  },
-  "10. Academias y Centros de Formación": {
-    "1. Descripción": "Qué hacen: Formación (idiomas, oposiciones, cursos profesionales), con gestión de alumnos, cursos, horarios y facturación.\nCómo ganan dinero: Matrículas, cuotas mensuales, cursos.\nTamaño habitual: Micro (1–3 profesores), Pequeño (3–10 profesores), Mediano (10–50 profesores).\nPerfil más habitual: Academia local, gestión manual de alumnos, cursos, horarios.\nDatos de mercado: ~20.000 centros en España, facturación ~5.000M€.",
-    "2. Principales problemas": [
-      "Gestión manual de alumnos y cursos",
-      "Falta de seguimiento de estudiantes",
-      "Márgenes ajustados por competencia",
-      "Gestión de horarios ineficiente",
-      "Dependencia del encargado"
-    ],
-    "3. Procesos manuales": "- Gestión de alumnos\n- Cursos\n- Horarios\n- Facturación\n- Seguimiento de estudiantes",
-    "4. Oportunidades de automatización": [
-      "Recordatorios automáticos de clases y pagos",
-      "Secuencias de fidelización post-curso",
-      "Optimización de horarios",
-      "Análisis de rentabilidad por curso",
-      "Gestión de matrículas asistida por IA"
-    ],
-    "5. Aplicaciones de IA": [
-      "Predicción de abandono de estudiantes",
-      "Scoring de alumnos por probabilidad de renovación",
-      "Optimización de horarios",
-      "Análisis de rentabilidad por curso",
-      "Chatbots para matrículas y preguntas frecuentes"
-    ],
-    "6. Problemas legales": "- RGPD\n- Normativa educativa\n- Facturación electrónica\n- Garantías y reclamaciones",
-    "7. Señales de problema": [
-      "Alumnos en Excel",
-      "Sin recordatorios de clases",
-      "Sin CRM o muy básico",
-      "No miden rentabilidad por curso",
-      "Sin fidelización"
-    ],
-    "8. 15 preguntas de descubrimiento": [
-      "¿Cómo gestionáis alumnos y cursos?",
-      "¿Tenéis seguimiento de estudiantes?",
-      "¿Medís márgenes por curso?",
-      "¿Cómo gestionáis horarios?",
-      "¿Tenéis recordatorios de clases y pagos?",
-      "¿Qué % de alumnos renuevan?",
-      "¿Usáis CRM? ¿Cuál?",
-      "¿Cómo gestionáis las llamadas y emails?",
-      "¿Tenéis campañas activas?",
-      "¿Qué parte del tiempo dedicáis a gestión vs enseñanza?",
-      "¿Qué os gustaría automatizar?",
-      "¿Qué impacto tendría reducir abandono un 10%?",
-      "¿Tenéis datos de alumnos para segmentar?",
-      "¿Qué herramientas usáis hoy?",
-      "¿Qué os gustaría mejorar?"
-    ],
-    "9. 15 objeciones": [
-      "Sector tradicional",
-      "Ya usamos software",
-      "No tenemos tiempo",
-      "Es caro",
-      "Alumnos no quieren muchos mensajes",
-      "Ya nos va bien",
-      "No queremos saturar",
-      "Última herramienta no sirvió",
-      "Preferimos seguir como siempre",
-      "No tenemos presupuesto",
-      "Preocupa privacidad",
-      "Ya tenemos suficientes alumnos",
-      "No vemos claro el ROI",
-      "No queremos más proveedores",
-      "Esto no funcionará aquí"
-    ],
-    "10. Respuestas a objeciones": "Sector tradicional: La IA no enseña, pero ayuda a gestionar mejor.\nYa usamos software: Partimos de vuestro software actual.\nNo tenemos tiempo: Piloto pequeño en una tarea que más_duele.\nEs caro: Si reduce abandono un 10%, se paga solo.\nAlumnos no quieren muchos mensajes: Mensajes útiles, no saturación.\nYa nos va bien: ¿Sostenible a medio plazo?\nNo queremos saturar: Menos mensajes, más relevantes.\nÚltima herramienta no sirvió: Indicadores y periodo de prueba.\nPreferimos seguir como siempre: Pequeños ajustes hoy evitan cambios dolorosos mañana.\nNo tenemos presupuesto: Piloto con objetivos claros.\nPreocupa privacidad: RGPD, cifrado, backups.\nYa tenemos suficientes alumnos: Foco en fidelizar y aumentar valor.\nNo vemos claro el ROI: Definimos qué mejora os haría decir 'sí'.\nNo queremos más proveedores: Simplificar.\nEsto no funcionará aquí: Academias que profesionalizan ganan.",
-    "11. Indicadores de prioridad": [
-      "Varios profesores, varios cursos",
-      "Web moderna con matrículas online",
-      "Inversión en marketing",
-      "Quiere reducir abandono o mejorar fidelización",
-      "Reseñas buenas"
-    ],
-    "12. Señales de alarma": [
-      "Muy pequeña (1–2 profesores) sin crecer",
-      "Sin web o muy básica",
-      "\"Nos va bien así\"",
-      "Sin procesos",
-      "Resistencia",
-      "Sin presupuesto",
-      "Impagados",
-      "Alta rotación"
-    ]
-  }
-}
+    
+    st.markdown(f"**{len(df_prior)} sectores** encontrados")
+    
+    if not df_prior.empty:
+        # Ordenar por facturación
+        df_prior_sorted = df_prior.sort_values("facturacion_agregada_num", ascending=False)
+        
+        st.markdown("### Sectores priorizados (por facturación)")
+        
+        for idx, row in df_prior_sorted.iterrows():
+            with st.expander(f"**{row['nombre']}** - {row['facturacion_agregada_num']:,} M€ ({row['fit']})"):
+                st.write(f"**Tamaño:** {row['tamano_mercado_num']:,}")
+                st.write(f"**Adopción IA:** {row['adopcion_ia_num']}%")
+                
+                st.markdown("**Problemas:**")
+                problemas = row.get("problemas", [])
+                if isinstance(problemas, str):
+                    st.write(problemas)
+                elif problemas:
+                    for p in problemas:
+                        st.write(f"- {p}")
+
+elif opcion == "Export / API":
+    st.title("Export / API")
+    st.markdown("Exporta los datos en diferentes formatos.")
+
+    st.markdown("### Descargar JSON completo")
+    st.json(sectores_raw)
+
+    st.markdown("---")
+    st.markdown("### Descargar CSV")
+    
+    csv = df.to_csv(index=False).encode("utf-8")
+    
+    st.download_button(
+        label="📥 Descargar CSV",
+        data=csv,
+        file_name="sectores_salesos.csv",
+        mime="text/csv",
+    )
+
+    st.markdown("---")
+    st.markdown("### Favoritos")
+    if st.session_state.favoritos:
+        st.write("Tus sectores favoritos:")
+        for fav in st.session_state.favoritos:
+            st.write(f"- {fav}")
+        
+        # Exportar favoritos
+        fav_data = [s for s in sectores if s["nombre"] in st.session_state.favoritos]
+        fav_df = pd.DataFrame(fav_data)
+        fav_csv = fav_df.to_csv(index=False).encode("utf-8")
+        
+        st.download_button(
+            label="📥 Descargar favoritos (CSV)",
+            data=fav_csv,
+            file_name="favoritos_salesos.csv",
+            mime="text/csv",
+        )
+    else:
+        st.write("No tienes sectores favoritos aún.")
+
+# -----------------------
+# FOOTER
+# -----------------------
+
+st.markdown("---")
+st.markdown("SalesOS IA © 2026")
