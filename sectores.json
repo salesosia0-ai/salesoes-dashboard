@@ -121,61 +121,6 @@
   },
   {
     "sector_id": "02",
-    "nombre": "Despachos de Abogados",
-    "subsector": "Servicios Profesionales - Legal",
-    "fit": "Muy alto",
-    "tamano_mercado": "~140.000 abogados",
-    "tamano_mercado_num": 140000,
-    "facturacion_agregada": "~12.000M€/año",
-    "facturacion_agregada_num": 12000,
-    "adopcion_ia": "~28%",
-    "adopcion_ia_num": 28,
-    "descripcion": "Despachos que ofrecen servicios legales a empresas y particulares, con mucho trabajo de búsqueda de jurisprudencia, redacción de escritos y gestión de tiempo por abogado.",
-    "problemas": [
-      "Búsqueda de jurisprudencia y doctrina manual",
-      "Redacción de escritos y contratos muy repetitiva",
-      "Gestión del tiempo por abogado poco eficiente"
-    ],
-    "procesos_manuales": [
-      "Búsqueda de jurisprudencia",
-      "Redacción de escritos",
-      "Gestión de tiempo",
-      "Atención al cliente"
-    ],
-    "herramientas_ia": [
-      "LegesAI",
-      "ChatGPT avanzado para esbozos y resúmenes",
-      "Notion AI para gestión de conocimiento interno"
-    ],
-    "oportunidades_automatizacion": [],
-    "aplicaciones_ia": [],
-    "problemas_legales": [],
-    "preguntas_descubrimiento": [
-      "¿Cuánto tiempo pasáis buscando jurisprudencia y doctrina?",
-      "¿Tenéis plantillas estandarizadas para escritos y contratos?",
-      "¿Cómo medís la productividad de cada abogado?"
-    ],
-    "objeciones": [
-      {
-        "objecion": "No tenemos presupuesto",
-        "respuesta": "Empezamos con un piloto en un área (ej. laboral) donde el ROI es muy rápido."
-      },
-      {
-        "objecion": "La abogacía es muy artesanal",
-        "respuesta": "La IA no reemplaza el criterio, solo automatiza la parte repetitiva de la búsqueda y redacción."
-      }
-    ],
-    "señal_prioridad": [
-      "Web moderna con portal del cliente",
-      "Especialización en áreas con alto volumen de escritos"
-    ],
-    "senales_problema": [],
-    "indicadores_prioridad": [],
-    "senales_alarma": [],
-    "notas": ""
-  },
-  {
-    "sector_id": "03",
     "nombre": "Clínicas Dentales",
     "subsector": "Salud - Odontología",
     "fit": "Muy alto",
@@ -185,105 +130,123 @@
     "facturacion_agregada_num": 1305,
     "adopcion_ia": "~25%",
     "adopcion_ia_num": 25,
-    "descripcion": "Clínicas que ofrecen tratamientos odontológicos, con agenda, seguimiento de pacientes y venta de tratamientos adicionales.",
+    "descripcion": "Clínicas que ofrecen tratamientos odontológicos (limpiezas, empastes, ortodoncia, implantes, estética dental) a pacientes particulares y, en algunos casos, convenios con mutuas.",
     "problemas": [
       "Agenda con huecos improductivos",
       "Seguimiento de pacientes post-tratamiento manual",
-      "Falta de upselling sistemático de tratamientos"
+      "Falta de upselling sistemático de tratamientos",
+      "Dependencia del dentista dueño para captar y cerrar tratamientos",
+      "Marketing y captación poco profesionalizados"
     ],
     "procesos_manuales": [
       "Gestión de agenda",
-      "Seguimiento de pacientes",
-      "Ventas de tratamientos"
+      "Seguimiento post-tratamiento",
+      "Propuesta de tratamientos",
+      "Captación de pacientes",
+      "Fidelización",
+      "Control de impagados y financiación"
     ],
     "herramientas_ia": [
       "Overjet",
       "Chatbots para recordatorios de citas",
       "CRM con automatizaciones (HubSpot, Pipedrive)"
     ],
-    "oportunidades_automatizacion": [],
-    "aplicaciones_ia": [],
-    "problemas_legales": [],
+    "oportunidades_automatizacion": [
+      "Recordatorios automáticos de citas y revisiones",
+      "Secuencias de seguimiento post-tratamiento",
+      "Propuesta y seguimiento de tratamientos",
+      "Captación y nurturing de leads",
+      "Campañas de fidelización y mantenimiento"
+    ],
+    "aplicaciones_ia": [
+      "Predicción de ausencias y huecos en agenda",
+      "Recomendación de tratamientos adicionales",
+      "Clasificación de leads por probabilidad de conversión",
+      "Generación de contenido para pacientes",
+      "Análisis de satisfacción y reseñas"
+    ],
+    "problemas_legales": [
+      "Protección de datos (RGPD)",
+      "Consentimientos informados",
+      "Normativa sanitaria",
+      "Límites en publicidad sanitaria"
+    ],
     "preguntas_descubrimiento": [
-      "¿Cuántos huecos improductivos tenéis en agenda por semana?",
-      "¿Cómo seguís a los pacientes tras un tratamiento?",
-      "¿Tenéis algún proceso sistemático para proponer tratamientos adicionales?"
+      "¿Cómo gestionáis hoy la agenda y las cancelaciones de última hora?",
+      "¿Qué porcentaje de huecos en agenda estimáis que son por cancelaciones o no-shows?",
+      "¿Tenéis algún proceso sistemático de seguimiento post-tratamiento?",
+      "¿Cómo recordáis a los pacientes que deben volver para revisiones o mantenimiento?",
+      "¿Cómo gestionáis los presupuestos y el seguimiento de los que no se cierran?",
+      "¿Qué porcentaje de pacientes que vienen por primera vez acaban haciendo un tratamiento?",
+      "¿Tenéis algún proceso para proponer tratamientos complementarios de forma sistemática?",
+      "¿Cómo captáis nuevos pacientes hoy (Google, redes, recomendaciones, etc.)?",
+      "¿Medís la conversión por canal (cuántos leads se convierten en cita y en tratamiento)?",
+      "¿Cómo gestionáis las llamadas y mensajes de primeros contactos?",
+      "¿Tenéis campañas de fidelización o recordatorios de limpiezas/revisiones activas?",
+      "¿Qué software de gestión clínica utilizáis y qué funciones aprovecháis realmente?",
+      "¿Quién se encarga hoy de seguir a los pacientes que no cierran tratamiento?",
+      "¿Qué parte de vuestro tiempo dedicáis a gestionar citas y recordatorios vs atender pacientes?",
+      "Si pudierais llenar un 10–15% más de agenda sin más personal, ¿qué impacto tendría en vuestros ingresos?"
     ],
     "objeciones": [
       {
-        "objecion": "La odontología es muy manual",
-        "respuesta": "La IA no toca el sillón, pero sí llena la agenda y mejora el seguimiento."
+        "objecion": "La odontología es muy personal, no podemos automatizar el trato.",
+        "respuesta": "Totalmente, y nadie pretende automatizar la relación dentista-paciente. La idea es automatizar lo repetitivo (recordatorios, seguimientos) para que vosotros tengáis más tiempo para lo personal."
       },
       {
-        "objecion": "Ya usamos un software de clínica",
-        "respuesta": "Lo integraremos o partiremos de ahí para añadir automatizaciones, no para sustituirlo."
+        "objecion": "Ya tenemos software de clínica y va bien.",
+        "respuesta": "Me alegra. No se trata de sustituirlo, sino de añadir capas de automatización para recordatorios, seguimiento de presupuestos y fidelización, que normalmente el software no cubre bien."
+      },
+      {
+        "objecion": "No tenemos tiempo para implantar nada nuevo.",
+        "respuesta": "Lo entiendo. Por eso propongo un piloto pequeño que se centre en la tarea que más tiempo os quita hoy. Si no notáis alivio rápido, no tiene sentido continuar."
+      },
+      {
+        "objecion": "Es muy caro para nuestro tamaño.",
+        "respuesta": "Si conseguimos llenar un 10–15% más de agenda o cerrar más tratamientos, el coste se paga solo. Podemos empezar con un módulo pequeño y medir el ROI."
+      },
+      {
+        "objecion": "Nuestros pacientes no quieren que les mandemos muchos mensajes.",
+        "respuesta": "No se trata de saturar, sino de enviar mensajes útiles en el momento adecuado (recordatorios, cuidados, revisiones). Se puede configurar la frecuencia y el tipo de mensajes."
       }
     ],
     "señal_prioridad": [
       "Web moderna con cita online",
-      "Clínicas con varios doctores y varios tratamientos"
+      "Clínicas con varios doctores y varios tratamientos",
+      "Tratamientos de alto ticket (ortodoncia, implantes, estética)"
     ],
-    "senales_problema": [],
-    "indicadores_prioridad": [],
-    "senales_alarma": [],
+    "senales_problema": [
+      "Agenda con huecos visibles en horas clave",
+      "Sin secuencias de seguimiento post-tratamiento",
+      "Presupuestos que se envían y no se vuelven a mencionar",
+      "Dependen casi exclusivamente de Google Maps y boca a boca",
+      "Sin campañas activas de fidelización",
+      "La recepcionista pasa mucho tiempo llamando para confirmar citas"
+    ],
+    "indicadores_prioridad": [
+      "Tiene varias sillas y varios dentistas/higienistas",
+      "Agenda abierta a pacientes privados",
+      "Web moderna con cita online y presentación de tratamientos",
+      "Inversión visible en marketing (Google Ads, redes)",
+      "Ofrece tratamientos de alto ticket",
+      "Menciona que quiere llenar más agenda o mejorar la tasa de conversión",
+      "Tiene reseñas buenas en Google y se preocupa por la reputación online"
+    ],
+    "senales_alarma": [
+      "Clínica muy pequeña (1 silla, 1 dentista) y sin intención de crecer",
+      "Solo trabaja con convenios o mutuas, con márgenes muy ajustados",
+      "No tiene web o es muy básica, sin cita online",
+      "El responsable dice frases como 'nos va bien así', 'no queremos líos'",
+      "No hay ningún proceso de seguimiento, todo 'se va viendo'",
+      "Muestran resistencia fuerte a compartir información sobre su gestión",
+      "No hay presupuesto ni voluntad de invertir en nada fuera de lo obligatorio",
+      "Historial de impagados con proveedores o quejas frecuentes",
+      "Alta rotación de personal de recepcionista/higienista"
+    ],
     "notas": ""
   },
   {
-    "sector_id": "04",
-    "nombre": "Clínicas Veterinarias",
-    "subsector": "Salud - Veterinaria",
-    "fit": "Alto",
-    "tamano_mercado": "~7.032 clínicas",
-    "tamano_mercado_num": 7032,
-    "facturacion_agregada": "~3.069M€/año",
-    "facturacion_agregada_num": 3069,
-    "adopcion_ia": "~15%",
-    "adopcion_ia_num": 15,
-    "descripcion": "Clínicas que ofrecen servicios veterinarios, con agenda, campañas de vacunación y fidelización de clientes.",
-    "problemas": [
-      "Agenda con huecos improductivos",
-      "Falta de seguimiento de campañas de vacunación y desparasitación",
-      "Poca fidelización sistemática de clientes"
-    ],
-    "procesos_manuales": [
-      "Gestión de agenda",
-      "Recordatorios de vacunas",
-      "Fidelización"
-    ],
-    "herramientas_ia": [
-      "SignalPET",
-      "Chatbots para recordatorios de vacunas",
-      "CRM con automatizaciones"
-    ],
-    "oportunidades_automatizacion": [],
-    "aplicaciones_ia": [],
-    "problemas_legales": [],
-    "preguntas_descubrimiento": [
-      "¿Cuántos huecos improductivos tenéis en agenda por semana?",
-      "¿Cómo gestionáis hoy los recordatorios de vacunas y desparasitaciones?",
-      "¿Tenéis algún programa de fidelización activo?"
-    ],
-    "objeciones": [
-      {
-        "objecion": "La veterinaria es muy manual",
-        "respuesta": "La IA no toca al paciente, pero ayuda a llenar agenda y fidelizar dueños."
-      },
-      {
-        "objecion": "Ya usamos un software veterinario",
-        "respuesta": "Partimos de vuestro software y añadimos capas de automatización encima."
-      }
-    ],
-    "señal_prioridad": [
-      "Web moderna con cita online",
-      "Clínicas con varios veterinarios y servicios avanzados"
-    ],
-    "senales_problema": [],
-    "indicadores_prioridad": [],
-    "senales_alarma": [],
-    "notas": ""
-  },
-  {
-    "sector_id": "05",
+    "sector_id": "03",
     "nombre": "Inmobiliarias",
     "subsector": "Servicios - Inmobiliario",
     "fit": "Muy alto",
@@ -293,51 +256,116 @@
     "facturacion_agregada_num": 9400,
     "adopcion_ia": "~20%",
     "adopcion_ia_num": 20,
-    "descripcion": "Agencias que gestionan compraventa y alquiler de inmuebles, con captación, descripciones y seguimiento de leads.",
+    "descripcion": "Agencias que gestionan compraventa y alquiler de inmuebles, con captación, descripciones, visitas y negociación.",
     "problemas": [
       "Captación manual de propiedades",
       "Descripciones de inmuebles repetitivas y poco persuasivas",
-      "Filtrado de leads poco eficiente"
+      "Filtrado de leads poco eficiente",
+      "Seguimiento de clientes inconsistente",
+      "Dependencia de portales"
     ],
     "procesos_manuales": [
-      "Captación",
-      "Descripciones",
-      "Filtrado de leads"
+      "Captación de propiedades",
+      "Descripción de inmuebles",
+      "Filtrado de leads",
+      "Seguimiento de clientes",
+      "Gestión de visitas",
+      "Negociación y cierre"
     ],
     "herramientas_ia": [
       "Idealista AVM",
       "ChatGPT para descripciones de inmuebles",
       "CRM con scoring de leads"
     ],
-    "oportunidades_automatizacion": [],
-    "aplicaciones_ia": [],
-    "problemas_legales": [],
+    "oportunidades_automatizacion": [
+      "Captación asistida (OCR de documentos, formularios inteligentes)",
+      "Generación automática de descripciones (IA)",
+      "Scoring de leads por probabilidad de conversión",
+      "Secuencias de seguimiento post-visita",
+      "Campañas de nurturing para propietarios y compradores"
+    ],
+    "aplicaciones_ia": [
+      "Generación de descripciones persuasivas",
+      "Scoring de leads (portal, web, redes)",
+      "Predicción de probabilidad de venta/alquiler por propiedad",
+      "Análisis de precios de mercado (AVM)",
+      "Chatbots para primeras consultas y citas"
+    ],
+    "problemas_legales": [
+      "Protección de datos (RGPD)",
+      "Contratos de compraventa y alquiler",
+      "Normativa de intermediación inmobiliaria",
+      "Transparencia en precios y comisiones"
+    ],
     "preguntas_descubrimiento": [
-      "¿Cuánto tiempo pasáis captando y describiendo propiedades?",
-      "¿Cómo filtráis hoy los leads que llegan de portales?",
-      "¿Tenéis algún proceso de seguimiento tras la primera visita?"
+      "¿Cómo capturáis propiedades hoy?",
+      "¿Cuánto tiempo pasáis en descripciones?",
+      "¿Cómo priorizáis leads de portales?",
+      "¿Tenéis proceso de seguimiento post-visita?",
+      "¿Qué porcentaje de leads acaban en visita?",
+      "¿Y en cierre?",
+      "¿Usáis CRM? ¿Qué funciones?",
+      "¿Cómo gestionáis las llamadas y mensajes?",
+      "¿Tenéis campañas activas para propietarios?",
+      "¿Medís conversión por canal?",
+      "¿Cómo fijáis los precios de venta/alquiler?",
+      "¿Usáis herramientas de valoración automática?",
+      "¿Qué parte del tiempo dedicáis a captación vs venta?",
+      "¿Qué os gustaría automatizar primero?",
+      "¿Qué impacto tendría mejorar conversión un 10%?"
     ],
     "objeciones": [
       {
-        "objecion": "El sector es muy relacional",
+        "objecion": "El sector es muy relacional.",
         "respuesta": "La IA no reemplaza la relación, sino que libera tiempo para que la cuidéis más."
       },
       {
-        "objecion": "Ya usamos Idealista y portales",
+        "objecion": "Ya usamos Idealista y portales.",
         "respuesta": "Exacto, ahí es donde metemos IA para mejorar descripciones, pricing y seguimiento."
+      },
+      {
+        "objecion": "No tenemos tiempo.",
+        "respuesta": "Piloto pequeño en la tarea que más duele."
+      },
+      {
+        "objecion": "Es caro.",
+        "respuesta": "Si mejora conversión un 10%, se paga solo."
+      },
+      {
+        "objecion": "Nuestros clientes no quieren muchos mensajes.",
+        "respuesta": "Mensajes útiles, no saturación."
       }
     ],
     "señal_prioridad": [
       "Web moderna con buscador avanzado",
-      "Agencias con varios agentes y carteras altas"
+      "Agencias con varios agentes y carteras altas",
+      "Inversión en marketing (Google Ads, redes)"
     ],
-    "senales_problema": [],
-    "indicadores_prioridad": [],
-    "senales_alarma": [],
+    "senales_problema": [
+      "Dependen mucho de portales",
+      "Descripciones genéricas",
+      "Sin CRM o muy básico",
+      "No miden conversión por canal",
+      "Sin seguimiento estructurado"
+    ],
+    "indicadores_prioridad": [
+      "Varias sedes, varios agentes",
+      "Web moderna con buscador avanzado",
+      "Inversión en marketing",
+      "Carteras altas de propiedades",
+      "Quiere mejorar captación o conversión"
+    ],
+    "senales_alarma": [
+      "Muy pequeña (1–2 agentes) sin crecer",
+      "Sin web o muy básica",
+      "Nos va bien así",
+      "Sin procesos",
+      "Resistencia a compartir información"
+    ],
     "notas": ""
   },
   {
-    "sector_id": "06",
+    "sector_id": "04",
     "nombre": "Hoteles",
     "subsector": "Hostelería - Alojamiento",
     "fit": "Muy alto",
@@ -347,51 +375,233 @@
     "facturacion_agregada_num": 125340,
     "adopcion_ia": "~25%",
     "adopcion_ia_num": 25,
-    "descripcion": "Hoteles que gestionan alojamiento, con pricing, reservas directas vs OTAs y experiencia del huésped.",
+    "descripcion": "Gestionan alojamiento turístico/business, con pricing, reservas, experiencia del huésped.",
     "problemas": [
       "Pricing estático o reactivo",
-      "Falta de personalización en la experiencia del huésped",
-      "Reservas directas bajas frente a OTAs"
+      "Falta de personalización en experiencia del huésped",
+      "Reservas directas bajas frente a OTAs",
+      "Gestión manual de comunicaciones pre/durante estancia",
+      "Dependencia de OTAs con altas comisiones"
     ],
     "procesos_manuales": [
       "Pricing",
       "Gestión de reservas",
-      "Atención al huésped"
+      "Atención al huésped",
+      "Comunicaciones pre-check-in",
+      "Upselling de servicios"
     ],
     "herramientas_ia": [
       "Duetto",
       "Chatbots para pre-check-in y preguntas frecuentes",
       "CRM hotelero con automatizaciones"
     ],
-    "oportunidades_automatizacion": [],
-    "aplicaciones_ia": [],
-    "problemas_legales": [],
+    "oportunidades_automatizacion": [
+      "Pricing dinámico asistido por IA",
+      "Secuencias de comunicación pre-check-in",
+      "Upselling automático de servicios",
+      "Análisis de reseñas y satisfacción",
+      "Campañas de fidelización post-estancia"
+    ],
+    "aplicaciones_ia": [
+      "Pricing dinámico",
+      "Recomendación de servicios por tipo de huésped",
+      "Análisis de sentimiento en reseñas",
+      "Chatbots para preguntas frecuentes",
+      "Predicción de demanda"
+    ],
+    "problemas_legales": [
+      "Protección de datos (RGPD)",
+      "Normativa hotelera",
+      "Accesibilidad",
+      "Seguridad y Prevención de Riesgos"
+    ],
     "preguntas_descubrimiento": [
-      "¿Cómo fijáis hoy los precios de habitación?",
-      "¿Qué porcentaje de reservas son directas vs OTAs?",
-      "¿Tenéis algún proceso de personalización antes/durante la estancia?"
+      "¿Cómo fijáis precios hoy?",
+      "¿Qué % de reservas son directas vs OTAs?",
+      "¿Tenéis comunicación pre-check-in?",
+      "¿Hacéis upselling de servicios?",
+      "¿Cómo gestionáis las reseñas?",
+      "¿Usáis PMS? ¿Cuál?",
+      "¿Tenéis motor de reservas propio?",
+      "¿Medís satisfacción por canal?",
+      "¿Cómo gestionáis las llamadas y emails?",
+      "¿Tenéis campañas de fidelización?",
+      "¿Qué parte del tiempo dedicáis a pricing vs gestión?",
+      "¿Qué os gustaría automatizar primero?",
+      "¿Qué impacto tendría subir un 5% el precio medio?",
+      "¿Tenéis datos de huéspedes para segmentar?",
+      "¿Qué herramientas usáis hoy?"
     ],
     "objeciones": [
       {
-        "objecion": "El sector es muy tradicional",
-        "respuesta": "La IA se usa ya en cadenas grandes; la clave es empezar con un caso claro (pricing o reservas)."
+        "objecion": "El sector es muy tradicional.",
+        "respuesta": "IA se usa ya en cadenas grandes."
       },
       {
-        "objecion": "Ya usamos un PMS",
-        "respuesta": "Partimos de vuestro PMS y añadimos capas de IA para pricing y comunicación."
+        "objecion": "Ya usamos un PMS.",
+        "respuesta": "Partimos de vuestro PMS y añadimos capas de IA."
+      },
+      {
+        "objecion": "No tenemos tiempo.",
+        "respuesta": "Piloto pequeño."
+      },
+      {
+        "objecion": "Es caro.",
+        "respuesta": "Si sube RevPAR un 5%, se paga solo."
+      },
+      {
+        "objecion": "Huéspedes no quieren muchos mensajes.",
+        "respuesta": "Mensajes útiles."
       }
     ],
     "señal_prioridad": [
       "Web moderna con motor de reservas",
-      "Hoteles con varios tipos de habitación y temporadas"
+      "Hoteles con varios tipos de habitación y temporadas",
+      "Quiere mejorar RevPAR o reservas directas"
     ],
-    "senales_problema": [],
-    "indicadores_prioridad": [],
-    "senales_alarma": [],
+    "senales_problema": [
+      "Pricing manual o intuitivo",
+      "Pocas reservas directas",
+      "Sin comunicación pre-check-in",
+      "Sin upselling sistemático",
+      "Muchas OTAs vs web propia"
+    ],
+    "indicadores_prioridad": [
+      "Varias habitaciones, varios tipos",
+      "Web moderna con motor de reservas",
+      "Inversión en marketing",
+      "Quiere mejorar RevPAR o reservas directas",
+      "Reseñas buenas"
+    ],
+    "senales_alarma": [
+      "Muy pequeño (<20 habitaciones) sin crecer",
+      "Sin web o muy básica",
+      "Nos va bien así",
+      "Sin procesos",
+      "Resistencia"
+    ],
     "notas": ""
   },
   {
-    "sector_id": "07",
+    "sector_id": "05",
+    "nombre": "Restaurantes",
+    "subsector": "Hostelería - Restauración",
+    "fit": "Alto",
+    "tamano_mercado": "~160.000 restaurantes",
+    "tamano_mercado_num": 160000,
+    "facturacion_agregada": "~85.000-95.000M€",
+    "facturacion_agregada_num": 90000,
+    "adopcion_ia": "~18%",
+    "adopcion_ia_num": 18,
+    "descripcion": "Gestionan servicio de comidas/bebidas, con cocina, sala, reservas, fidelización.",
+    "problemas": [
+      "Predicción de demanda inexacta",
+      "Desperdicio de comida por sobre-compra",
+      "Falta de fidelización sistemática de clientes",
+      "Gestión manual de reservas y eventos",
+      "Márgenes ajustados y costes crecientes"
+    ],
+    "procesos_manuales": [
+      "Predicción de demanda",
+      "Compra de comida",
+      "Fidelización",
+      "Reservas",
+      "Eventos"
+    ],
+    "herramientas_ia": [
+      "Tenzo",
+      "Chatbots para reservas y preguntas frecuentes",
+      "CRM con campañas de fidelización"
+    ],
+    "oportunidades_automatizacion": [
+      "Forecasting de demanda asistido por IA",
+      "Optimización de compras",
+      "Campañas de fidelización",
+      "Recordatorios de reservas",
+      "Análisis de menú y rentabilidad por plato"
+    ],
+    "aplicaciones_ia": [
+      "Forecasting de demanda",
+      "Optimización de inventario",
+      "Análisis de rentabilidad por plato",
+      "Recomendación de menús",
+      "Chatbots para reservas"
+    ],
+    "problemas_legales": [
+      "Protección de datos (RGPD)",
+      "Ley de desperdicio alimentario",
+      "Normativa de seguridad alimentaria",
+      "Licencias y horarios"
+    ],
+    "preguntas_descubrimiento": [
+      "¿Cómo decidís compra de comida?",
+      "¿Cuánto desperdiciáis por semana?",
+      "¿Tenéis fidelización?",
+      "¿Cómo gestionáis reservas?",
+      "¿Medís rentabilidad por plato?",
+      "¿Tenéis CRM?",
+      "¿Cómo gestionáis llamadas y emails?",
+      "¿Tenéis campañas activas?",
+      "¿Qué % de clientes son recurrentes?",
+      "¿Usáis delivery?",
+      "¿Qué parte del tiempo dedicáis a gestión vs cocina/sala?",
+      "¿Qué os gustaría automatizar?",
+      "¿Qué impacto tendría reducir desperdicio un 20%?",
+      "¿Tenéis datos de clientes para segmentar?",
+      "¿Qué herramientas usáis hoy?"
+    ],
+    "objeciones": [
+      {
+        "objecion": "El sector es muy tradicional.",
+        "respuesta": "IA no cocina, pero ayuda a comprar mejor."
+      },
+      {
+        "objecion": "Ya usamos software.",
+        "respuesta": "Partimos de vuestro software."
+      },
+      {
+        "objecion": "No tenemos tiempo.",
+        "respuesta": "Piloto pequeño."
+      },
+      {
+        "objecion": "Es caro.",
+        "respuesta": "Si reduce desperdicio un 20%, se paga solo."
+      },
+      {
+        "objecion": "Clientes no quieren muchos mensajes.",
+        "respuesta": "Mensajes útiles."
+      }
+    ],
+    "señal_prioridad": [
+      "Web moderna con reservas online",
+      "Restaurantes con varios turnos y carta extensa",
+      "Quiere reducir desperdicio o mejorar fidelización"
+    ],
+    "senales_problema": [
+      "Compra de comida intuitiva",
+      "Mucho desperdicio",
+      "Sin campañas de fidelización",
+      "Reservas manuales",
+      "Sin análisis de menú"
+    ],
+    "indicadores_prioridad": [
+      "Varios turnos, carta extensa",
+      "Web moderna con reservas online",
+      "Inversión en marketing",
+      "Quiere reducir desperdicio o mejorar fidelización",
+      "Reseñas buenas"
+    ],
+    "senales_alarma": [
+      "Muy pequeño (<5 personas) sin crecer",
+      "Sin web o muy básica",
+      "Nos va bien así",
+      "Sin procesos",
+      "Resistencia"
+    ],
+    "notas": ""
+  },
+  {
+    "sector_id": "06",
     "nombre": "Apartamentos Turísticos",
     "subsector": "Hostelería - Alojamiento Vacacional",
     "fit": "Alto",
@@ -445,54 +655,77 @@
     "notas": ""
   },
   {
-    "sector_id": "08",
-    "nombre": "Restaurantes",
-    "subsector": "Hostelería - Restauración",
+    "sector_id": "07",
+    "nombre": "Talleres Mecánicos",
+    "subsector": "Automoción - Reparación",
     "fit": "Alto",
-    "tamano_mercado": "~160.000 restaurantes",
-    "tamano_mercado_num": 160000,
-    "facturacion_agregada": "~85.000-95.000M€",
-    "facturacion_agregada_num": 90000,
-    "adopcion_ia": "~18%",
-    "adopcion_ia_num": 18,
-    "descripcion": "Restaurantes que gestionan demanda, compra de comida, fidelización y reservas.",
+    "tamano_mercado": "~30.000 talleres",
+    "tamano_mercado_num": 30000,
+    "facturacion_agregada": "~15.000M€/año",
+    "facturacion_agregada_num": 15000,
+    "adopcion_ia": "~12%",
+    "adopcion_ia_num": 12,
+    "descripcion": "Talleres de reparación y mantenimiento de vehículos, con gestión de citas, pedidos de recambios y facturación.",
     "problemas": [
-      "Predicción de demanda inexacta",
-      "Desperdicio de comida por sobre-compra",
-      "Falta de fidelización sistemática de clientes"
+      "Gestión manual de citas y pedidos",
+      "Falta de seguimiento de clientes",
+      "Márgenes ajustados"
     ],
     "procesos_manuales": [
-      "Predicción de demanda",
-      "Compra de comida",
-      "Fidelización"
+      "Gestión de citas",
+      "Pedidos de recambios",
+      "Facturación"
     ],
-    "herramientas_ia": [
-      "Tenzo",
-      "Chatbots para reservas y preguntas frecuentes",
-      "CRM con campañas de fidelización"
-    ],
+    "herramientas_ia": [],
     "oportunidades_automatizacion": [],
     "aplicaciones_ia": [],
     "problemas_legales": [],
     "preguntas_descubrimiento": [
-      "¿Cómo decidís cuánta comida comprar cada semana?",
-      "¿Cuánto estimáis que tiráis de comida por semana?",
-      "¿Tenéis algún programa de fidelización o base de datos de clientes?"
+      "¿Cómo gestionáis citas y pedidos?",
+      "¿Tenéis seguimiento de clientes?",
+      "¿Medís márgenes por reparación?"
     ],
-    "objeciones": [
-      {
-        "objecion": "El sector es muy tradicional",
-        "respuesta": "La IA no cocina, pero ayuda a comprar mejor y llenar mesas en horas bajas."
-      },
-      {
-        "objecion": "Ya usamos reservas online",
-        "respuesta": "Perfecto, ahí es donde metemos IA para forecasting y fidelización."
-      }
+    "objeciones": [],
+    "señal_prioridad": [],
+    "senales_problema": [],
+    "indicadores_prioridad": [],
+    "senales_alarma": [],
+    "notas": ""
+  },
+  {
+    "sector_id": "08",
+    "nombre": "Constructoras",
+    "subsector": "Construcción",
+    "fit": "Medio",
+    "tamano_mercado": "~100.000 empresas",
+    "tamano_mercado_num": 100000,
+    "facturacion_agregada": "~50.000M€/año",
+    "facturacion_agregada_num": 50000,
+    "adopcion_ia": "~10%",
+    "adopcion_ia_num": 10,
+    "descripcion": "Empresas de construcción, con gestión de proyectos, compras, subcontratas y certificación.",
+    "problemas": [
+      "Gestión manual de proyectos y subcontratas",
+      "Control de costes y certificaciones",
+      "Retrasos y sobrecostes"
     ],
-    "señal_prioridad": [
-      "Web moderna con reservas online",
-      "Restaurantes con varios turnos y carta extensa"
+    "procesos_manuales": [
+      "Gestión de proyectos",
+      "Compras",
+      "Subcontratas",
+      "Certificaciones"
     ],
+    "herramientas_ia": [],
+    "oportunidades_automatizacion": [],
+    "aplicaciones_ia": [],
+    "problemas_legales": [],
+    "preguntas_descubrimiento": [
+      "¿Cómo gestionáis proyectos y subcontratas?",
+      "¿Medís costes y certificaciones?",
+      "¿Tenéis problemas de retrasos?"
+    ],
+    "objeciones": [],
+    "señal_prioridad": [],
     "senales_problema": [],
     "indicadores_prioridad": [],
     "senales_alarma": [],
@@ -500,53 +733,38 @@
   },
   {
     "sector_id": "09",
-    "nombre": "Gimnasios y Centros Deportivos",
-    "subsector": "Deporte y Bienestar",
-    "fit": "Alto",
-    "tamano_mercado": "~5.800 centros",
-    "tamano_mercado_num": 5800,
-    "facturacion_agregada": "~3.200M€/año",
-    "facturacion_agregada_num": 3200,
-    "adopcion_ia": "Media-alta",
-    "adopcion_ia_num": 22,
-    "descripcion": "Centros deportivos que gestionan abonados, rutinas, seguimiento y comunicación.",
+    "nombre": "Empresas de Transporte",
+    "subsector": "Logística - Transporte",
+    "fit": "Medio",
+    "tamano_mercado": "~50.000 empresas",
+    "tamano_mercado_num": 50000,
+    "facturacion_agregada": "~25.000M€/año",
+    "facturacion_agregada_num": 25000,
+    "adopcion_ia": "~15%",
+    "adopcion_ia_num": 15,
+    "descripcion": "Empresas de transporte de mercancías, con gestión de flotas, rutas, conductores y facturación.",
     "problemas": [
-      "Baja retención de abonados",
-      "Falta de personalización en rutinas y seguimiento",
-      "Comunicación genérica y poco segmentada"
+      "Gestión manual de rutas y flotas",
+      "Control de costes y combustible",
+      "Retrasos y eficiencia"
     ],
     "procesos_manuales": [
-      "Gestión de abonados",
-      "Seguimiento",
-      "Comunicación"
+      "Gestión de rutas",
+      "Flotas",
+      "Conductores",
+      "Facturación"
     ],
-    "herramientas_ia": [
-      "Virtuagym",
-      "Chatbots para dudas y recordatorios",
-      "CRM con segmentación y automatizaciones"
-    ],
+    "herramientas_ia": [],
     "oportunidades_automatizacion": [],
     "aplicaciones_ia": [],
     "problemas_legales": [],
     "preguntas_descubrimiento": [
-      "¿Cuál es vuestra tasa de bajas mensual/anual?",
-      "¿Cómo seguís a los abonados que dejan de venir?",
-      "¿Ofrecéis planes personalizados o solo acceso general?"
+      "¿Cómo gestionáis rutas y flotas?",
+      "¿Medís costes y combustible?",
+      "¿Tenéis problemas de retrasos?"
     ],
-    "objeciones": [
-      {
-        "objecion": "No tenemos presupuesto",
-        "respuesta": "Empezamos con un piloto en retención que se paga con menos bajas."
-      },
-      {
-        "objecion": "Nuestros clientes no usarían una app",
-        "respuesta": "No hace falta que la usen; la IA trabaja desde el lado del gimnasio (mensajes, análisis)."
-      }
-    ],
-    "señal_prioridad": [
-      "Web moderna con app o reservas online",
-      "Centros con varias salas y actividades"
-    ],
+    "objeciones": [],
+    "señal_prioridad": [],
     "senales_problema": [],
     "indicadores_prioridad": [],
     "senales_alarma": [],
@@ -554,53 +772,38 @@
   },
   {
     "sector_id": "10",
-    "nombre": "Clínicas de Estética y Centros de Belleza",
-    "subsector": "Salud y Bienestar - Estética",
-    "fit": "Alto",
-    "tamano_mercado": "Cientos de centros",
-    "tamano_mercado_num": 3000,
-    "facturacion_agregada": "Cientos de M€",
+    "nombre": "Academias y Centros de Formación",
+    "subsector": "Educación - Formación",
+    "fit": "Medio",
+    "tamano_mercado": "~20.000 centros",
+    "tamano_mercado_num": 20000,
+    "facturacion_agregada": "~5.000M€/año",
     "facturacion_agregada_num": 5000,
-    "adopcion_ia": "Media-alta",
-    "adopcion_ia_num": 20,
-    "descripcion": "Centros de estética y belleza que gestionan agenda, seguimiento post-tratamiento y venta de tratamientos adicionales.",
+    "adopcion_ia": "~18%",
+    "adopcion_ia_num": 18,
+    "descripcion": "Centros de formación, con gestión de alumnos, cursos, horarios y facturación.",
     "problemas": [
-      "Agenda con huecos improductivos",
-      "Falta de seguimiento post-tratamiento",
-      "Poco upselling sistemático de tratamientos"
+      "Gestión manual de alumnos y cursos",
+      "Falta de seguimiento de estudiantes",
+      "Márgenes ajustados"
     ],
     "procesos_manuales": [
-      "Gestión de agenda",
-      "Seguimiento post-tratamiento",
-      "Ventas de tratamientos"
+      "Gestión de alumnos",
+      "Cursos",
+      "Horarios",
+      "Facturación"
     ],
-    "herramientas_ia": [
-      "HubSpot",
-      "Chatbots para recordatorios y citas",
-      "CRM con automatizaciones de marketing"
-    ],
+    "herramientas_ia": [],
     "oportunidades_automatizacion": [],
     "aplicaciones_ia": [],
     "problemas_legales": [],
     "preguntas_descubrimiento": [
-      "¿Cuántos huecos improductivos tenéis en agenda por semana?",
-      "¿Cómo seguís a las clientas tras un tratamiento?",
-      "¿Tenéis algún proceso para proponer tratamientos complementarios?"
+      "¿Cómo gestionáis alumnos y cursos?",
+      "¿Tenéis seguimiento de estudiantes?",
+      "¿Medís márgenes por curso?"
     ],
-    "objeciones": [
-      {
-        "objecion": "Nuestras clientes no usarían una app",
-        "respuesta": "La IA no necesita que usen app; automatiza mensajes y seguimiento desde vuestro lado."
-      },
-      {
-        "objecion": "Ya usamos un software de gestión",
-        "respuesta": "Partimos de él y añadimos capas de automatización y mensajes inteligentes."
-      }
-    ],
-    "señal_prioridad": [
-      "Web moderna con reservas online",
-      "Centros con varios tratamientos de alto ticket"
-    ],
+    "objeciones": [],
+    "señal_prioridad": [],
     "senales_problema": [],
     "indicadores_prioridad": [],
     "senales_alarma": [],
