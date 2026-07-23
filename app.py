@@ -13,32 +13,18 @@ st.set_page_config(
     layout="wide"
 )
 
-# Colores base (estilo dashboard limpio tipo Power BI)
-COLOR_BG = "#f4f6f8"        # fondo general (gris muy suave)
-COLOR_CARD = "#ffffff"      # fondo de tarjetas (blanco)
-COLOR_TEXT = "#0f172a"      # texto principal (azul muy oscuro)
-COLOR_TEXT_SEC = "#475569"  # texto secundario (gris azulado)
-COLOR_ACCENT = "#2563eb"    # acento principal (azul)
-COLOR_PALETTE = [
-    "#2563eb",  # azul
-    "#10b981",  # verde
-    "#f59e0b",  # ámbar
-    "#ef4444",  # rojo
-    "#8b5cf6",  # violeta
-    "#06b6d4",  # cyan
-    "#f97316",  # naranja
-]
+COLOR_BG = "#f4f6f8"
+COLOR_CARD = "#ffffff"
+COLOR_TEXT = "#0f172a"
+COLOR_TEXT_SEC = "#475569"
+COLOR_ACCENT = "#2563eb"
 
-# CSS para look tipo Power BI
 st.markdown(f"""
     <style>
     .stApp {{
         background-color: {COLOR_BG};
         color: {COLOR_TEXT};
         font-family: "Inter", system-ui, -apple-system, sans-serif;
-    }}
-    .stMarkdown, .stMarkdown p, .stSidebar .stMarkdown {{
-        color: {COLOR_TEXT};
     }}
     .stMetric {{
         background-color: {COLOR_CARD};
@@ -87,9 +73,7 @@ def load_sectores():
 
 sectores = load_sectores()
 df = pd.DataFrame(sectores)
-
-# Acortar nombres para gráficas
-df["nombre_corto"] = df["nombre"].str.replace(" y ", " & ").str.replace("Centros Deportivos", "C. Deportivos")
+df["nombre_corto"] = df["nombre"].str.replace(" y ", " & ")
 
 # -----------------------
 # ESTADO (favoritos, notas, modo reunión)
@@ -140,6 +124,9 @@ st.session_state.modo_reunion = modo_reunion
 def to_csv(df_local):
     return df_local.to_csv(index=False).encode("utf-8")
 
+def safe_list(lst):
+    return lst if isinstance(lst, list) else []
+
 # -----------------------
 # PÁGINAS
 # -----------------------
@@ -153,9 +140,9 @@ if opcion == "Inicio / Resumen":
     with c1:
         st.metric("Sectores", len(sectores))
     with c2:
-        st.metric("Fit muy alto", sum(1 for s in sectores if s["fit"] == "Muy alto"))
+        st.metric("Fit muy alto", sum(1 for s in sectores if s.get("fit") == "Muy alto"))
     with c3:
-        st.metric("Fit alto", sum(1 for s in sectores if s["fit"] == "Alto"))
+        st.metric("Fit alto", sum(1 for s in sectores if s.get("fit") == "Alto"))
     with c4:
         total_fact = sum(s.get("facturacion_agregada_num", 0) for s in sectores)
         st.metric("Facturación agregada (aprox)", f"~{total_fact:,} M€")
@@ -164,10 +151,13 @@ if opcion == "Inicio / Resumen":
 
     # Filtro por búsqueda
     if buscar:
+        q = buscar.lower()
         df_fil = df[
-            df["nombre"].str.lower().str.contains(buscar.lower()) |
-            df["subsector"].str.lower().str.contains(buscar.lower()) |
-            df["problemas"].apply(lambda x: any(buscar.lower() in p.lower() for p in x))
+            df["nombre"].str.lower().str.contains(q) |
+            df["subsector"].str.lower().str.contains(q) |
+            df["problemas"].apply(lambda x: any(q in p.lower() for p in safe_list(x))) |
+            df["aplicaciones_ia"].apply(lambda x: any(q in p.lower() for p in safe_list(x))) |
+            df["preguntas_descubrimiento"].apply(lambda x: any(q in p.lower() for p in safe_list(x)))
         ]
     else:
         df_fil = df
@@ -340,7 +330,7 @@ elif opcion == "Explorador de sectores":
         default=["Muy alto", "Alto"],
     )
 
-    sectores_filt = [s for s in sectores if s["fit"] in fit_sel]
+    sectores_filt = [s for s in sectores if s.get("fit") in fit_sel]
 
     if not sectores_filt:
         st.warning("No hay sectores con ese filtro. Selecciona otro fit.")
@@ -356,39 +346,73 @@ elif opcion == "Explorador de sectores":
     st.subheader(f"Sector: {sec_row['nombre']}")
     c1, c2, c3, c4 = st.columns(4)
     with c1:
-        st.info(f"Tamaño: {sec_row['tamano_mercado']}")
+        st.info(f"Tamaño: {sec_row.get('tamano_mercado', 'N/A')}")
     with c2:
-        st.info(f"Facturación: {sec_row['facturacion_agregada']}")
+        st.info(f"Facturación: {sec_row.get('facturacion_agregada', 'N/A')}")
     with c3:
-        st.info(f"Adopción IA: {sec_row['adopcion_ia']}")
+        st.info(f"Adopción IA: {sec_row.get('adopcion_ia', 'N/A')}")
     with c4:
-        st.info(f"Fit: {sec_row['fit']}")
+        st.info(f"Fit: {sec_row.get('fit', 'N/A')}")
 
     st.markdown("---")
 
+    st.markdown("### Descripción")
+    st.write(sec_row.get("descripcion", "Sin descripción disponible."))
+
     st.markdown("### Ficha rápida")
-    st.write(f"**Subsector:** {sec_row['subsector']}")
+    st.write(f"**Subsector:** {sec_row.get('subsector', 'N/A')}")
 
     st.markdown("### Problemas principales")
-    for p in sec_row["problemas"]:
+    for p in safe_list(sec_row.get("problemas", [])):
+        st.write(f"- {p}")
+
+    st.markdown("### Procesos manuales habituales")
+    for p in safe_list(sec_row.get("procesos_manuales", [])):
+        st.write(f"- {p}")
+
+    st.markdown("### Oportunidades de automatización")
+    for p in safe_list(sec_row.get("oportunidades_automatizacion", [])):
+        st.write(f"- {p}")
+
+    st.markdown("### Aplicaciones de IA")
+    for p in safe_list(sec_row.get("aplicaciones_ia", [])):
+        st.write(f"- {p}")
+
+    st.markdown("### Problemas legales / normativos")
+    for p in safe_list(sec_row.get("problemas_legales", [])):
+        st.write(f"- {p}")
+
+    st.markdown("### Señales de problema")
+    for p in safe_list(sec_row.get("senales_problema", [])):
+        st.write(f"- {p}")
+
+    st.markdown("### Indicadores de prioridad")
+    for p in safe_list(sec_row.get("indicadores_prioridad", [])):
+        st.write(f"- {p}")
+
+    st.markdown("### Señales de alarma")
+    for p in safe_list(sec_row.get("senales_alarma", [])):
         st.write(f"- {p}")
 
     st.markdown("### Herramientas IA de referencia")
-    for h in sec_row["herramientas_ia"]:
+    for h in safe_list(sec_row.get("herramientas_ia", [])):
         st.write(f"- {h}")
 
     st.markdown("### Preguntas de descubrimiento")
-    for q in sec_row["preguntas_descubrimiento"]:
+    for q in safe_list(sec_row.get("preguntas_descubrimiento", [])):
         st.write(f"- {q}")
 
     st.markdown("### Objeciones típicas y respuestas")
-    for o in sec_row["objeciones"]:
-        st.write(f"**Objeción:** {o['objecion']}")
-        st.write(f"*Respuesta:* {o['respuesta']}")
+    for o in safe_list(sec_row.get("objeciones", [])):
+        if isinstance(o, dict):
+            st.write(f"**Objeción:** {o.get('objecion', '')}")
+            st.write(f"*Respuesta:* {o.get('respuesta', '')}")
+        else:
+            st.write(f"- {o}")
         st.write("")
 
     st.markdown("### Señales de prioridad")
-    for s in sec_row["señal_prioridad"]:
+    for s in safe_list(sec_row.get("señal_prioridad", [])):
         st.write(f"- {s}")
 
     # Notas por sector
@@ -396,7 +420,7 @@ elif opcion == "Explorador de sectores":
     st.markdown("### Notas")
     notas_val = st.text_area(
         "Añade notas personales sobre este sector",
-        value=st.session_state.notas[sec_row["nombre"]],
+        value=st.session_state.notas.get(sec_row["nombre"], ""),
         key=f"notas_{sec_row['nombre']}",
     )
     st.session_state.notas[sec_row["nombre"]] = notas_val
