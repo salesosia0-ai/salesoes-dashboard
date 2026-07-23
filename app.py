@@ -574,8 +574,7 @@ elif opcion == "Explorador de sectores":
             st.session_state.favoritos.remove(sec_row["nombre"])
     else:
         if st.button("⭐ Añadir a favoritos"):
-            st.session_state.favoritos.append(sec_row["nombre"])    )
-
+st.session_state.favoritos.append(sec_row["nombre"])
 # -----------------------
 # FOOTER
 # -----------------------
