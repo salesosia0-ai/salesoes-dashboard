@@ -447,80 +447,100 @@ elif opcion == "Explorador de sectores":
     st.write(f"**Subsector:** {sec_row.get('subsector', 'N/A')}")
 
     st.markdown("### Problemas principales")
-    problemas = safe_list(sec_row.get("problemas", []))
-    if problemas:
+    problemas = sec_row.get("problemas", [])
+    if isinstance(problemas, str):
+        st.write(problemas)
+    elif problemas:
         for p in problemas:
             st.write(f"- {p}")
     else:
         st.write("Sin problemas registrados.")
 
     st.markdown("### Procesos manuales habituales")
-    procesos = safe_list(sec_row.get("procesos_manuales", []))
-    if procesos:
+    procesos = sec_row.get("procesos_manuales", [])
+    if isinstance(procesos, str):
+        st.write(procesos)
+    elif procesos:
         for p in procesos:
             st.write(f"- {p}")
     else:
         st.write("Sin procesos registrados.")
 
     st.markdown("### Oportunidades de automatización")
-    oportunidades = safe_list(sec_row.get("oportunidades_automatizacion", []))
-    if oportunidades:
-        for p in oportunidades:
-            st.write(f"- {p}")
+    oportunidades = sec_row.get("oportunidades_automatizacion", [])
+    if isinstance(oportunidades, str):
+        st.write(oportunidades)
+    elif oportunidades:
+        for o in oportunidades:
+            st.write(f"- {o}")
     else:
         st.write("Sin oportunidades registradas.")
 
     st.markdown("### Aplicaciones de IA")
-    aplicaciones = safe_list(sec_row.get("aplicaciones_ia", []))
-    if aplicaciones:
-        for p in aplicaciones:
-            st.write(f"- {p}")
+    aplicaciones = sec_row.get("aplicaciones_ia", [])
+    if isinstance(aplicaciones, str):
+        st.write(aplicaciones)
+    elif aplicaciones:
+        for a in aplicaciones:
+            st.write(f"- {a}")
     else:
         st.write("Sin aplicaciones registradas.")
 
     st.markdown("### Problemas legales / normativos")
-    legales = safe_list(sec_row.get("problemas_legales", []))
-    if legales:
-        for p in legales:
-            st.write(f"- {p}")
+    legales = sec_row.get("problemas_legales", [])
+    if isinstance(legales, str):
+        st.write(legales)
+    elif legales:
+        for l in legales:
+            st.write(f"- {l}")
     else:
         st.write("Sin problemas legales registrados.")
 
     st.markdown("### Señales de problema")
-    senales_prob = safe_list(sec_row.get("senales_problema", []))
-    if senales_prob:
-        for p in senales_prob:
-            st.write(f"- {p}")
+    senales_prob = sec_row.get("senales_problema", [])
+    if isinstance(senales_prob, str):
+        st.write(senales_prob)
+    elif senales_prob:
+        for s in senales_prob:
+            st.write(f"- {s}")
     else:
         st.write("Sin señales registradas.")
 
     st.markdown("### Indicadores de prioridad")
-    indicadores = safe_list(sec_row.get("indicadores_prioridad", []))
-    if indicadores:
-        for p in indicadores:
-            st.write(f"- {p}")
+    indicadores = sec_row.get("indicadores_prioridad", [])
+    if isinstance(indicadores, str):
+        st.write(indicadores)
+    elif indicadores:
+        for i in indicadores:
+            st.write(f"- {i}")
     else:
         st.write("Sin indicadores registrados.")
 
     st.markdown("### Señales de alarma")
-    senales_alarma = safe_list(sec_row.get("senales_alarma", []))
-    if senales_alarma:
-        for p in senales_alarma:
-            st.write(f"- {p}")
+    senales_alarma = sec_row.get("senales_alarma", [])
+    if isinstance(senales_alarma, str):
+        st.write(senales_alarma)
+    elif senales_alarma:
+        for s in senales_alarma:
+            st.write(f"- {s}")
     else:
         st.write("Sin señales de alarma registradas.")
 
     st.markdown("### Preguntas de descubrimiento")
-    preguntas = safe_list(sec_row.get("preguntas_descubrimiento", []))
-    if preguntas:
+    preguntas = sec_row.get("preguntas_descubrimiento", [])
+    if isinstance(preguntas, str):
+        st.write(preguntas)
+    elif preguntas:
         for q in preguntas:
             st.write(f"- {q}")
     else:
         st.write("Sin preguntas registradas.")
 
     st.markdown("### Objeciones típicas y respuestas")
-    objeciones = safe_list(sec_row.get("objeciones", []))
-    if objeciones:
+    objeciones = sec_row.get("objeciones", [])
+    if isinstance(objeciones, str):
+        st.write(objeciones)
+    elif objeciones:
         for o in objeciones:
             st.write(f"- {o}")
         st.write("")
@@ -528,8 +548,10 @@ elif opcion == "Explorador de sectores":
         st.write("Sin objeciones registradas.")
 
     st.markdown("### Respuestas a objeciones")
-    respuestas = safe_list(sec_row.get("respuestas_objeciones", []))
-    if respuestas:
+    respuestas = sec_row.get("respuestas_objeciones", [])
+    if isinstance(respuestas, str):
+        st.write(respuestas)
+    elif respuestas:
         for r in respuestas:
             st.write(f"{r}")
     else:
@@ -552,35 +574,7 @@ elif opcion == "Explorador de sectores":
             st.session_state.favoritos.remove(sec_row["nombre"])
     else:
         if st.button("⭐ Añadir a favoritos"):
-            st.session_state.favoritos.append(sec_row["nombre"])
-
-elif opcion == "Estrategia comercial":
-    st.title("Estrategia comercial")
-    st.markdown("Esta sección está en construcción. Pronto disponible.")
-
-elif opcion == "Comparador":
-    st.title("Comparador de sectores")
-    st.markdown("Compara hasta 3 sectores lado a lado.")
-    st.markdown("En construcción.")
-
-elif opcion == "Priorización":
-    st.title("Priorización")
-    st.markdown("Filtra por prioridad y sector.")
-    st.markdown("En construcción.")
-
-elif opcion == "Export / API":
-    st.title("Export / API")
-    st.markdown("Exporta los datos en diferentes formatos.")
-    
-    st.json(sectores)
-    
-    csv = df.to_csv(index=False).encode("utf-8")
-    st.download_button(
-        label="📥 Descargar CSV",
-        data=csv,
-        file_name="sectores_salesos.csv",
-        mime="text/csv",
-    )
+            st.session_state.favoritos.append(sec_row["nombre"])    )
 
 # -----------------------
 # FOOTER
