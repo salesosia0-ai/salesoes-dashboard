@@ -12,39 +12,65 @@ st.set_page_config(
     layout="wide"
 )
 
-# Paleta de colores
-COLOR_BG = "#0f172a"        # fondo oscuro (azul noche)
-COLOR_CARD = "#1e293b"      # tarjeta (azul grisáceo)
-COLOR_TEXT = "#f1f5f9"      # texto claro
-COLOR_ACCENT = "#38bdf8"    # acento (azul claro)
-COLOR_SECONDARY = "#94a3b8" # texto secundario
+# Colores base (estilo dashboard limpio tipo Power BI)
+COLOR_BG = "#f4f6f8"        # fondo general (gris muy suave)
+COLOR_CARD = "#ffffff"      # fondo de tarjetas (blanco)
+COLOR_TEXT = "#0f172a"      # texto principal (azul muy oscuro)
+COLOR_TEXT_SEC = "#475569"  # texto secundario (gris azulado)
+COLOR_ACCENT = "#2563eb"    # acento principal (azul)
+COLOR_PALETTE = [
+    "#2563eb",  # azul
+    "#10b981",  # verde
+    "#f59e0b",  # ámbar
+    "#ef4444",  # rojo
+    "#8b5cf6",  # violeta
+    "#06b6d4",  # cyan
+    "#f97316",  # naranja
+]
 
-# CSS personalizado para tema oscuro elegante
+# CSS para look tipo Power BI
 st.markdown(f"""
     <style>
     .stApp {{
         background-color: {COLOR_BG};
         color: {COLOR_TEXT};
+        font-family: "Inter", system-ui, -apple-system, sans-serif;
     }}
     .stMarkdown, .stMarkdown p, .stSidebar .stMarkdown {{
         color: {COLOR_TEXT};
     }}
     .stMetric {{
         background-color: {COLOR_CARD};
-        border-radius: 10px;
-        padding: 15px;
+        border-radius: 12px;
+        padding: 18px;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.06);
     }}
     .stMetricLabel {{
-        color: {COLOR_SECONDARY};
+        color: {COLOR_TEXT_SEC};
+        font-size: 14px;
     }}
     .stMetricValue {{
         color: {COLOR_ACCENT};
+        font-size: 24px;
+        font-weight: 700;
     }}
-    .css-1r6q7xm {{
-        background-color: {COLOR_CARD};
-    }}
-    h1, h2, h3 {{
+    h1 {{
+        font-size: 28px;
+        font-weight: 700;
         color: {COLOR_TEXT};
+        margin-bottom: 10px;
+    }}
+    h2, h3 {{
+        font-size: 20px;
+        font-weight: 600;
+        color: {COLOR_TEXT};
+    }}
+    .stTabs [data-baseweb="tab-list"] {{
+        gap: 12px;
+    }}
+    .stTabs [data-baseweb="tab"] {{
+        border-radius: 8px;
+        padding: 8px 16px;
     }}
     </style>
 """, unsafe_allow_html=True)
@@ -468,8 +494,10 @@ sectores = [
     },
 ]
 
-# DataFrame para gráficas
 df = pd.DataFrame(sectores)
+
+# Acortar nombres para gráficas
+df["nombre_corto"] = df["nombre"].str.replace(" y ", " & ").str.replace("Centros Deportivos", "C. Deportivos")
 
 # -----------------------
 # PESTAÑAS
@@ -499,82 +527,129 @@ with tab1:
 
     st.markdown("---")
 
-    # Gráficas
-    st.subheader("Tamaño de mercado por sector")
-    fig_tamano = px.bar(
-        df,
-        x="nombre",
-        y="tamano_mercado_num",
-        title="Tamaño de mercado (número de empresas / centros)",
-        labels={"nombre": "Sector", "tamano_mercado_num": "Tamaño"},
-        color="tamano_mercado_num",
-        color_continuous_scale="Blues",
-    )
-    fig_tamano.update_layout(
-        plot_bgcolor="rgba(0,0,0,0)",
-        paper_bgcolor="rgba(0,0,0,0)",
-        font_color=COLOR_TEXT,
-    )
-    st.plotly_chart(fig_tamano, use_container_width=True)
+    # Gráficas en rejilla 2x2
+    row1_col1, row1_col2 = st.columns(2)
+    row2_col1, row2_col2 = st.columns(2)
 
-    st.subheader("Facturación agregada por sector")
-    fig_fact = px.bar(
-        df,
-        x="nombre",
-        y="facturacion_agregada_num",
-        title="Facturación agregada (M€)",
-        labels={"nombre": "Sector", "facturacion_agregada_num": "Facturación (M€)"},
-        color="facturacion_agregada_num",
-        color_continuous_scale="Greens",
-    )
-    fig_fact.update_layout(
-        plot_bgcolor="rgba(0,0,0,0)",
-        paper_bgcolor="rgba(0,0,0,0)",
-        font_color=COLOR_TEXT,
-    )
-    st.plotly_chart(fig_fact, use_container_width=True)
+    # 1. Tamaño de mercado
+    with row1_col1:
+        st.subheader("Tamaño de mercado por sector")
+        fig_tamano = px.bar(
+            df,
+            x="nombre_corto",
+            y="tamano_mercado_num",
+            title="Tamaño de mercado (nº de empresas / centros)",
+            labels={"nombre_corto": "Sector", "tamano_mercado_num": "Tamaño"},
+            color="tamano_mercado_num",
+            color_continuous_scale="Blues",
+        )
+        fig_tamano.update_traces(marker_line_color="white", marker_line_width=1)
+        fig_tamano.update_layout(
+            margin=dict(l=40, r=40, t=60, b=80),
+            showlegend=False,
+            xaxis_tickangle=-30,
+            title_font_size=16,
+            xaxis_title_font_size=13,
+            yaxis_title_font_size=13,
+            xaxis_tickfont_size=12,
+            yaxis_tickfont_size=12,
+            plot_bgcolor="rgba(0,0,0,0)",
+            paper_bgcolor="rgba(0,0,0,0)",
+            font_color=COLOR_TEXT,
+        )
+        st.plotly_chart(fig_tamano, use_container_width=True)
 
-    st.subheader("Adopción de IA por sector")
-    fig_ia = px.bar(
-        df,
-        x="nombre",
-        y="adopcion_ia_num",
-        title="Adopción estimada de IA (%)",
-        labels={"nombre": "Sector", "adopcion_ia_num": "Adopción IA (%)"},
-        color="adopcion_ia_num",
-        color_continuous_scale="Purples",
-    )
-    fig_ia.update_layout(
-        plot_bgcolor="rgba(0,0,0,0)",
-        paper_bgcolor="rgba(0,0,0,0)",
-        font_color=COLOR_TEXT,
-    )
-    st.plotly_chart(fig_ia, use_container_width=True)
+    # 2. Facturación agregada
+    with row1_col2:
+        st.subheader("Facturación agregada por sector")
+        fig_fact = px.bar(
+            df,
+            x="nombre_corto",
+            y="facturacion_agregada_num",
+            title="Facturación agregada (M€)",
+            labels={"nombre_corto": "Sector", "facturacion_agregada_num": "Facturación (M€)"},
+            color="facturacion_agregada_num",
+            color_continuous_scale="Greens",
+        )
+        fig_fact.update_traces(marker_line_color="white", marker_line_width=1)
+        fig_fact.update_layout(
+            margin=dict(l=40, r=40, t=60, b=80),
+            showlegend=False,
+            xaxis_tickangle=-30,
+            title_font_size=16,
+            xaxis_title_font_size=13,
+            yaxis_title_font_size=13,
+            xaxis_tickfont_size=12,
+            yaxis_tickfont_size=12,
+            plot_bgcolor="rgba(0,0,0,0)",
+            paper_bgcolor="rgba(0,0,0,0)",
+            font_color=COLOR_TEXT,
+        )
+        st.plotly_chart(fig_fact, use_container_width=True)
 
-    st.subheader("Matriz Fit vs Adopción de IA")
-    df_scatter = df.copy()
-    df_scatter["fit_num"] = df_scatter["fit"].map({"Muy alto": 2, "Alto": 1})
-    fig_scatter = px.scatter(
-        df_scatter,
-        x="adopcion_ia_num",
-        y="fit_num",
-        text="nombre",
-        title="Fit vs Adopción de IA (cada punto es un sector)",
-        labels={
-            "adopcion_ia_num": "Adopción IA (%)",
-            "fit_num": "Fit (1=Alto, 2=Muy alto)",
-        },
-        size="facturacion_agregada_num",
-        color="fit",
-        color_discrete_map={"Muy alto": COLOR_ACCENT, "Alto": COLOR_SECONDARY},
-    )
-    fig_scatter.update_traces(textposition="top center")
-    fig_scatter.update_layout(
-        plot_bgcolor="rgba(0,0,0,0)",
-        paper_bgcolor="rgba(0,0,0,0)",
-        font_color=COLOR_TEXT,
-    )
-    st.plotly_chart(fig_scatter, use_container_width=True)
+    # 3. Adopción de IA
+    with row2_col1:
+        st.subheader("Adopción de IA por sector")
+        fig_ia = px.bar(
+            df,
+            x="nombre_corto",
+            y="adopcion_ia_num",
+            title="Adopción estimada de IA (%)",
+            labels={"nombre_corto": "Sector", "adopcion_ia_num": "Adopción IA (%)"},
+            color="adopcion_ia_num",
+            color_continuous_scale="Purples",
+        )
+        fig_ia.update_traces(marker_line_color="white", marker_line_width=1)
+        fig_ia.update_layout(
+            margin=dict(l=40, r=40, t=60, b=80),
+            showlegend=False,
+            xaxis_tickangle=-30,
+            title_font_size=16,
+            xaxis_title_font_size=13,
+            yaxis_title_font_size=13,
+            xaxis_tickfont_size=12,
+            yaxis_tickfont_size=12,
+            plot_bgcolor="rgba(0,0,0,0)",
+            paper_bgcolor="rgba(0,0,0,0)",
+            font_color=COLOR_TEXT,
+        )
+        st.plotly_chart(fig_ia, use_container_width=True)
+
+    # 4. Matriz Fit vs Adopción
+    with row2_col2:
+        st.subheader("Matriz Fit vs Adopción de IA")
+        df_scatter = df.copy()
+        df_scatter["fit_num"] = df_scatter["fit"].map({"Muy alto": 2, "Alto": 1})
+        fig_scatter = px.scatter(
+            df_scatter,
+            x="adopcion_ia_num",
+            y="fit_num",
+            text="nombre",
+            title="Fit vs Adopción de IA (cada punto es un sector)",
+            labels={
+                "adopcion_ia_num": "Adopción IA (%)",
+                "fit_num": "Fit (1=Alto, 2=Muy alto)",
+            },
+            size="facturacion_agregada_num",
+            color="fit",
+            color_discrete_map={"Muy alto": COLOR_ACCENT, "Alto": "#94a3b8"},
+            size_max=25,
+        )
+        fig_scatter.update_traces(textposition="top center", marker_line_width=1, marker_line_color="white")
+        fig_scatter.update_layout(
+            margin=dict(l=40, r=40, t=60, b=40),
+            title_font_size=16,
+            xaxis_title_font_size=13,
+            yaxis_title_font_size=13,
+            xaxis_tickfont_size=12,
+            yaxis_tickfont_size=12,
+            plot_bgcolor="rgba(0,0,0,0)",
+            paper_bgcolor="rgba(0,0,0,0)",
+            font_color=COLOR_TEXT,
+            legend_title_font_size=13,
+            legend_font_size=12,
+        )
+        st.plotly_chart(fig_scatter, use_container_width=True)
 
 # -----------------------
 # PESTAÑA 2: EXPLORADOR
