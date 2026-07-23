@@ -154,7 +154,7 @@ for nombre, datos in sectores_raw.items():
         "facturacion_agregada_num": fact_map.get(nombre, 10000),
         "adopcion_ia_num": ia_map.get(nombre, 25),
     })
-
+    
 df = pd.DataFrame(sectores)
 df["nombre_corto"] = df["nombre"].str.replace(" y ", " & ")
 
