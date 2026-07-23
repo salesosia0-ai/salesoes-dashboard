@@ -1,6 +1,6 @@
 {
   "1. Asesorías y Gestorías": {
-    "1. Descripción": "- Qué hacen: Asesorías y gestorías ofrecen servicios de gestión administrativa, contable, fiscal y laboral para autónomos y pymes.\n- Cómo ganan dinero: Cuotas mensuales por servicios recurrentes (contabilidad, fiscal, laboral) y proyectos puntuales (constituciones, etc.).\n- Tamaño habitual: Micro (1–3 personas), Pequeño (3–10 personas), Mediano (10–50 personas).\n- Perfil más habitual: Asesoría local con 3–10 personas, gestión manual de tareas, sin CRM ni automatización.\n- Datos de mercado: ~100.000 asesorías en España, facturación ~15.000M€.",
+    "1. Descripción": "Qué hacen: Asesorías y gestorías ofrecen servicios de gestión administrativa, contable, fiscal y laboral para autónomos y pymes.\nCómo ganan dinero: Cuotas mensuales por servicios recurrentes (contabilidad, fiscal, laboral) y proyectos puntuales (constituciones, etc.).\nTamaño habitual: Micro (1–3 personas), Pequeño (3–10 personas), Mediano (10–50 personas).\nPerfil más habitual: Asesoría local con 3–10 personas, gestión manual de tareas, sin CRM ni automatización.\nDatos de mercado: ~100.000 asesorías en España, facturación ~15.000M€.",
     "2. Principales problemas": [
       "Muchas tareas repetitivas y administrativas",
       "Dependencia del conocimiento del socio/encargado",
@@ -65,10 +65,27 @@
       "No queremos más proveedores",
       "Esto no funcionará aquí"
     ],
-    "10. Respuestas a objeciones": "- Sector tradicional: La IA no reemplaza asesores, sino que automatiza tareas repetitivas.\n- Ya usamos software: Partimos de vuestro software actual.\n- No tenemos tiempo: Piloto pequeño en una tarea que más_duele.\n- Es caro: Si reduce tiempo un 20%, se paga solo.\n- Clientes no quieren muchos mensajes: Mensajes útiles, no saturación.\n- Ya nos va bien: ¿Sostenible a medio plazo?\n- No queremos saturar: Menos mensajes, más relevantes.\n- Última herramienta no sirvió: Indicadores y periodo de prueba.\n- Preferimos seguir como siempre: Pequeños ajustes hoy evitan cambios dolorosos mañana.\n- No tenemos presupuesto: Piloto con objetivos claros.\n- Preocupa privacidad: RGPD, cifrado, backups.\n- Ya tenemos suficientes clientes: Foco en mejorar márgenes y fidelización.\n- No vemos claro el ROI: Definimos qué mejora os haría decir 'sí'.\n- No queremos más proveedores: Simplificar.\n- Esto no funcionará aquí: Asesorías que profesionalizan ganan."
+    "10. Respuestas a objeciones": "Sector tradicional: La IA no reemplaza asesores, sino que automatiza tareas repetitivas.\nYa usamos software: Partimos de vuestro software actual.\nNo tenemos tiempo: Piloto pequeño en una tarea que más_duele.\nEs caro: Si reduce tiempo un 20%, se paga solo.\nClientes no quieren muchos mensajes: Mensajes útiles, no saturación.\nYa nos va bien: ¿Sostenible a medio plazo?\nNo queremos saturar: Menos mensajes, más relevantes.\nÚltima herramienta no sirvió: Indicadores y periodo de prueba.\nPreferimos seguir como siempre: Pequeños ajustes hoy evitan cambios dolorosos mañana.\nNo tenemos presupuesto: Piloto con objetivos claros.\nPreocupa privacidad: RGPD, cifrado, backups.\nYa tenemos suficientes clientes: Foco en mejorar márgenes y fidelización.\nNo vemos claro el ROI: Definimos qué mejora os haría decir 'sí'.\nNo queremos más proveedores: Simplificar.\nEsto no funcionará aquí: Asesorías que profesionalizan ganan.",
+    "11. Indicadores de prioridad": [
+      "Varios clientes (20+)",
+      "Web moderna con área de clientes",
+      "Inversión en marketing",
+      "Quiere reducir tiempo administrativo",
+      "Reseñas buenas"
+    ],
+    "12. Señales de alarma": [
+      "Muy pequeño (1–2 personas) sin crecer",
+      "Sin web o muy básica",
+      "\"Nos va bien así\"",
+      "Sin procesos",
+      "Resistencia",
+      "Sin presupuesto",
+      "Impagados",
+      "Alta rotación"
+    ]
   },
   "2. Clínicas Dentales": {
-    "1. Descripción": "- Qué hacen: Clínicas dentales ofrecen servicios de salud dental (limpiezas, ortodoncia, implantes, etc.).\n- Cómo ganan dinero: Consultas, tratamientos, Ortodoncia, Implantes, etc.\n- Tamaño habitual: Micro (1–3 personas), Pequeño (3–10 personas), Mediano (10–20 personas).\n- Perfil más habitual: Clínica local con 1–3 dentistas, gestión manual de citas, sin CRM ni automatización.\n- Datos de mercado: ~15.000 clínicas dentales en España, facturación ~3.000M€.",
+    "1. Descripción": "Qué hacen: Clínicas dentales ofrecen servicios de salud dental (limpiezas, ortodoncia, implantes, etc.).\nCómo ganan dinero: Consultas, tratamientos, Ortodoncia, Implantes, etc.\nTamaño habitual: Micro (1–3 personas), Pequeño (3–10 personas), Mediano (10–20 personas).\nPerfil más habitual: Clínica local con 1–3 dentistas, gestión manual de citas, sin CRM ni automatización.\nDatos de mercado: ~15.000 clínicas dentales en España, facturación ~3.000M€.",
     "2. Principales problemas": [
       "Gestión manual de citas y seguimiento de pacientes",
       "Falta de seguimiento post-tratamiento",
@@ -133,10 +150,27 @@
       "No queremos más proveedores",
       "Esto no funcionará aquí"
     ],
-    "10. Respuestas a objeciones": "- Sector tradicional: La IA no reemplaza dentistas, sino que ayuda a gestionar mejor.\n- Ya usamos software: Partimos de vuestro software actual.\n- No tenemos tiempo: Piloto pequeño en una tarea que más_duele.\n- Es caro: Si reduce abandono un 10%, se paga solo.\n- Pacientes no quieren muchos mensajes: Mensajes útiles, no saturación.\n- Ya nos va bien: ¿Sostenible a medio plazo?\n- No queremos saturar: Menos mensajes, más relevantes.\n- Última herramienta no sirvió: Indicadores y periodo de prueba.\n- Preferimos seguir como siempre: Pequeños ajustes hoy evitan cambios dolorosos mañana.\n- No tenemos presupuesto: Piloto con objetivos claros.\n- Preocupa privacidad: RGPD, cifrado, backups.\n- Ya tenemos suficientes pacientes: Foco en fidelizar y aumentar valor.\n- No vemos claro el ROI: Definimos qué mejora os haría decir 'sí'.\n- No queremos más proveedores: Simplificar.\n- Esto no funcionará aquí: Clínicas que profesionalizan ganan."
+    "10. Respuestas a objeciones": "Sector tradicional: La IA no reemplaza dentistas, sino que ayuda a gestionar mejor.\nYa usamos software: Partimos de vuestro software actual.\nNo tenemos tiempo: Piloto pequeño en una tarea que más_duele.\nEs caro: Si reduce abandono un 10%, se paga solo.\nPacientes no quieren muchos mensajes: Mensajes útiles, no saturación.\nYa nos va bien: ¿Sostenible a medio plazo?\nNo queremos saturar: Menos mensajes, más relevantes.\nÚltima herramienta no sirvió: Indicadores y periodo de prueba.\nPreferimos seguir como siempre: Pequeños ajustes hoy evitan cambios dolorosos mañana.\nNo tenemos presupuesto: Piloto con objetivos claros.\nPreocupa privacidad: RGPD, cifrado, backups.\nYa tenemos suficientes pacientes: Foco en fidelizar y aumentar valor.\nNo vemos claro el ROI: Definimos qué mejora os haría decir 'sí'.\nNo queremos más proveedores: Simplificar.\nEsto no funcionará aquí: Clínicas que profesionalizan ganan.",
+    "11. Indicadores de prioridad": [
+      "Varios dentistas, varias sillas",
+      "Web moderna con citas online",
+      "Inversión en marketing",
+      "Quiere mejorar fidelización",
+      "Reseñas buenas"
+    ],
+    "12. Señales de alarma": [
+      "Muy pequeño (1–2 personas) sin crecer",
+      "Sin web o muy básica",
+      "\"Nos va bien así\"",
+      "Sin procesos",
+      "Resistencia",
+      "Sin presupuesto",
+      "Impagados",
+      "Alta rotación"
+    ]
   },
   "3. Inmobiliarias": {
-    "1. Descripción": "- Qué hacen: Inmobiliarias gestionan compraventa y alquiler de propiedades, con captación, visitas, negociación y gestión documental.\n- Cómo ganan dinero: Comisiones por venta (2–5%) y alquiler (1 mes + gestión).\n- Tamaño habitual: Micro (1–3 personas), Pequeño (3–10 personas), Mediano (10–20 personas).\n- Perfil más habitual: Inmobiliaria local con 3–10 personas, gestión manual de propiedades y clientes, sin CRM avanzado.\n- Datos de mercado: ~30.000 inmobiliarias en España, facturación ~10.000M€.",
+    "1. Descripción": "Qué hacen: Inmobiliarias gestionan compraventa y alquiler de propiedades, con captación, visitas, negociación y gestión documental.\nCómo ganan dinero: Comisiones por venta (2–5%) y alquiler (1 mes + gestión).\nTamaño habitual: Micro (1–3 personas), Pequeño (3–10 personas), Mediano (10–20 personas).\nPerfil más habitual: Inmobiliaria local con 3–10 personas, gestión manual de propiedades y clientes, sin CRM avanzado.\nDatos de mercado: ~30.000 inmobiliarias en España, facturación ~10.000M€.",
     "2. Principales problemas": [
       "Gestión manual de propiedades y clientes",
       "Falta de seguimiento de leads y clientes",
@@ -201,10 +235,27 @@
       "No queremos más proveedores",
       "Esto no funcionará aquí"
     ],
-    "10. Respuestas a objeciones": "- Sector tradicional: La IA no reemplaza agentes, sino que ayuda a gestionar mejor.\n- Ya usamos software: Partimos de vuestro software actual.\n- No tenemos tiempo: Piloto pequeño en una tarea que más_duele.\n- Es caro: Si reduce abandono un 10%, se paga solo.\n- Clientes no quieren muchos mensajes: Mensajes útiles, no saturación.\n- Ya nos va bien: ¿Sostenible a medio plazo?\n- No queremos saturar: Menos mensajes, más relevantes.\n- Última herramienta no sirvió: Indicadores y periodo de prueba.\n- Preferimos seguir como siempre: Pequeños ajustes hoy evitan cambios dolorosos mañana.\n- No tenemos presupuesto: Piloto con objetivos claros.\n- Preocupa privacidad: RGPD, cifrado, backups.\n- Ya tenemos suficientes clientes: Foco en fidelizar y aumentar valor.\n- No vemos claro el ROI: Definimos qué mejora os haría decir 'sí'.\n- No queremos más proveedores: Simplificar.\n- Esto no funcionará aquí: Inmobiliarias que profesionalizan ganan."
+    "10. Respuestas a objeciones": "Sector tradicional: La IA no reemplaza agentes, sino que ayuda a gestionar mejor.\nYa usamos software: Partimos de vuestro software actual.\nNo tenemos tiempo: Piloto pequeño en una tarea que más_duele.\nEs caro: Si reduce abandono un 10%, se paga solo.\nClientes no quieren muchos mensajes: Mensajes útiles, no saturación.\nYa nos va bien: ¿Sostenible a medio plazo?\nNo queremos saturar: Menos mensajes, más relevantes.\nÚltima herramienta no sirvió: Indicadores y periodo de prueba.\nPreferimos seguir como siempre: Pequeños ajustes hoy evitan cambios dolorosos mañana.\nNo tenemos presupuesto: Piloto con objetivos claros.\nPreocupa privacidad: RGPD, cifrado, backups.\nYa tenemos suficientes clientes: Foco en fidelizar y aumentar valor.\nNo vemos claro el ROI: Definimos qué mejora os haría decir 'sí'.\nNo queremos más proveedores: Simplificar.\nEsto no funcionará aquí: Inmobiliarias que profesionalizan ganan.",
+    "11. Indicadores de prioridad": [
+      "Varios agentes (5+)",
+      "Web moderna con propiedades",
+      "Inversión en marketing",
+      "Quiere mejorar conversión",
+      "Reseñas buenas"
+    ],
+    "12. Señales de alarma": [
+      "Muy pequeño (1–2 personas) sin crecer",
+      "Sin web o muy básica",
+      "\"Nos va bien así\"",
+      "Sin procesos",
+      "Resistencia",
+      "Sin presupuesto",
+      "Impagados",
+      "Alta rotación"
+    ]
   },
   "4. Hoteles": {
-    "1. Descripción": "- Qué hacen: Hoteles ofrecen alojamiento, con gestión de reservas, pricing, limpieza, mantenimiento y atención al huésped.\n- Cómo ganan dinero: Noches de alojamiento, servicios adicionales (desayuno, spa, eventos, etc.).\n- Tamaño habitual: Micro (1–10 habitaciones), Pequeño (10–30 habitaciones), Mediano (30–100 habitaciones).\n- Perfil más habitual: Hotel independiente o pequeña cadena, gestión manual de pricing y mensajes, sin automatización avanzada.\n- Datos de mercado: ~15.000 hoteles en España, facturación ~25.000M€.",
+    "1. Descripción": "Qué hacen: Hoteles ofrecen alojamiento, con gestión de reservas, pricing, limpieza, mantenimiento y atención al huésped.\nCómo ganan dinero: Noches de alojamiento, servicios adicionales (desayuno, spa, eventos, etc.).\nTamaño habitual: Micro (1–10 habitaciones), Pequeño (10–30 habitaciones), Mediano (30–100 habitaciones).\nPerfil más habitual: Hotel independiente o pequeña cadena, gestión manual de pricing y mensajes, sin automatización avanzada.\nDatos de mercado: ~15.000 hoteles en España, facturación ~25.000M€.",
     "2. Principales problemas": [
       "Pricing estático o intuitivo",
       "Gestión manual de reservas y mensajes",
@@ -269,10 +320,27 @@
       "No queremos más proveedores",
       "Esto no funcionará aquí"
     ],
-    "10. Respuestas a objeciones": "- Sector tradicional: La IA no reemplaza huéspedes, sino que ayuda a gestionar mejor.\n- Ya usamos software: Partimos de vuestro software actual.\n- No tenemos tiempo: Piloto pequeño en una tarea que más_duele.\n- Es caro: Si sube ADR un 10%, se paga solo.\n- Huéspedes no quieren muchos mensajes: Mensajes útiles, no saturación.\n- Ya nos va bien: ¿Sostenible a medio plazo?\n- No queremos saturar: Menos mensajes, más relevantes.\n- Última herramienta no sirvió: Indicadores y periodo de prueba.\n- Preferimos seguir como siempre: Pequeños ajustes hoy evitan cambios dolorosos mañana.\n- No tenemos presupuesto: Piloto con objetivos claros.\n- Preocupa privacidad: RGPD, cifrado, backups.\n- Ya tenemos suficientes reservas: Foco en mejorar ADR y reservas directas.\n- No vemos claro el ROI: Definimos qué mejora os haría decir 'sí'.\n- No queremos más proveedores: Simplificar.\n- Esto no funcionará aquí: Hoteles que profesionalizan ganan."
+    "10. Respuestas a objeciones": "Sector tradicional: La IA no reemplaza huéspedes, sino que ayuda a gestionar mejor.\nYa usamos software: Partimos de vuestro software actual.\nNo tenemos tiempo: Piloto pequeño en una tarea que más_duele.\nEs caro: Si sube ADR un 10%, se paga solo.\nHuéspedes no quieren muchos mensajes: Mensajes útiles, no saturación.\nYa nos va bien: ¿Sostenible a medio plazo?\nNo queremos saturar: Menos mensajes, más relevantes.\nÚltima herramienta no sirvió: Indicadores y periodo de prueba.\nPreferimos seguir como siempre: Pequeños ajustes hoy evitan cambios dolorosos mañana.\nNo tenemos presupuesto: Piloto con objetivos claros.\nPreocupa privacidad: RGPD, cifrado, backups.\nYa tenemos suficientes reservas: Foco en mejorar ADR y reservas directas.\nNo vemos claro el ROI: Definimos qué mejora os haría decir 'sí'.\nNo queremos más proveedores: Simplificar.\nEsto no funcionará aquí: Hoteles que profesionalizan ganan.",
+    "11. Indicadores de prioridad": [
+      "Varias habitaciones (20+)",
+      "Web moderna con motor de reservas",
+      "Inversión en marketing",
+      "Quiere mejorar ADR o reservas directas",
+      "Reseñas buenas"
+    ],
+    "12. Señales de alarma": [
+      "Muy pequeño (1–10 habitaciones) sin crecer",
+      "Sin web o muy básica",
+      "\"Nos va bien así\"",
+      "Sin procesos",
+      "Resistencia",
+      "Sin presupuesto",
+      "Impagados",
+      "Alta rotación"
+    ]
   },
   "5. Restaurantes": {
-    "1. Descripción": "- Qué hacen: Restaurantes ofrecen comida y bebida, con gestión de reservas, pedidos, cocina y atención al cliente.\n- Cómo ganan dinero: Ventas de comida y bebida, servicios adicionales (eventos, catering, etc.).\n- Tamaño habitual: Micro (1–3 personas), Pequeño (3–10 personas), Mediano (10–20 personas).\n- Perfil más habitual: Restaurante local, gestión manual de reservas y pedidos, sin automatización avanzada.\n- Datos de mercado: ~200.000 restaurantes en España, facturación ~50.000M€.",
+    "1. Descripción": "Qué hacen: Restaurantes ofrecen comida y bebida, con gestión de reservas, pedidos, cocina y atención al cliente.\nCómo ganan dinero: Ventas de comida y bebida, servicios adicionales (eventos, catering, etc.).\nTamaño habitual: Micro (1–3 personas), Pequeño (3–10 personas), Mediano (10–20 personas).\nPerfil más habitual: Restaurante local, gestión manual de reservas y pedidos, sin automatización avanzada.\nDatos de mercado: ~200.000 restaurantes en España, facturación ~50.000M€.",
     "2. Principales problemas": [
       "Gestión manual de reservas y pedidos",
       "Falta de seguimiento de clientes",
@@ -337,10 +405,27 @@
       "No queremos más proveedores",
       "Esto no funcionará aquí"
     ],
-    "10. Respuestas a objeciones": "- Sector tradicional: La IA no reemplaza cocineros, sino que ayuda a gestionar mejor.\n- Ya usamos software: Partimos de vuestro software actual.\n- No tenemos tiempo: Piloto pequeño en una tarea que más_duele.\n- Es caro: Si reduce abandono un 10%, se paga solo.\n- Clientes no quieren muchos mensajes: Mensajes útiles, no saturación.\n- Ya nos va bien: ¿Sostenible a medio plazo?\n- No queremos saturar: Menos mensajes, más relevantes.\n- Última herramienta no sirvió: Indicadores y periodo de prueba.\n- Preferimos seguir como siempre: Pequeños ajustes hoy evitan cambios dolorosos mañana.\n- No tenemos presupuesto: Piloto con objetivos claros.\n- Preocupa privacidad: RGPD, cifrado, backups.\n- Ya tenemos suficientes clientes: Foco en fidelizar y aumentar valor.\n- No vemos claro el ROI: Definimos qué mejora os haría decir 'sí'.\n- No queremos más proveedores: Simplificar.\n- Esto no funcionará aquí: Restaurantes que profesionalizan ganan."
+    "10. Respuestas a objeciones": "Sector tradicional: La IA no reemplaza cocineros, sino que ayuda a gestionar mejor.\nYa usamos software: Partimos de vuestro software actual.\nNo tenemos tiempo: Piloto pequeño en una tarea que más_duele.\nEs caro: Si reduce abandono un 10%, se paga solo.\nClientes no quieren muchos mensajes: Mensajes útiles, no saturación.\nYa nos va bien: ¿Sostenible a medio plazo?\nNo queremos saturar: Menos mensajes, más relevantes.\nÚltima herramienta no sirvió: Indicadores y periodo de prueba.\nPreferimos seguir como siempre: Pequeños ajustes hoy evitan cambios dolorosos mañana.\nNo tenemos presupuesto: Piloto con objetivos claros.\nPreocupa privacidad: RGPD, cifrado, backups.\nYa tenemos suficientes clientes: Foco en fidelizar y aumentar valor.\nNo vemos claro el ROI: Definimos qué mejora os haría decir 'sí'.\nNo queremos más proveedores: Simplificar.\nEsto no funcionará aquí: Restaurantes que profesionalizan ganan.",
+    "11. Indicadores de prioridad": [
+      "Varios empleados (10+)",
+      "Web moderna con reservas online",
+      "Inversión en marketing",
+      "Quiere mejorar fidelización",
+      "Reseñas buenas"
+    ],
+    "12. Señales de alarma": [
+      "Muy pequeño (1–3 personas) sin crecer",
+      "Sin web o muy básica",
+      "\"Nos va bien así\"",
+      "Sin procesos",
+      "Resistencia",
+      "Sin presupuesto",
+      "Impagados",
+      "Alta rotación"
+    ]
   },
   "6. Apartamentos Turísticos": {
-    "1. Descripción": "- Qué hacen: Gestionan apartamentos turísticos (ATAV), con pricing, mensajes con huéspedes, reservas directas vs plataformas (Airbnb, Booking, etc.).\n- Cómo ganan dinero: Noches de alojamiento, servicios adicionales (limpieza, transfers).\n- Tamaño habitual: Micro (1–5 viviendas), Pequeño (5–20 viviendas), Mediano (20–50 viviendas), Grande (50+ viviendas).\n- Perfil más habitual: Gestor local con varias viviendas, uso de herramientas de pricing (PriceLabs), canales (Airbnb, Booking) y algo de reservas directas.\n- Datos de mercado: ~400k–500k viviendas en España, facturación ~25.000–35.000M€.",
+    "1. Descripción": "Qué hacen: Gestionan apartamentos turísticos (ATAV), con pricing, mensajes con huéspedes, reservas directas vs plataformas (Airbnb, Booking, etc.).\nCómo ganan dinero: Noches de alojamiento, servicios adicionales (limpieza, transfers).\nTamaño habitual: Micro (1–5 viviendas), Pequeño (5–20 viviendas), Mediano (20–50 viviendas), Grande (50+ viviendas).\nPerfil más habitual: Gestor local con varias viviendas, uso de herramientas de pricing (PriceLabs), canales (Airbnb, Booking) y algo de reservas directas.\nDatos de mercado: ~400k–500k viviendas en España, facturación ~25.000–35.000M€.",
     "2. Principales problemas": [
       "Pricing estático o intuitivo",
       "Gestión de mensajes repetitivos con huéspedes",
@@ -405,10 +490,27 @@
       "No queremos más proveedores",
       "Esto no funcionará aquí"
     ],
-    "10. Respuestas a objeciones": "- Sector tradicional: La IA no reemplaza huéspedes, sino que ayuda a gestionar mejor.\n- Ya usamos software: Partimos de vuestro software actual.\n- No tenemos tiempo: Piloto pequeño en una tarea que más_duele.\n- Es caro: Si sube ADR un 10%, se paga solo.\n- Huéspedes no quieren muchos mensajes: Mensajes útiles, no saturación.\n- Ya nos va bien: ¿Sostenible a medio plazo?\n- No queremos saturar: Menos mensajes, más relevantes.\n- Última herramienta no sirvió: Indicadores y periodo de prueba.\n- Preferimos seguir como siempre: Pequeños ajustes hoy evitan cambios dolorosos mañana.\n- No tenemos presupuesto: Piloto con objetivos claros.\n- Preocupa privacidad: RGPD, cifrado, backups.\n- Ya tenemos suficientes reservas: Foco en mejorar ADR y reservas directas.\n- No vemos claro el ROI: Definimos qué mejora os haría decir 'sí'.\n- No queremos más proveedores: Simplificar.\n- Esto no funcionará aquí: Gestores que profesionalizan ganan."
+    "10. Respuestas a objeciones": "Sector tradicional: La IA no reemplaza huéspedes, sino que ayuda a gestionar mejor.\nYa usamos software: Partimos de vuestro software actual.\nNo tenemos tiempo: Piloto pequeño en una tarea que más_duele.\nEs caro: Si sube ADR un 10%, se paga solo.\nHuéspedes no quieren muchos mensajes: Mensajes útiles, no saturación.\nYa nos va bien: ¿Sostenible a medio plazo?\nNo queremos saturar: Menos mensajes, más relevantes.\nÚltima herramienta no sirvió: Indicadores y periodo de prueba.\nPreferimos seguir como siempre: Pequeños ajustes hoy evitan cambios dolorosos mañana.\nNo tenemos presupuesto: Piloto con objetivos claros.\nPreocupa privacidad: RGPD, cifrado, backups.\nYa tenemos suficientes reservas: Foco en mejorar ADR y reservas directas.\nNo vemos claro el ROI: Definimos qué mejora os haría decir 'sí'.\nNo queremos más proveedores: Simplificar.\nEsto no funcionará aquí: Gestores que profesionalizan ganan.",
+    "11. Indicadores de prioridad": [
+      "Varias viviendas (10+)",
+      "Web moderna con motor de reservas",
+      "Inversión en marketing",
+      "Quiere mejorar ADR o reservas directas",
+      "Reseñas buenas"
+    ],
+    "12. Señales de alarma": [
+      "Muy pequeño (1–3 viviendas) sin crecer",
+      "Sin web o muy básica",
+      "\"Nos va bien así\"",
+      "Sin procesos",
+      "Resistencia",
+      "Sin presupuesto",
+      "Impagados",
+      "Alta rotación"
+    ]
   },
   "7. Talleres Mecánicos": {
-    "1. Descripción": "- Qué hacen: Reparación y mantenimiento de vehículos, con gestión de citas, pedidos de recambios y facturación.\n- Cómo ganan dinero: Mano de obra + recambios + revisiones.\n- Tamaño habitual: Micro (1–3 personas), Pequeño (3–10 personas), Mediano (10–20 personas).\n- Perfil más habitual: Taller local, gestión manual de citas, pedidos y facturación.\n- Datos de mercado: ~30.000 talleres en España, facturación ~15.000M€.",
+    "1. Descripción": "Qué hacen: Reparación y mantenimiento de vehículos, con gestión de citas, pedidos de recambios y facturación.\nCómo ganan dinero: Mano de obra + recambios + revisiones.\nTamaño habitual: Micro (1–3 personas), Pequeño (3–10 personas), Mediano (10–20 personas).\nPerfil más habitual: Taller local, gestión manual de citas, pedidos y facturación.\nDatos de mercado: ~30.000 talleres en España, facturación ~15.000M€.",
     "2. Principales problemas": [
       "Gestión manual de citas y pedidos",
       "Falta de seguimiento de clientes",
@@ -473,10 +575,27 @@
       "No queremos más proveedores",
       "Esto no funcionará aquí"
     ],
-    "10. Respuestas a objeciones": "- Sector tradicional: La IA no repara coches, pero ayuda a gestionar mejor.\n- Ya usamos software: Partimos de vuestro software actual.\n- No tenemos tiempo: Piloto pequeño en una tarea que más_duele.\n- Es caro: Si reduce stock un 20%, se paga solo.\n- Clientes no quieren muchos mensajes: Mensajes útiles, no saturación.\n- Ya nos va bien: ¿Sostenible a medio plazo?\n- No queremos saturar: Menos mensajes, más relevantes.\n- Última herramienta no sirvió: Indicadores y periodo de prueba.\n- Preferimos seguir como siempre: Pequeños ajustes hoy evitan cambios dolorosos mañana.\n- No tenemos presupuesto: Piloto con objetivos claros.\n- Preocupa privacidad: RGPD, cifrado, backups.\n- Ya tenemos suficientes clientes: Foco en fidelizar y aumentar valor.\n- No vemos claro el ROI: Definimos qué mejora os haría decir 'sí'.\n- No queremos más proveedores: Simplificar.\n- Esto no funcionará aquí: Talleres que profesionalizan ganan."
+    "10. Respuestas a objeciones": "Sector tradicional: La IA no repara coches, pero ayuda a gestionar mejor.\nYa usamos software: Partimos de vuestro software actual.\nNo tenemos tiempo: Piloto pequeño en una tarea que más_duele.\nEs caro: Si reduce stock un 20%, se paga solo.\nClientes no quieren muchos mensajes: Mensajes útiles, no saturación.\nYa nos va bien: ¿Sostenible a medio plazo?\nNo queremos saturar: Menos mensajes, más relevantes.\nÚltima herramienta no sirvió: Indicadores y periodo de prueba.\nPreferimos seguir como siempre: Pequeños ajustes hoy evitan cambios dolorosos mañana.\nNo tenemos presupuesto: Piloto con objetivos claros.\nPreocupa privacidad: RGPD, cifrado, backups.\nYa tenemos suficientes clientes: Foco en fidelizar y aumentar valor.\nNo vemos claro el ROI: Definimos qué mejora os haría decir 'sí'.\nNo queremos más proveedores: Simplificar.\nEsto no funcionará aquí: Talleres que profesionalizan ganan.",
+    "11. Indicadores de prioridad": [
+      "Varios mecánicos, varias bahías",
+      "Web moderna con citas online",
+      "Inversión en marketing",
+      "Quiere reducir stock o mejorar fidelización",
+      "Reseñas buenas"
+    ],
+    "12. Señales de alarma": [
+      "Muy pequeño (1–2 personas) sin crecer",
+      "Sin web o muy básica",
+      "\"Nos va bien así\"",
+      "Sin procesos",
+      "Resistencia",
+      "Sin presupuesto",
+      "Impagados",
+      "Alta rotación"
+    ]
   },
   "8. Constructoras": {
-    "1. Descripción": "- Qué hacen: Construcción de viviendas, edificios, obras públicas, con gestión de proyectos, compras, subcontratas y certificación.\n- Cómo ganan dinero: Presupuestos certificados, cambios, extras.\n- Tamaño habitual: Micro (1–3 personas), Pequeño (3–20 personas), Mediano (20–100 personas).\n- Perfil más habitual: Constructora local, gestión manual de proyectos, subcontratas, compras.\n- Datos de mercado: ~100.000 empresas en España, facturación ~50.000M€.",
+    "1. Descripción": "Qué hacen: Construcción de viviendas, edificios, obras públicas, con gestión de proyectos, compras, subcontratas y certificación.\nCómo ganan dinero: Presupuestos certificados, cambios, extras.\nTamaño habitual: Micro (1–3 personas), Pequeño (3–20 personas), Mediano (20–100 personas).\nPerfil más habitual: Constructora local, gestión manual de proyectos, subcontratas, compras.\nDatos de mercado: ~100.000 empresas en España, facturación ~50.000M€.",
     "2. Principales problemas": [
       "Gestión manual de proyectos y subcontratas",
       "Control de costes y certificaciones",
@@ -541,10 +660,27 @@
       "No queremos más proveedores",
       "Esto no funcionará aquí"
     ],
-    "10. Respuestas a objeciones": "- Sector tradicional: La IA no construye, pero ayuda a gestionar mejor.\n- Ya usamos software: Partimos de vuestro software actual.\n- No tenemos tiempo: Piloto pequeño en una tarea que más_duele.\n- Es caro: Si reduce retrasos un 10%, se paga solo.\n- Clientes no quieren muchos mensajes: Mensajes útiles, no saturación.\n- Ya nos va bien: ¿Sostenible a medio plazo?\n- No queremos saturar: Menos mensajes, más relevantes.\n- Última herramienta no sirvió: Indicadores y periodo de prueba.\n- Preferimos seguir como siempre: Pequeños ajustes hoy evitan cambios dolorosos mañana.\n- No tenemos presupuesto: Piloto con objetivos claros.\n- Preocupa privacidad: RGPD, cifrado, backups.\n- Ya tenemos suficientes proyectos: Foco en mejorar márgenes y plazos.\n- No vemos claro el ROI: Definimos qué mejora os haría decir 'sí'.\n- No queremos más proveedores: Simplificar.\n- Esto no funcionará aquí: Constructoras que profesionalizan ganan."
+    "10. Respuestas a objeciones": "Sector tradicional: La IA no construye, pero ayuda a gestionar mejor.\nYa usamos software: Partimos de vuestro software actual.\nNo tenemos tiempo: Piloto pequeño en una tarea que más_duele.\nEs caro: Si reduce retrasos un 10%, se paga solo.\nClientes no quieren muchos mensajes: Mensajes útiles, no saturación.\nYa nos va bien: ¿Sostenible a medio plazo?\nNo queremos saturar: Menos mensajes, más relevantes.\nÚltima herramienta no sirvió: Indicadores y periodo de prueba.\nPreferimos seguir como siempre: Pequeños ajustes hoy evitan cambios dolorosos mañana.\nNo tenemos presupuesto: Piloto con objetivos claros.\nPreocupa privacidad: RGPD, cifrado, backups.\nYa tenemos suficientes proyectos: Foco en mejorar márgenes y plazos.\nNo vemos claro el ROI: Definimos qué mejora os haría decir 'sí'.\nNo queremos más proveedores: Simplificar.\nEsto no funcionará aquí: Constructoras que profesionalizan ganan.",
+    "11. Indicadores de prioridad": [
+      "Varios proyectos, varias subcontratas",
+      "Web moderna con información de proyectos",
+      "Inversión en marketing",
+      "Quiere mejorar márgenes y plazos",
+      "Reseñas buenas"
+    ],
+    "12. Señales de alarma": [
+      "Muy pequeña (1–3 personas) sin crecer",
+      "Sin web o muy básica",
+      "\"Nos va bien así\"",
+      "Sin procesos",
+      "Resistencia",
+      "Sin presupuesto",
+      "Impagados",
+      "Alta rotación"
+    ]
   },
   "9. Empresas de Transporte": {
-    "1. Descripción": "- Qué hacen: Transporte de mercancías, con gestión de flotas, rutas, conductores y facturación.\n- Cómo ganan dinero: Servicios de transporte, logística, etc.\n- Tamaño habitual: Micro (1–3 vehículos), Pequeño (3–10 vehículos), Mediano (10–50 vehículos).\n- Perfil más habitual: Empresa local, gestión manual de rutas, flotas, conductores.\n- Datos de mercado: ~50.000 empresas en España, facturación ~25.000M€.",
+    "1. Descripción": "Qué hacen: Transporte de mercancías, con gestión de flotas, rutas, conductores y facturación.\nCómo ganan dinero: Servicios de transporte, logística, etc.\nTamaño habitual: Micro (1–3 vehículos), Pequeño (3–10 vehículos), Mediano (10–50 vehículos).\nPerfil más habitual: Empresa local, gestión manual de rutas, flotas, conductores.\nDatos de mercado: ~50.000 empresas en España, facturación ~25.000M€.",
     "2. Principales problemas": [
       "Gestión manual de rutas y flotas",
       "Control de costes y combustible",
@@ -609,10 +745,27 @@
       "No queremos más proveedores",
       "Esto no funcionará aquí"
     ],
-    "10. Respuestas a objeciones": "- Sector tradicional: La IA no conduce, pero ayuda a gestionar mejor.\n- Ya usamos software: Partimos de vuestro software actual.\n- No tenemos tiempo: Piloto pequeño en una tarea que más_duele.\n- Es caro: Si reduce combustible un 10%, se paga solo.\n- Clientes no quieren muchos mensajes: Mensajes útiles, no saturación.\n- Ya nos va bien: ¿Sostenible a medio plazo?\n- No queremos saturar: Menos mensajes, más relevantes.\n- Última herramienta no sirvió: Indicadores y periodo de prueba.\n- Preferimos seguir como siempre: Pequeños ajustes hoy evitan cambios dolorosos mañana.\n- No tenemos presupuesto: Piloto con objetivos claros.\n- Preocupa privacidad: RGPD, cifrado, backups.\n- Ya tenemos suficientes rutas: Foco en mejorar márgenes y plazos.\n- No vemos claro el ROI: Definimos qué mejora os haría decir 'sí'.\n- No queremos más proveedores: Simplificar.\n- Esto no funcionará aquí: Empresas que profesionalizan ganan."
+    "10. Respuestas a objeciones": "Sector tradicional: La IA no conduce, pero ayuda a gestionar mejor.\nYa usamos software: Partimos de vuestro software actual.\nNo tenemos tiempo: Piloto pequeño en una tarea que más_duele.\nEs caro: Si reduce combustible un 10%, se paga solo.\nClientes no quieren muchos mensajes: Mensajes útiles, no saturación.\nYa nos va bien: ¿Sostenible a medio plazo?\nNo queremos saturar: Menos mensajes, más relevantes.\nÚltima herramienta no sirvió: Indicadores y periodo de prueba.\nPreferimos seguir como siempre: Pequeños ajustes hoy evitan cambios dolorosos mañana.\nNo tenemos presupuesto: Piloto con objetivos claros.\nPreocupa privacidad: RGPD, cifrado, backups.\nYa tenemos suficientes rutas: Foco en mejorar márgenes y plazos.\nNo vemos claro el ROI: Definimos qué mejora os haría decir 'sí'.\nNo queremos más proveedores: Simplificar.\nEsto no funcionará aquí: Empresas que profesionalizan ganan.",
+    "11. Indicadores de prioridad": [
+      "Varios vehículos, varios conductores",
+      "Web moderna con información de servicios",
+      "Inversión en marketing",
+      "Quiere mejorar márgenes y plazos",
+      "Reseñas buenas"
+    ],
+    "12. Señales de alarma": [
+      "Muy pequeña (1–2 vehículos) sin crecer",
+      "Sin web o muy básica",
+      "\"Nos va bien así\"",
+      "Sin procesos",
+      "Resistencia",
+      "Sin presupuesto",
+      "Impagados",
+      "Alta rotación"
+    ]
   },
   "10. Academias y Centros de Formación": {
-    "1. Descripción": "- Qué hacen: Formación (idiomas, oposiciones, cursos profesionales), con gestión de alumnos, cursos, horarios y facturación.\n- Cómo ganan dinero: Matrículas, cuotas mensuales, cursos.\n- Tamaño habitual: Micro (1–3 profesores), Pequeño (3–10 profesores), Mediano (10–50 profesores).\n- Perfil más habitual: Academia local, gestión manual de alumnos, cursos, horarios.\n- Datos de mercado: ~20.000 centros en España, facturación ~5.000M€.",
+    "1. Descripción": "Qué hacen: Formación (idiomas, oposiciones, cursos profesionales), con gestión de alumnos, cursos, horarios y facturación.\nCómo ganan dinero: Matrículas, cuotas mensuales, cursos.\nTamaño habitual: Micro (1–3 profesores), Pequeño (3–10 profesores), Mediano (10–50 profesores).\nPerfil más habitual: Academia local, gestión manual de alumnos, cursos, horarios.\nDatos de mercado: ~20.000 centros en España, facturación ~5.000M€.",
     "2. Principales problemas": [
       "Gestión manual de alumnos y cursos",
       "Falta de seguimiento de estudiantes",
@@ -677,6 +830,23 @@
       "No queremos más proveedores",
       "Esto no funcionará aquí"
     ],
-    "10. Respuestas a objeciones": "- Sector tradicional: La IA no enseña, pero ayuda a gestionar mejor.\n- Ya usamos software: Partimos de vuestro software actual.\n- No tenemos tiempo: Piloto pequeño en una tarea que más_duele.\n- Es caro: Si reduce abandono un 10%, se paga solo.\n- Alumnos no quieren muchos mensajes: Mensajes útiles, no saturación.\n- Ya nos va bien: ¿Sostenible a medio plazo?\n- No queremos saturar: Menos mensajes, más relevantes.\n- Última herramienta no sirvió: Indicadores y periodo de prueba.\n- Preferimos seguir como siempre: Pequeños ajustes hoy evitan cambios dolorosos mañana.\n- No tenemos presupuesto: Piloto con objetivos claros.\n- Preocupa privacidad: RGPD, cifrado, backups.\n- Ya tenemos suficientes alumnos: Foco en fidelizar y aumentar valor.\n- No vemos claro el ROI: Definimos qué mejora os haría decir 'sí'.\n- No queremos más proveedores: Simplificar.\n- Esto no funcionará aquí: Academias que profesionalizan ganan."
+    "10. Respuestas a objeciones": "Sector tradicional: La IA no enseña, pero ayuda a gestionar mejor.\nYa usamos software: Partimos de vuestro software actual.\nNo tenemos tiempo: Piloto pequeño en una tarea que más_duele.\nEs caro: Si reduce abandono un 10%, se paga solo.\nAlumnos no quieren muchos mensajes: Mensajes útiles, no saturación.\nYa nos va bien: ¿Sostenible a medio plazo?\nNo queremos saturar: Menos mensajes, más relevantes.\nÚltima herramienta no sirvió: Indicadores y periodo de prueba.\nPreferimos seguir como siempre: Pequeños ajustes hoy evitan cambios dolorosos mañana.\nNo tenemos presupuesto: Piloto con objetivos claros.\nPreocupa privacidad: RGPD, cifrado, backups.\nYa tenemos suficientes alumnos: Foco en fidelizar y aumentar valor.\nNo vemos claro el ROI: Definimos qué mejora os haría decir 'sí'.\nNo queremos más proveedores: Simplificar.\nEsto no funcionará aquí: Academias que profesionalizan ganan.",
+    "11. Indicadores de prioridad": [
+      "Varios profesores, varios cursos",
+      "Web moderna con matrículas online",
+      "Inversión en marketing",
+      "Quiere reducir abandono o mejorar fidelización",
+      "Reseñas buenas"
+    ],
+    "12. Señales de alarma": [
+      "Muy pequeña (1–2 profesores) sin crecer",
+      "Sin web o muy básica",
+      "\"Nos va bien así\"",
+      "Sin procesos",
+      "Resistencia",
+      "Sin presupuesto",
+      "Impagados",
+      "Alta rotación"
+    ]
   }
 }
