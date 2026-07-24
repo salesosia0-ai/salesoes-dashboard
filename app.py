@@ -221,6 +221,21 @@ def safe_list(lst):
 def safe_str(s):
     return s if isinstance(s, str) else str(s) if s else ""
 
+def file_download_button(col, label, path):
+    if path:
+        try:
+            with open(path, "rb") as f:
+                content = f.read()
+            with col:
+                st.download_button(
+                    label=label,
+                    data=content,
+                    file_name=os.path.basename(path),
+                    mime="application/octet-stream",
+                )
+        except Exception:
+            with col:
+                st.write("No disponible")
 # -----------------------
 # PÁGINAS
 # -----------------------
@@ -498,22 +513,6 @@ elif opcion == "Explorador de sectores":
 
     st.markdown("### Material comercial")
     c1, c2, c3 = st.columns(3)
-
-    def file_download_button(col, label, path):
-        if path:
-            try:
-                with open(path, "rb") as f:
-                    content = f.read()
-                with col:
-                    st.download_button(
-                        label=label,
-                        data=content,
-                        file_name=os.path.basename(path),
-                        mime="application/octet-stream",
-                    )
-            except Exception:
-                with col:
-                    st.write("No disponible")
 
     file_download_button(c1, "📄 Descargar guion", sec_row.get("guion_path"))
     file_download_button(c2, "📧 Descargar email", sec_row.get("email_path"))
