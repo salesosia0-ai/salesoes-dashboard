@@ -12,9 +12,9 @@
     "10. Respuestas a objeciones": "Sector tradicional: La IA no reemplaza asesores, sino que automatiza tareas repetitivas. Ya usamos software: Partimos de vuestro software actual. No tenemos tiempo: Piloto pequeño en una tarea que más duele. Es caro: Si reduce tiempo un 20%, se paga solo. Clientes no quieren muchos mensajes: Mensajes útiles, no saturación. Ya nos va bien: ¿Sostenible a medio plazo? No queremos saturar: Menos mensajes, más relevantes. Última herramienta no sirvió: Indicadores y periodo de prueba. Preferimos seguir como siempre: Pequeños ajustes hoy evitan cambios dolorosos mañana. No tenemos presupuesto: Piloto con objetivos claros. Preocupa privacidad: RGPD, cifrado, backups. Ya tenemos suficientes clientes: Foco en mejorar márgenes y fidelización. No vemos claro el ROI: Definimos qué mejora os haría decir sí. No queremos más proveedores: Simplificar. Esto no funcionará aquí: Asesorías que profesionalizan ganan.",
     "11. Indicadores de prioridad": ["Varios clientes (20+)", "Web moderna con área de clientes", "Inversión en marketing", "Quiere reducir tiempo administrativo", "Reseñas buenas"],
     "12. Señales de alarma": ["Muy pequeño (1–2 personas) sin crecer", "Sin web o muy básica", "Nos va bien así", "Sin procesos", "Resistencia", "Sin presupuesto", "Impagados", "Alta rotación"],
-    "guion_path": "material_ventas/guiones_llamada/guion_asesorias.md",
-    "email_path": "material_ventas/emails_outreach/email_asesorias.md",
-    "deck_path": "material_ventas/decks_ventas/deck_asesorias.md"
+    "guion_path": "material_ventas/guiones_llamada/guion_asesorias.pdf",
+    "email_path": "material_ventas/emails_outreach/email_asesorias.pdf",
+    "deck_path": "material_ventas/decks_ventas/deck_asesorias.pdf"
   },
   "2. Clínicas Dentales": {
     "1. Descripción": "Qué hacen: Clínicas dentales ofrecen servicios de salud dental (limpiezas, ortodoncia, implantes, etc.). Cómo ganan dinero: Consultas, tratamientos, Ortodoncia, Implantes, etc. Tamaño habitual: Micro (1–3 personas), Pequeño (3–10 personas), Mediano (10–20 personas). Perfil más habitual: Clínica local con 1–3 dentistas, gestión manual de citas, sin CRM ni automatización. Datos de mercado: ~15.000 clínicas dentales en España, facturación ~3.000M€.",
