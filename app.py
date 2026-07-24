@@ -465,7 +465,7 @@ elif opcion == "Explorador de sectores":
     else:
         st.write("Sin problemas registrados.")
 
-    st.markdown("### Procesos manuales habituales")
+        st.markdown("### Procesos manuales habituales")
     procesos = sec_row.get("procesos_manuales", [])
     if isinstance(procesos, str):
         st.write(procesos)
@@ -475,7 +475,7 @@ elif opcion == "Explorador de sectores":
     else:
         st.write("Sin procesos registrados.")
 
-        st.markdown("### Oportunidades de automatización")
+    st.markdown("### Oportunidades de automatización")
     oportunidades = sec_row.get("oportunidades_automatizacion", [])
     if isinstance(oportunidades, str):
         st.write(oportunidades)
@@ -495,7 +495,7 @@ elif opcion == "Explorador de sectores":
     else:
         st.write("Sin aplicaciones registradas.")
 
-      st.markdown("### Material comercial")
+    st.markdown("### Material comercial")
     c1, c2, c3 = st.columns(3)
 
     def file_download_button(col, label, path, filename):
