@@ -146,6 +146,9 @@ for nombre, datos in sectores_raw.items():
         "preguntas_descubrimiento": datos.get("8. 15 preguntas de descubrimiento", []),
         "objeciones": datos.get("9. 15 objeciones", []),
         "respuestas_objeciones": datos.get("10. Respuestas a objeciones", []),
+        "guion_path": datos.get("guion_path", ""),
+        "email_path": datos.get("email_path", ""),
+        "deck_path": datos.get("deck_path", ""),
         "tamano_mercado": descripcion,
         "facturacion_agregada": descripcion,
         "adopcion_ia": descripcion,
@@ -472,7 +475,7 @@ elif opcion == "Explorador de sectores":
     else:
         st.write("Sin procesos registrados.")
 
-    st.markdown("### Oportunidades de automatización")
+        st.markdown("### Oportunidades de automatización")
     oportunidades = sec_row.get("oportunidades_automatizacion", [])
     if isinstance(oportunidades, str):
         st.write(oportunidades)
@@ -491,6 +494,23 @@ elif opcion == "Explorador de sectores":
             st.write(f"- {a}")
     else:
         st.write("Sin aplicaciones registradas.")
+
+    st.markdown("### Material comercial")
+    c1, c2, c3 = st.columns(3)
+
+    with c1:
+        if sec_row.get("guion_path"):
+            st.markdown(f"[📄 Abrir guion]({sec_row['guion_path']})")
+
+    with c2:
+        if sec_row.get("email_path"):
+            st.markdown(f"[📧 Abrir email]({sec_row['email_path']})")
+
+    with c3:
+        if sec_row.get("deck_path"):
+            st.markdown(f"[📊 Abrir deck]({sec_row['deck_path']})")
+
+    st.markdown("---")
 
     st.markdown("### Problemas legales / normativos")
     legales = sec_row.get("problemas_legales", [])
