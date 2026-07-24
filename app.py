@@ -499,7 +499,7 @@ elif opcion == "Explorador de sectores":
     st.markdown("### Material comercial")
     c1, c2, c3 = st.columns(3)
 
-        def file_download_button(col, label, path):
+    def file_download_button(col, label, path):
         if path:
             try:
                 with open(path, "rb") as f:
