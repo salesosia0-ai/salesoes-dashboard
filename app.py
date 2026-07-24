@@ -495,20 +495,28 @@ elif opcion == "Explorador de sectores":
     else:
         st.write("Sin aplicaciones registradas.")
 
-    st.markdown("### Material comercial")
+      st.markdown("### Material comercial")
     c1, c2, c3 = st.columns(3)
 
-    with c1:
-        if sec_row.get("guion_path"):
-            st.markdown(f"[📄 Abrir guion]({sec_row['guion_path']})")
+    def file_download_button(col, label, path, filename):
+        if path:
+            try:
+                with open(path, "r", encoding="utf-8") as f:
+                    content = f.read()
+                with col:
+                    st.download_button(
+                        label=label,
+                        data=content,
+                        file_name=filename,
+                        mime="text/markdown",
+                    )
+            except Exception:
+                with col:
+                    st.write("No disponible")
 
-    with c2:
-        if sec_row.get("email_path"):
-            st.markdown(f"[📧 Abrir email]({sec_row['email_path']})")
-
-    with c3:
-        if sec_row.get("deck_path"):
-            st.markdown(f"[📊 Abrir deck]({sec_row['deck_path']})")
+    file_download_button(c1, "📄 Descargar guion", sec_row.get("guion_path"), "guion.md")
+    file_download_button(c2, "📧 Descargar email", sec_row.get("email_path"), "email.md")
+    file_download_button(c3, "📊 Descargar deck", sec_row.get("deck_path"), "deck.md")
 
     st.markdown("---")
 
