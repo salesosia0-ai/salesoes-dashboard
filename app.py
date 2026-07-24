@@ -1,3 +1,4 @@
+import os
 import streamlit as st
 import plotly.express as px
 import pandas as pd
@@ -514,9 +515,9 @@ elif opcion == "Explorador de sectores":
                 with col:
                     st.write("No disponible")
 
-    file_download_button(c1, "📄 Descargar guion", sec_row.get("guion_path"), "guion.md")
-    file_download_button(c2, "📧 Descargar email", sec_row.get("email_path"), "email.md")
-    file_download_button(c3, "📊 Descargar deck", sec_row.get("deck_path"), "deck.md")
+    file_download_button(c1, "📄 Descargar guion", sec_row.get("guion_path"), os.path.basename(sec_row.get("guion_path", "guion.md")))
+    file_download_button(c2, "📧 Descargar email", sec_row.get("email_path"), os.path.basename(sec_row.get("email_path", "email.md")))
+    file_download_button(c3, "📊 Descargar deck", sec_row.get("deck_path"), os.path.basename(sec_row.get("deck_path", "deck.md")))
 
     st.markdown("---")
 
