@@ -471,7 +471,7 @@ elif opcion == "Explorador de sectores":
     st.markdown("### Ficha rápida")
     st.write(f"**Subsector:** {sec_row.get('subsector', 'N/A')}")
 
-        st.markdown("### Problemas principales")
+    st.markdown("### Problemas principales")
     problemas = sec_row.get("problemas", [])
     if isinstance(problemas, str):
         st.write(problemas)
@@ -490,18 +490,6 @@ elif opcion == "Explorador de sectores":
             st.write(f"- {p}")
     else:
         st.write("Sin procesos registrados.")
-
-        st.markdown("### Procesos manuales habituales")
-    procesos = sec_row.get("procesos_manuales", [])
-    if isinstance(procesos, str):
-        st.write(procesos)
-    elif procesos:
-        for p in procesos:
-            st.write(f"- {p}")
-    else:
-        st.write("Sin procesos registrados.")
-
-    st.markdown("### Oportunidades de automatización")
     oportunidades = sec_row.get("oportunidades_automatizacion", [])
     if isinstance(oportunidades, str):
         st.write(oportunidades)
